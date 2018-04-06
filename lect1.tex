@@ -1,0 +1,170 @@
+\section{Introduction}
+\paragraph{PDE}
+In PDE, the solution is a function of a couple of variables $u(x_1, x_2, \dots x_m)$ such that:
+$$F(x_1, x_2, \dots x_m, u_{x_1}, u_{x_2}, \dots, , u_{x_m}, u_{x_1x_1}, \dots) = 0$$
+Notation is 
+$$u_{x_i} = \frac{\partial u}{\partial x_i}$$
+Usually $m=2$. For example
+$$F(x_1,x_2, u, u_{x_1}, u_{x_2}, u_{x_1x_1}, u_{x_2x_2}, u_{x_1x_0}) = 0$$
+Is PDE of two variables of order 2.
+\paragraph{Linear PDE}
+PDE is linear if $F$ is linear in $u$ and its derivatives. First order linear PDE is
+$$F(x_1,x_2, u, u_{x_1}, u_{x_2}) = a(x_1,x_2)u_{x_1} + b(x_1,x_2)u_{x_2} + c(x_1,x_2)u + d(x_1,x_2) = 0$$
+Second order linear PDE is
+\begin{align*}
+F(x_1,x_2, u, u_{x_1}, u_{x_2}, u_{x_1x_1}, u_{x_1x_2}, u_{x_2x_2}) =\\= A(x_1,x_2) u_{x_1x_1} + B(x_1,x_2) u_{x_1x_2} + C(x_1,x_2) u_{x_2x_2} + a(x_1,x_2)u_{x_1} + b(x_1,x_2)u_{x_2} + c(x_1,x_2)u + d(x_1,x_2) = 0
+\end{align*}
+\paragraph{Quasilinear PDE}
+Quasilinear PDE is linear only in highest order derivative. First order quasilinear PDE:
+$$F(x_1,x_2, u, u_{x_1}, u_{x_2}) = a(x_1,x_2, u)u_{x_1} + b(x_1,x_2, u)u_{x_2} + c(x_1,x_2, u) = 0$$
+And second order one:
+\begin{align*}
+F(x_1,x_2, u, u_{x_1}, u_{x_2}, u_{x_1x_1}, u_{x_1x_2}, u_{x_2x_2}) =\\= A(x_1,x_2, u, u_{x_1}, u_{x_2}) u_{x_1x_1} + B(x_1,x_2, u, u_{x_1}, u_{x_2}) u_{x_1x_2} + C(x_1,x_2, u, u_{x_1}, u_{x_2}) u_{x_2x_2} + g(x_1,x_2, u, u_{x_1}, u_{x_2}) = 0
+\end{align*}
+
+For homogeneous linear PDE solution always exist. In addition, if $u_1$, $u_2$, then any linear combination of those $\lambda_1 u_1 + \lambda_2 u_2$ will also be a solution. Thus set of solutions of linear homogeneous PDE is vector space.
+
+\paragraph{Autonomous PDE } If $F$ is independent on $x_i$, then if $u(x_1, \dots, x_i, \dots, x_m)$ is solution then $u(x_1, \dots, x_i+\lambda, \dots x_m)$ is solution too. 
+
+In particular if $u$ is independent on all $x_i$, then $u(x_1+\lambda_1, \dots, x_i+\lambda_i, \dots, x_m+\lambda_m)$.
+
+\subsection{Wave equation}
+$$u_{tt} - c^2 u_{xx} = 0$$
+Solution describes movement of wave.
+
+Lets start ODE describing harmonic oscillator, would be
+$$m \frac{d^2x}{dt^2} = k(x - x_0)$$
+
+Now suppose that we have $N$ such masses and positionn of mass is $\bar{x}_i = x_i+u(x_i, t)$, where $u$ is displacement of mass and $x_i - x_{i-1} = \Delta$. Then the position of mass is described as
+$$\frac{\partial \bar{x}_i}{\partial t^2} = m\frac{\partial^2 }{\partial t^2}u(x_i,t) = k(\bar{x}_{i+1}-\bar{x}_i)+k(\bar{x}_{i}-\bar{x}_{i-1})$$
+Thus
+$$m\frac{d}{dt^2}u(x,t) = k \left[ u(x_{i+1},t) - 2u(x_i,t) + u(x_{i-1},t) \right]$$
+In limit $\Delta \to 0$:
+$$\frac{d}{dt^2}u(x,t) = c^2\frac{d}{dx^2}u(x,t)$$
+Where
+$$c^2 = \lim_{\Delta \to 0} \frac{\Delta^2 k_\Delta}{m_\Delta} $$
+\paragraph{Possible solutions}
+For each function $f$ in $\mathcal{C}^2$, $u=f(x-ct)$ is a solution of wave equation:
+$$\begin{cases}
+u_{xx} = f''(x-ct)\\
+u_{tt} = c^2 f''(x-ct)
+\end{cases}$$
+
+This solution is moving wave, because it moves along $x$ axis with constant velocity $c$. Since $c$ can be negative too, we have solution
+$$u(x,t) = f(x+ct) + g(x-ct)$$
+\subsection{Heat equation}
+$$\frac{\partial u}{\partial t} = k \frac{\partial^2 u}{\partial x^2} $$
+Here, $u$ means amount of heat in point $x$ at time $t$.
+
+Amount of heat in interval $[a,b]$ is
+$$Q(t) = \int_a^b u(x,t) dx$$
+And heat flux in point $x$ at time $t$ is $k\frac{\partial u}{\partial x}$
+
+Then flux out of interval is
+$$\frac{dQ}{dt} = k\frac{\partial u}{\partial x}(b,t) - k\frac{\partial u}{\partial x}(a,t)$$
+Thus
+$$\int_a^b \frac{\partial }{\partial t}u(x,t) dx  = k\frac{\partial u}{\partial x}(b,t) - k\frac{\partial u}{\partial x}(a,t)$$
+In limit $b\to a$ we get
+$$\frac{\partial u}{\partial t} = k \frac{\partial^2 u}{\partial x^2} $$
+
+\paragraph{Example solution}
+$$u(x,t) = e^{-kst} \sin (\sqrt{s} x)$$
+for some parameter $s$. Here we also can add some constant to $x$ and acquire additional solution:
+$$U(x,t) = e^{-kst} \sin (\sqrt{s} (x+\lambda)) = \cos (\sqrt{s} \lambda ) e^{-kst} \sin (\sqrt{s} x) +  \sin (\sqrt{s} \lambda ) e^{-kst} \cos (\sqrt{s} x)$$
+Thus
+$$w(x,t) =  e^{-kst} \cos (\sqrt{s} x)$$
+is solution too.
+\subsection{Diffusion equation}
+Suppose
+$u(x_1,x_2,x_3,t)$ describes concentration of material in space. From continuity:
+$$\frac{\partial u}{\partial t} + \vec{\nabla} \cdot (\vec{v} u) = 0$$
+$$\frac{\partial u}{\partial t} +\frac{\partial }{\partial x_1} (\vec{v} u) +\frac{\partial }{\partial x_2} (\vec{v} u) +\frac{\partial }{\partial x_3} (\vec{v} u) = 0$$
+for some vector field $v$ independent on $u$.
+\subsection{Elliptic PDEs}
+\paragraph{Laplace equation}
+$$\Delta u = \frac{\partial^2 u}{\partial x_1^2} + \frac{\partial^2 u}{\partial x_2^2} = 0$$
+\paragraph{Poisson equation}
+$$\Delta u = f(x_1,x_2)$$
+\section{First-order PDE}
+$$\frac{\partial u}{\partial t} + c\frac{\partial u}{\partial x} = 0$$
+We can easily guess solution similarly to wave equation: $u(x,t) = f(x-ct)$ for some differentiable $f$. 
+
+Suppose we have initial conditions $u(x,0)= u_0(x)$. Is it determines uniquely a solution of equation? Obviously, $u(x,t) = u_0(x-ct)$ is a solution.
+
+Lets show it's unique. Take a look at parametrization $x(t) = s_1 + ct$.
+$$\frac{d}{dt} u(x(t),t) = c\frac{\partial u}{\partial x}(x(t),t) + \frac{\partial u}{\partial t}(x(t),t) = 0$$ 
+Thus $u$ is constant on every line of form $x(t)=s+ct$. Such lines are called characteristic curves or just characteristics. Thus if we know a value of $u$ in some point on a line, we know it on the whole line.
+
+\paragraph{} Is it possible to find a solution if we are given initial conditions for some curve $x(t)$ for $t \in [a,b]$. So we want to find a solution such that the surface of solution comprises a given curve in 3D.
+
+The solution exists if the curve of initial conditions doesn't merges with characteristic line, we have a unique solution. If it does, either there is no solution, or there are infinite number of solution.
+
+\subsection{Quasilinear first-order equations}
+$$a(x,y,u)u_x + b(x,y,u)u_y = c(x,y,u)$$
+where $a,b,c$ are continuously differentiable in some neighborhood of point $(x_0,y_0,z_0)$.
+
+Take a look at
+$$f(x,y,z) = z - u(x,y)$$
+$$\nabla f = \left(-\frac{\partial u}{\partial x},-\frac{\partial u}{\partial y},1\right)$$
+and
+$$\nabla f \cdot (a,b,c) = -a\frac{\partial u}{\partial x} -b\frac{\partial u}{\partial y}+c  = 0$$
+Thus vector $(a,b,c) $ is tangent to solution surface.
+
+Now define curve such that
+$$\begin{cases}
+\frac{dx}{dt} = a(x(t), y(t), z(t))\\
+\frac{dy}{dt} = b(x(t), y(t), z(t))\\
+\frac{dz}{dt} = c(x(t), y(t), z(t))
+\end{cases}$$
+The curve $\left(x(t), y(t), z(t)\right)$ is characteristic curve of PDE.
+
+If there is no dependence on $z$ (i.e.\ equation is linear) we can take a look on 2-dimensional curve in xy-plane.
+
+\paragraph{Theorem}
+If characteristic curve intersects solution surface of quasilinear first-order PDE at some point, it is contained in the surface.
+\subparagraph{Proof}
+Let $\left(x(t), y(t), z(t)\right)$ characteristic curve of PDE and suppose for some $t_0$ 
+$$u(x(t_0), y(t_0)) = z(t_0)$$
+Define 
+$$w(t) = z(t) - u(x(t),y(t))$$
+Note that $w(t_0) = 0$.  Now
+\begin{align*}
+G\big(x(t),y(t), w(t)\big) = \frac{dw}{dt} = \frac{dz}{dt} - \frac{\partial u}{\partial x}\big(x(t), y(t)\big) \frac{dx}{dt}-  \frac{\partial u}{\partial y}\big(x(t), y(t)\big) \frac{dy}{dt} = c\bigg(x(t),y(t),w(t)+u\big(x(t),y(t)\big)\bigg) -\\- \frac{\partial u}{\partial x}\big(x(t), y(t)\big) a\bigg(x(t),y(t),w(t)+u\big(x(t),y(t)\big)\bigg) - \frac{\partial u}{\partial y}\big(x(t), y(t)\big) b\bigg(x(t),y(t),w(t)+u\big(x(t),y(t)\big))\bigg)
+\end{align*}
+If we substitute $w=0$, we get
+$$G\big(x(t),y(t), 0\big) = c\big(x(t),y(t),u\big(x(t),y(t)\big)\big) -\frac{\partial u}{\partial x}(x(t), y(t)) a\big(x(t),y(t),u\big(x(t),y(t)\big)\big) - \frac{\partial u}{\partial y}(x(t), y(t)) b\big(x(t),y(t),u\big(x(t),y(t)\big))\big)=0$$
+That means that $w=0$ is a solution of ODE, and since $a,b,c\in \mathcal{C}^1$, te solution is unique, i.e. $w=0$ is the only solution, and thus characteristic curve is contained in the solution surface.
+\subsection{Existence and uniquness theorem for first-order quasilinear PDE}
+\paragraph{Existence and uniquness theorem for first-order quasilinear PDE}
+Suppose we have initial curve $\Gamma(s) = \left(\bar{x}(s), \bar{y}(s), \bar{z}(s) \right)$ which around some point $s_0$ is continuously differentiable. Suppose also
+$$a(x_0,y_0,z_0) \dot{\bar{y}}(s_0) - b(x_0,y_0,z_0) \dot{\bar{x}}(s_0) \neq 0$$
+(transversality condition). 
+
+Then in neighborhood of $s_0$ exists unique solution of PDE.
+
+\subparagraph{Proof}
+Define functions $x(s,t)$, $y(s,t)$, $z(s,t)$ around $(s_0,0)$  such that
+$$\begin{cases}
+x(s,0) = \bar{x}(s)\\
+y(s,0) = \bar{y}(s)\\
+z(s,0) = \bar{z}(s)\\
+\end{cases}$$
+and
+$$\begin{cases}
+\frac{\partial x}{\partial t} = a\big(x(s,t), y(s,t), z(s,t)\big)\\
+\frac{\partial y}{\partial t} = b\big(x(s,t), y(s,t), z(s,t)\big)\\
+\frac{\partial z}{\partial t} = c\big(x(s,t), y(s,t), z(s,t)\big)
+\end{cases}$$
+From uniquness and existance of ODE, exists unique solution $(x,y,z)$ in neighbourhood of $s_0$.
+
+Lets try to find $s$, $t$, as a function of $x$,$y$. It is possible if conditions of inverse function theorem are fulfilled, i.e.\
+$$\begin{vmatrix}
+\frac{\partial x}{\partial s}&\frac{\partial x}{\partial t}\\
+\frac{\partial y}{\partial s}&\frac{\partial y}{\partial t}\\
+\end{vmatrix}\neq 0$$
+in $(s_0,0)$.
+
+Now define $u(x,y) = z\big(s(x,y), t(x,y)\big)$.
+\begin{align*}
+a\frac{\partial u}{\partial x}+b\frac{\partial u}{\partial y} = a\left[\frac{\partial z}{\partial s}\frac{\partial s}{\partial x}+\frac{\partial z}{\partial t}\frac{\partial t}{\partial x}\right]+b\left[\frac{\partial z}{\partial s}\frac{\partial s}{\partial y}+\frac{\partial z}{\partial t}\frac{\partial t}{\partial y}\right] = \frac{\partial z}{\partial t} \left[a\frac{\partial t}{\partial x} + b\frac{\partial t}{\partial y}\right] + \frac{\partial z}{\partial s} \left[a\frac{\partial s}{\partial x} + b\frac{\partial s}{\partial y}\right] =\\= \frac{\partial z}{\partial t} \underbrace{\left[\frac{\partial x}{\partial t}\frac{\partial t}{\partial x} + \frac{\partial y}{\partial t}\frac{\partial t}{\partial y}\right]}_{\frac{dt}{dt}} + \frac{\partial z}{\partial s} \underbrace{ \left[\frac{\partial x}{\partial t}\frac{\partial s}{\partial x} + \frac{\partial y}{\partial t}\frac{\partial s}{\partial y}\right]}_{\frac{ds}{dt}} = \frac{\partial s}{\partial t} = c
+\end{align*}
