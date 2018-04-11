@@ -1,0 +1,188 @@
+If we substitute derivatives back into general equation
+\begin{align*}
+au_{xx} + 2bu_{xy} + cu_{yy} = a \qty[w_{\xi\xi} \xi_{x}^2 + w_{\xi\eta}\xi_x\eta_x + w_{\xi}\xi_{xx} + w_{\eta \xi}\eta_x\xi_x + w_{\eta\eta} \eta_{x}^2+ w_{\eta}\eta_{xx} ] +\\+
+2b\qty[w_{\xi \xi} \xi_x\xi_y + w_{\xi\eta}\xi_y\eta_x + w_{\xi\eta}\xi_x\eta_y + w_{\eta \xi} \eta_x\eta_y + w_{\xi}\xi_{xy}+w_\eta\eta_{xy}] +\\+ 
+c\qty[w_{\xi\xi} \xi_{y}^2 + w_{\xi\eta}\xi_y\eta_y + w_{\xi}\xi_{yy} + w_{\eta \xi}\eta_y\xi_y + w_{\eta\eta} \eta_{y}^2+ w_{\eta}\eta_{yy} ]  =\\=
+\qty\bigg(a\xi_x^2+3b\xi_x\xi_y + c\xi_y^2)w_{\xi\xi} + 2\qty\bigg(a\xi_x\eta_x + c\eta_y\xi_y + b(\xi_x\eta_y + \xi_y\eta_x))w_{\xi\eta} + \qty\bigg(a\eta_x^2+3b\eta_x\eta_y + c\eta_y^2)w_{\eta\eta} + \dots
+\end{align*}
+We can rewrite it in matrix form as
+$$\begin{pmatrix}
+\xi_x& \xi_y \\ \eta_x & \eta_y
+\end{pmatrix} \begin{pmatrix}
+a&b\\b&c
+\end{pmatrix} \begin{pmatrix}
+\xi_x& \eta_x\\ \xi_y  & \eta_y
+\end{pmatrix} = \begin{pmatrix}
+A&B\\B&C
+\end{pmatrix}$$
+$$\begin{vmatrix}
+A&B\\B&C
+\end{vmatrix} = \begin{vmatrix}
+a&b\\b&c
+\end{vmatrix} \cdot \begin{vmatrix}
+\xi_x& \eta_x\\ \xi_y  & \eta_y
+\end{vmatrix}^2$$
+Since the determinant is exactly $ac-b^2$, under the variable substitution the sign of $b^2-ac$ is conserved.
+
+\paragraph{Canonical form}
+The form $w_{\xi \eta} + \ell_1[w] = G(\xi, \eta)$, where $\ell_1$ is first-order differential operator is called canonical form of hyperbolic equation.
+\paragraph{Theorem} Each hyperbolic equation can be written in canonical form
+\subparagraph{Proof}
+We want to show that 
+$$\begin{cases}
+A = a\xi_x^2 + 2b\xi_x\xi_y + c\xi_y^2 = 0\\
+C =a\eta_x^2 + 2b\eta_x\eta_y + c\eta_y^2 = 0
+\end{cases}$$
+i.e., that equation $a\psi_x^2 + 2b\psi_x\psi_y + c\psi_y^2 = 0$ has two independent solutions.
+
+Dividing by $\psi_y^2$:
+$$a\left(\frac{\psi_x}{\psi_y}\right)^2 + 2b\frac{\psi_x}{\psi_y} + c = 0$$
+This is algebric equation, with solutions
+$$\frac{\psi_x}{\psi_y} = \frac{-b\pm \sqrt{b^2-ac}}{a} = \lambda_\pm$$
+We acquired a pair of equations
+$$\psi_x - \lambda_\pm \psi_y = 0$$
+And those are two independent solutions which result in $A=0$ and $C=0$.
+
+\paragraph{Wave equation canonical form}
+$$
+u_{tt} - c^2 u_{xx} = 0$$
+The canonical change of coordinates is
+$$\begin{cases}
+\xi = x-ct\\
+\eta = x+ct
+\end{cases}$$
+$$u_{t} = -cw_\xi + cw_\eta$$
+$$u_{x} = w_\xi + w_\eta$$
+$$u_{tt} = c^2 w_{\xi\xi} - 2c^2w_{\xi\eta} +  c^2w_{\eta\eta}$$
+$$u_{xx} = w_{\xi\xi} + 2w_{\xi\eta} + w_{\eta\eta}$$
+Then
+$$u_{tt} - c^2u_{xx} = -4c^2w_{\xi\eta}$$
+
+The solution of canonical equation $w_{\xi \eta} = 0$ is $w(\xi, \eta) = F(\xi) + G(\eta)$, thus solution of wave equation:
+$$u(x,t) = F(x+ct) + G(x-ct)$$
+
+An example for physical object fulfilling wave equation is infinite string. To find a solution we need initial conditions, for example, velocity and location at time $t=0$:
+$$\begin{cases}
+u(x,0) = f(x)\\u_t(x,0) = g(x)
+\end{cases}$$
+, where $f\in \mathcal{C}^2$, $g\in \mathcal{C}^1$.
+\paragraph{Theorem}
+Exists unique solution of wave equation with those initial conditions. 
+\subparagraph{Proof}
+Substituting initial conditions into general solutions:
+$$\begin{cases}
+u(x,0) = F(x) + G(x) = f(x)\\
+u_t(x,0) = c\qty[F'(x) - G'(x) ] = g(x)
+\end{cases}$$
+$$\begin{cases}
+F'(x) + G'(x) = f'(x)\\
+F'(x) - G'(x)  = \frac{g(x)}{c}
+\end{cases} \Rightarrow \begin{cases}
+F'(x) = \frac{f'(x) }{2} + \frac{g(x)}{2c}\\
+G'(x)  = \frac{f'(x) }{2} - \frac{g(x)}{2c}
+\end{cases} \Rightarrow \begin{cases}
+F(x) = \frac{f(x) }{2} + \frac{1}{2c}\int_0^x g(s) \dd{s} + D_1\\
+G(x)  = \frac{f(x) }{2} - \frac{1}{2c}\int_0^x g(s) \dd{s} + D_2
+\end{cases}$$
+Now, since $F(x)+G(x) = f(x)$, thus $D_1 + D_2 = 0$.
+
+Substituting into solution, we acquire what is called d'Alembert's formula:
+$$u(x,t) = \frac{f(x-ct) + f(x+ct) }{2} + \frac{1}{2c}\int_{x-ct}^{x+ct} g(s) \dd{s} $$
+From construction, the solution is unique.
+\paragraph{Example}
+$$\begin{cases}
+g(x) = 0 \\
+f(x) = e^{-x^2}
+\end{cases}$$
+$$u(x,t) = \frac{1}{2} e^{-(x+ct)^2} + \frac{1}{2}e^{-(x+ct)^2} $$
+\paragraph{Standing wave}
+To get standing wave we want $G=0$, i.e., 
+$$\begin{cases}
+f(x) = F(x)\\
+g(x) = cF'(x)
+\end{cases} \Rightarrow g(x) = cf'(x)$$
+\paragraph{Domain of dependence and region of influence}
+Domain of dependence of $u$ in point $(x_0,t_0)$ is a characteristic triangle with vertices $(x_0-ct_0,0)$, $(x_0+ct_0, 0)$, $(x_0,t_0)$. Any point outside of triangle doesn't affect the value of $u$ in point.
+
+Region of influence of point $x_0$ is cone bounded by condition $x_0-ct<x<x_0+ct$.
+\begin{center}	
+	\includesvg[eps,svgpath = lect3/,width=0.5\linewidth]{pic1}
+\end{center}
+%TODO
+\paragraph{Weak solution}
+$$\begin{cases}
+g(x) = 0\\f(x) = \begin{cases}
+1 & |x| <1 \\
+0 & |x| > 1
+\end{cases}
+\end{cases}$$
+The weak solution
+$$u(x,t) = \frac{1}{2}f(x-ct)+\frac{1}{2}f(x+ct)$$
+is not differentiable, but is solves the equation in some sense.
+\subsection{Generalization of  d'Alembert's formula for non-homogeneous equations}
+Consider non-homogeneous equation
+$$u_{tt} - c^2 u_{xx} = \varphi(x,t)$$
+
+Remember Green's theorem, for differentiable $P$ and $Q$ defined in $\Omega$:
+$$\iint\limits_\Omega \pdv{Q}{x} - \pdv{Q}{t} \dd{x} \dd{t} = \oint\limits_{\partial \Omega} P(x,t) \dd{x} + Q(x,t) \dd{t}$$
+
+Lets define $Q=c^2u_x$ and $P=u_t$, and choose $\Omega(x_0, t_0)$ to be characteristic triangle.
+
+$$\iint\limits_{\Omega(x_0, t_0)} \varphi(x,t) \dd{x} \dd{t} = \iint\limits_{\Omega(x_0, t_0)} u_{tt} - c^2 u_{xx} \dd{x} \dd{t} = \oint P(x,t) \dd{x} - Q(x,t) \dd{t} = - \qty[\oint\limits_{\partial \Omega(x_0, t_0)} u_t \dd{x} + c^2u_x \dd{t}] $$
+
+Lets divide the curve integral into three integrals along each of lines. For first line $\dd{t} = 0$, for second $\dd{x} + c\dd{t} = 0$ and for third $\dd{x} - c\dd{t} = 0$.
+\begin{align*}
+\oint\limits_{\partial \Omega(x_0, t_0)} u_t \dd{x} + c^2u_x \dd{t} =\\= \int_{x_0-ct_0}^{x_0+ct_0} \underbrace{u_t}_{g(x) \text{ in } t=0} \dd{x} - \int_{(x_0+ct_0,0)}^{(x_0, t_0)} cu_t \dd{t} + u_x \dd{x} +  \int_{(x_0, t_0)}^{(x_0-ct_0,0)} cu_t \dd{t} + u_x \dd{x} =\\= \int_{x_0-ct_0}^{x_0+ct_0} g(s) \dd{s} - c\int_{(x_0+ct_0,0)}^{(x_0, t_0)} \dd{u} + c \int_{(x_0, t_0)}^{(x_0-ct_0,0)} \dd{u} 
+\end{align*}
+Since
+$$\int_{(x_0+ct_0,0)}^{(x_0, t_0)} \dd{u} = u(x_0, t_0) - f(x_0+ct_0) $$
+$$ \int_{(x_0, t_0)}^{(x_0-ct_0,0)} \dd{u} = f(x_0-ct_0) -  u(x_0, t_0) $$
+we get
+$$\iint\limits_{\Omega(x_0, t_0)} \varphi(x,t) \dd{x} \dd{t} = -\int_{x_0-ct_0}^{x_0+ct_0} g(s) \dd{s} + 2cu(x_0, t_0) - cf(x_0+ct_0) - cf(x_0-ct_0) $$
+from which we get the solution
+
+$$u(x,t) = \frac{f(x-ct) + f(x+ct) }{2} + \frac{1}{2c}\int_{x-ct}^{x+ct} g(s) \dd{s} + \frac{1}{2c}\iint\limits_{\Omega(x_0, t_0)} \varphi(\xi, \eta) \dd{\xi} \dd{\eta}$$
+
+We've got a cadidate for the solution. Let's check that $u$ is actually solving PDE. Define $v$, $w$, such that $w$ is a solution of homogeneous PDE and $v=u-w$, i.e.,
+$$v(x,t) = \frac{1}{2c}\iint\limits_{\Omega(x_0, t_0)} \varphi(\xi, \eta) \dd{\xi} \dd{\eta}$$
+
+Let's show that $v$ solves PDE. Rewrite $v$ as double integral:
+$$v(x,t) = \frac{1}{2c}\int_0^t \int_{x-c(t-\tau)}^{x+c(t-\tau)} \varphi(\xi, \tau) \dd{\xi} \dd{\tau}$$
+Define
+$$H(x,t,\tau) = \int_{x-c(t-\tau)}^{x+c(t-\tau)} \varphi(\xi, \tau) \dd{\xi}$$
+and then
+$$v(x,t) = \frac{1}{2c} \int_0^t H(x,t,\tau) \dd{\tau}$$
+$$\pdv{v}{t} = \frac{1}{2c} \underbrace{H(x,t,t)}_{0} +\frac{1}{2c} \int_0^t \pdv{H}{t}(x,t,\tau) \dd{\tau}$$
+$$\pdv{H}{t} =c[\varphi(x+c(t-\tau), \tau) + \varphi(x-c(t-\tau), \tau) ]$$
+$$\pdv[2]{H}{t} =c^2[\varphi_x(x+c(t-\tau), \tau) - \varphi_x(x-c(t-\tau), \tau) ]$$
+$$\pdv[2]{v}{t} =\frac{1}{2c} \int_0^t \pdv[2]{H}{t}(x,t,\tau) \dd{\tau} =  \varphi(x,t) + \frac{c}{2} \int_0^t \varphi_x(x+c(t-\tau), \tau) - \varphi_x(x-c(t-\tau), \tau)  \dd{\tau} $$
+$$\pdv{v}{x} = \frac{1}{2c} \int_0^t \pdv{H}{x} \dd{\tau}$$
+$$\pdv{H}{x} = \varphi(x+c(t-\tau),\tau) - \varphi(x-c(t-\tau),\tau)$$
+$$\pdv[2]{H}{x} = \varphi_x(x+c(t-\tau),\tau) - \varphi_x(x-c(t-\tau),\tau)$$
+$$\pdv[2]{v}{x} = \frac{1}{2c} \int_0^t \varphi_x(x+c(t-\tau),\tau) - \varphi_x(x-c(t-\tau),\tau) \dd{\tau}$$
+Thus we got
+$$\pdv[2]{v}{t} - c^2\pdv[2]{v}{x} = \varphi(x,t)$$
+
+Suppose we have two solutions $u_1$ and $u_2$ then $u=u_1-u_2$ is solution of homogeneous equation with $0$ initial conditions, and thus $u=0$. That means the solution is unique.
+
+The presented initial condition problem has 3 properties:
+\begin{enumerate}
+	\item Solution exist
+	\item It's unique
+	\item It's stable
+\end{enumerate}
+\paragraph{Stability of wave equation}
+For all $\tau > 0 $, $\epsilon >0$, exists $\delta >0$ such that if 
+$$\begin{cases}
+|f(x) - \tilde{f}(x) | < \delta\\
+|g(x) - \tilde{g}(x) | < \delta\\
+|\varphi(x) - \tilde{\varphi}(x) | < \delta\\
+\end{cases}$$
+For all $-\infty < x < \infty$ and $0 \leq t \leq \tau$ and if $u$, $\tilde{u}$ are solutions of corresponding wave equations, then
+$$|u(x,t) - \tilde{u}(x,t)| < \epsilon$$
+\subparagraph{Proof}
+From the general solution:
+\begin{align*}
+u(x,t) - \tilde{u}(x,t) =\\= \qty|\frac{f(x+ct) + f(x-ct)}{2} - \frac{\tilde{f}(x+ct) + \tilde{f}(x-ct)}{2} + \frac{1}{2c}\int_{x-ct}^{x+ct} g(s) - \tilde{g}(s)\dd{s}  + \frac{1}{2c}\iint\limits_{\Omega(x_0, t_0)} \varphi(\xi, \eta) - \tilde{\varphi}(\xi, \eta)\dd{\xi} \dd{\eta}| \leq\\\leq \qty|\frac{f(x+ct) - \tilde{f}(x+ct)}{2}| + \qty|\frac{f(x-ct) - \tilde{f}(x-ct)}{2}| + \frac{1}{2c}\int_{x-ct}^{x+ct} \qty|g(s) - \tilde{g}(s)|\dd{s}  + \frac{1}{2c}\iint\limits_{\Omega(x_0, t_0)} \qty|\varphi(\xi, \eta) - \tilde{\varphi}(\xi, \eta)|\dd{\xi} \dd{\eta} \leq\\\leq \frac{\delta}{2}+\frac{\delta}{2} \frac{1}{2c} \cdot 2c \cdot \delta + \frac{1}{2c} \frac{ct}{2} = 2\delta + \frac{\delta t}{4} \leq 2\delta + \frac{\delta \tau}{4} \leq \epsilon
+\end{align*}
+Thus we choose $\delta < \frac{\epsilon}{2+\frac{\tau}{4}}$.

@@ -68,15 +68,15 @@ $$u(x,y)  = h\left(\sqrt{x^2+y^2}\right)e^{ \arctan \left(-\frac{y}{x}\right)}$$
 
 \subsection{Burgers' equation}
 $$u_y + uu_x = 0$$
-(which is partial case of equation of form $$\frac{\partial u}{\partial y} + \frac{\partial }{\partial y} F(u) = 0$$ for $F=\frac{1}{2}u^2$)
+(which is partial case of equation of form $$\pdv{u}{y} + \pdv{ y} F(u) = 0$$ for $F=\frac{1}{2}u^2$)
 
-Note that $$\frac{u_y}{u_x} = -u \Rightarrow \frac{dx}{dy} = - u \Rightarrow u = \frac{dx}{dy}$$
+Note that $$\frac{u_y}{u_x} = -u \Rightarrow \dv{x}{y} = - u \Rightarrow u = \dv{x}{y}$$
 Here $y$ denotes time.
 
 To solve it, we take integral:
-$$\int_a^b \left[ \frac{\partial u(x,y)}{\partial y} + \frac{\partial }{\partial x} F(u(x,y))\right] dx = 0$$
-$$\frac{\partial }{\partial y} \underbrace{\int_a^b u dx}_{Q(y)}  + F\Big(u(b,y)\Big) - F\Big(u(a,y)\Big)$$
-$$\frac{dQ}{dy} = F\Big(u(a,y)\Big) - F\Big(u(b,y)\Big)$$
+$$\int_a^b \left[ \pdv{ u(x,y)}{y} + \pdv {x} F(u(x,y))\right] \dd{x} = 0$$
+$$\pdv{y} \underbrace{\int_a^b u \dd{x}}_{Q(y)}  + F\Big(u(b,y)\Big) - F\Big(u(a,y)\Big)$$
+$$\dv{Q}{y} = F\Big(u(a,y)\Big) - F\Big(u(b,y)\Big)$$
 
 Now as for any quasilinear PDE:
 $$\begin{cases}
@@ -91,19 +91,19 @@ x= h(s) t + s\\y = t \\\dot{z}= h(s)
 Now 
 $$s=x-yu \Rightarrow u = h(x-yu)$$
 Checking transversality condition:
-$$\frac{d\bar{x}}{ds} \cdot 1 - \frac{d\bar{y}}{ds} \cdot h(s) = 1 \neq 0$$  
+$$\dv{\bar{x}}{s} \cdot 1 - \dv{\bar{y}}{s} \cdot h(s) = 1 \neq 0$$  
 
 
 Since
-$$\frac{\partial u}{\partial x} = h'(x-yu) \cdot \left(1 - y\frac{\partial u}{\partial x} \right)$$
-$$\frac{\partial u}{\partial x} = \frac{h'(x-yu)}{1+h'(x-yu) \cdot y} $$
+$$\pdv{u}{x} = h'(x-yu) \cdot \left(1 - y\pdv{u}{x} \right)$$
+$$\pdv{u}{x} = \frac{h'(x-yu)}{1+h'(x-yu) \cdot y} $$
 even if we start from $\mathcal{C}^\infty$ function we can get $1+h'(x-yu) \cdot y = 0$ and thus undefined derivative.
 
 Geometrically, the slope of projections of characteristic curves is equal to $h(s)$ thus they can cross in some point.
 
 \paragraph{Weak solutions}
 We define a weak solution of equation, function $u$  fulfilling the equation:
-$$\forall a,b \quad \frac{\partial }{\partial y} u(x,y) dx + F\Big(u(b,y)\Big)-F\Big(u(a,y)\Big) = 0$$
+$$\forall a,b \quad \pdv{y} u(x,y) \dd{x} + F\Big(u(b,y)\Big)-F\Big(u(a,y)\Big) = 0$$
 
 Intuitively, $F$ is flux, and $u$ is density, thus change in number of particles (integral) is difference between particles going in and out.
 
@@ -113,9 +113,9 @@ u^+(y) & y < \gamma(y)\\
 u^-(y) & y > \gamma(y)
 \end{cases}$$
 
-$$Q_{a,b}(y) = \int_a^b u(x,y) dx = \int_a^{\gamma(y)} u^+(x,y) dx + \int_{\gamma(y)}^{b} u^-(x,y) dx$$ 
+$$Q_{a,b}(y) = \int_a^b u(x,y) \dd{x} = \int_a^{\gamma(y)} u^+(x,y) \dd{x} + \int_{\gamma(y)}^{b} u^-(x,y) \dd{x}$$ 
 \begin{align*}
-\frac{\partial Q}{\partial y} = \int_a^{\gamma(y)} \frac{\partial u^+(x,y)}{\partial y} dx + u^+(x,\gamma(y)) \cdot \gamma'(y) + \int_{\gamma(y)}^{b} \frac{\partial u^-(x,y)}{\partial y} dx -  u^-(x,\gamma(y)) \cdot \gamma'(y) =\\= - \int_{a}^{\gamma(y)}  \frac{d F(u^+)}{dx}dx - \int_{\gamma(y)}^{b} \frac{d F(u^-)}{dx}dx + \gamma'(y) \left[ u^+\Big(x,\gamma(y)\Big) -  u^-\Big(x,\gamma(y)\Big) \right] =\\= -\left[F\Big(u^+\big(\gamma(y),y\big)\Big)-F\Big(u^+(a,y)\Big)\right]-\left[F\Big(u^-(b,y)\Big)-F\Big(u^+\big(\gamma(y),y\big)\Big)\right] + \gamma'(y) \left[ u^+\Big(x,\gamma(y)\Big) -  u^-\Big(x,\gamma(y)\Big)  \right]
+\pdv{Q}{y} = \int_a^{\gamma(y)} \pdv{u^+(x,y)}{y} \dd{x} + u^+(x,\gamma(y)) \cdot \gamma'(y) + \int_{\gamma(y)}^{b} \pdv{u^-(x,y)}{y} \dd{x}-  u^-(x,\gamma(y)) \cdot \gamma'(y) =\\= - \int_{a}^{\gamma(y)}  \dv{F(u^+)}{x} \dd{x} - \int_{\gamma(y)}^{b} \dv{F(u^-)}{x} \dd{x} + \gamma'(y) \left[ u^+\Big(x,\gamma(y)\Big) -  u^-\Big(x,\gamma(y)\Big) \right] =\\= -\left[F\Big(u^+\big(\gamma(y),y\big)\Big)-F\Big(u^+(a,y)\Big)\right]-\left[F\Big(u^-(b,y)\Big)-F\Big(u^+\big(\gamma(y),y\big)\Big)\right] + \gamma'(y) \left[ u^+\Big(x,\gamma(y)\Big) -  u^-\Big(x,\gamma(y)\Big)  \right]
 \end{align*}
 Meaning
 $$-\bigg[F\Big(u^+\big(\gamma(y),y\big)\Big)-F(u^+(a,y))\bigg]-\bigg[F\Big(u^-(b,y)\Big)-F\Big(u^+\big(\gamma(y),y\big)\Big)\bigg] + \gamma'(y) \bigg[ u^+(x,\gamma(y)) -  u^-(x,\gamma(y))  \bigg] = F\Big(u^-(a,y)\Big) - F\Big(u^+(b,y)\Big)  $$
@@ -193,11 +193,11 @@ We have some $$F(x,y,u,u_x,u_y) = 0$$. In our case $$F(x,y,u,p,q) = p^2+q^2-1$$
 
 Characteristic equations:
 $$\begin{cases}
-\frac{dx}{dt} = \frac{\partial F}{\partial p}\\
-\frac{dy}{dt} = \frac{\partial F}{\partial q}\\
-\frac{dz}{dt} = p\frac{\partial F}{\partial p}+q\frac{\partial F}{\partial q}\\
-\frac{dp}{dt} = -\frac{\partial F}{\partial x}+p\frac{\partial F}{\partial z}\\
-\frac{dq}{dt} = -\frac{\partial F}{\partial y}+q\frac{\partial F}{\partial z}\\
+\dv{x}{t} = \pdv{F}{p}\\
+\dv{y}{t} = \pdv{F}{q}\\
+\dv{z}{t} = p\pdv{F}{p}+q\pdv{F}{q}\\
+\dv{p}{t} = -\pdv{F}{x}+p\pdv{F}{z}\\
+\dv{q}{t} = -\pdv{F}{y}+q\pdv{F}{z}\\
 \end{cases}$$
 
 
@@ -208,8 +208,8 @@ $$F(x,y,u,u_x,u_y) = 0$$
 also
 $$u(\bar{x}(s), \bar{y}(s)) = \bar{z}(s)$$
 Differentiating by $s$
-$$\frac{\partial u}{\partial x}\frac{d\bar{x}}{ds} + \frac{\partial u}{\partial y}\frac{d\bar{y}}{ds} = \frac{d\bar{z}}{ds}$$
-$$\bar{p}(s)\frac{d\bar{x}}{ds} + \bar{q}(s)\frac{d\bar{y}}{ds} = \frac{d\bar{z}}{ds}$$
+$$\pdv{u}{x}\dv{\bar{x}}{s}  + \pdv{u}{y}\dv{\bar{y}}{s} = \dv{\bar{z}}{s}$$
+$$\bar{p}(s)\dv{\bar{x}}{s} + \bar{q}(s)\dv{\bar{y}}{s} = \dv{\bar{z}}{s}$$
 Now we can find $p$ and $q$.
 
 Back to our equation:
@@ -228,20 +228,27 @@ $$u(x,y) = \min (x-\bar{x}(s))^2 + (y-\bar{y}(s))^2 + \phi(s)$$
 \paragraph{Higher dimension}
 We can trivially extend quasilinear equations to more dimensions. In this case we have initial surface instead of curve.
 \section{Wave equation}
-$$u_{yy} -c^2u_{xx} = 0$$
+$$u_{tt} -c^2u_{xx} = 0$$
 More generally the equation is
-$$a(x,y) u_{xx} + 2b(x,y) u_{xy} + c(x,y) u_{yy} + du + f$$
-We want to simplify the equation: we are searching for $s(x,y)$ and $t(x,y)$ and solution $u(x,y) = w(s(x,y), t(x,y)$.
+$$a(x,y) u_{xx} + 2b(x,y) u_{xy} + c(x,y) u_{yy} + du_x + eu_y + fu = g$$
+
+\paragraph{Definition}
+Equation is called hyperbolic if $b^2-ac>0$, parabolic if  $b^2-ac=0$ and elliptic if  $b^2-ac<0$. Wave equation is hyperbolic in the whole space.
+
+We want to simplify the equation: we are searching for $\xi(x,y)$ and $\eta(x,y)$ such that
+$$\pdv{\eta}{x} \pdv{\xi}{y} - \pdv{\eta}{y} \pdv{\xi}{x} \neq 0$$
+and solution $u(x,y) = w\big(\xi(x,y), \eta(x,y)\big)$.
 
 Derivatives of $u$ are
-$$u_y = w_s s_y + w_tt_y$$
-$$u_{yy} = w_{ss} s_{y}^2 + w_{st}s_yt_y + w_{s}s_{yy} + w_{ts}t_ys_y + w_{tt} t_{y}^2+ w_{t}t_{yy}  $$
+$$u_y = w_\xi \xi_y + w_\eta \eta_y$$
+$$u_{yy} = w_{\xi\xi} \xi_{y}^2 + w_{\xi\eta}\xi_y\eta_y + w_{\xi}\xi_{yy} + w_{\eta \xi}\eta_y\xi_y + w_{\eta\eta} \eta_{y}^2+ w_{\eta}\eta_{yy}  $$
+$$u_{xy} =\pdv{x}\pdv{u}{y} = w_{\xi \xi} \xi_x\xi_y + w_{\xi\eta}\xi_y\eta_x + w_{\xi\eta}\xi_x\eta_y + w_{\eta \xi} \eta_x\eta_y + w_{\xi}\xi_{xy}+w_\eta\eta_{xy}$$
 
 Now we can get equation of form
-$$A(s,t) w_{ss} + 2B(s,t) w_{st} + C(s,t) w_{tt} + D(s,t) w_{tt}+ F(s,t)$$
+$$A(\xi,\eta) w_{\xi\xi} + 2B(\xi,\eta) w_{\xi\eta} + C(\xi,\eta) w_{\eta \xi} + D(\xi,\eta) w_{\eta\eta}+ F(\xi,\eta) = 0$$
 If we can find variable substitution such that
 $$A=C=D=F=0$$
 Then
-$$Bw_{st} = 0$$
+$$Bw_{\xi\eta} = 0$$
 i.e.,
-$$w(s,t) = f(s)+g(t)$$
+$$w(\xi,\eta) = f(\xi)+g(\eta)$$
