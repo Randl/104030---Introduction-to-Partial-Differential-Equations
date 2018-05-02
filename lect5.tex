@@ -1,0 +1,225 @@
+\paragraph{Operator of hyperbolic equation}
+We can define linear operator
+$$L(u) = \qty(a\pdv[2]{x}+2b\pdv{}{x}{y} + c \pdv[2]{y} + d\pdv{x} + f\pdv{y} + g)$$
+Then the equation is
+$$L(u) = h$$
+We can turn it into canonical form:
+$$L'(u) = \qty(\pdv{}{\xi}{\eta}  + d'\pdv{x} + f'\pdv{y} + g') $$
+\paragraph{Cauchy problem for hyperbolic equation}
+Given a curve in space $\va{r}(s) = \qty\big(\bar{x}(s), \bar{y}(s))$, ge define initial conditions
+$$\begin{cases}
+u\qty\big(x(s),y(s)) = h(s)\\
+u_x\qty\big(x(s),y(s)) = \varphi(s)\\
+u_y\qty\big(x(s),y(s)) = \psi(s)\\
+\end{cases}$$
+
+However, since we need two conditions, there is consistency requirement on those functions:
+$$\dv{h}{s} = u_x\qty\big(x(s),y(s)) \pdv{\bar{x}}{s} + u_y\qty\big(x(s),y(s)) \pdv{\bar{x}}{s} = = \varphi(s) \pdv{\bar{x}}{s} + \psi(s) \pdv{\bar{x}}{s}  $$
+
+Suppose we have equation of form
+$$\begin{cases}
+au_{xx} + 2bu_{xy} + cu_{yy} = d\\
+u_{xx} \dv{\bar{x}}{s} + u_{xy} \dv{\bar{y}}{s} = \dv{\varphi}{s}\\
+u_{xy} \dv{\bar{x}}{s} + u_{yy} \dv{\bar{y}}{s} = \dv{\psi}{s}
+\end{cases}$$
+
+To have an opportunity to evaluate second derivatives, we need to find solution of this linear system, i.e., we need that
+$$\begin{vmatrix}
+a&2b&c\\\dv{\bar{x}}{s}& \dv{\bar{y}}{s}&0\\0 &\dv{\bar{x}}{s}& \dv{\bar{y}}{s}
+\end{vmatrix} \neq 0$$
+or
+$$a\qty(\dv{\bar{y}}{s})^2 - 2b\dv{\bar{x}}{s}\dv{\bar{y}}{s} + c\qty(\dv{\bar{x}}{s})^2 \neq 0$$
+meaning the direction of tangent line is not in direction of characteristic lines.
+
+We can derive the system once again and thus find third-order derivatives, doing it up to infinity, we get all the partial derivative.
+\paragraph{Cauchy–Kowalevski theorem}
+If the coefficients and initial curve are analytic functions, then exists unique analytic solution. 
+
+\section{Heat equation}
+For some positive $k$
+$$u_t - ku_{xx}  = 0$$
+Temperature $u(x,t)$ fulfills heat equation.
+\paragraph{Dirichlet bound conditions}
+$$u(a,0) =  u(b,0) = 0$$
+\paragraph{Neumann bound conditions}
+The meaning of Neumann bound condition is that there is heat isolation in interval bounds:
+$$u_x(a,t) = u_x(b,t) = 0$$
+$$Q(t) = \int_a^b u(x,t) \dd{x} $$
+$$\dv{Q}{t} = \int_a^b \pdv{Q}{t}(x,t) \dd{x} = k \int_a^b \pdv[2]{u}{x} (x,t) \dd{x} = k \qty[\pdv{u}{x} (,t) - \pdv{u}{x} (a,t)] = 0$$
+Thus $Q(t)$ is constant. $$Q(t)=Q(0) = \int_a^b f(x) \dd{x}$$
+\paragraph{Solution of heat equation}
+Suppose, for Dirichlet bound condition, that solution is series of sines.
+$$u(x,t) = \sum_{n=1}^\infty a_n(t) \sin(n\pi x)$$
+$$\pdv{u}{t} = \sum_{n=1}^\infty a'_n(t) \sin(n\pi x)$$
+$$\pdv[2]{u}{x} = \sum_{n=1}^\infty -(n\pi)^2 a_n(t) \sin(n \pi x)$$
+
+Then we get
+$$\pdv{u}{t} - k \pdv[2]{u}{x} = \sum_{n=1}^\infty \qty[a'_n(t) + k(n\pi)^2 a_n(t) ]\sin(n\pi x) = 0$$
+Thus, by coefficient comparison
+$$a'_n(t) + k(n\pi)^2 a_n(t)  = 0$$
+$$a_n(t) = a_n(0) e^{-k(n\pi)^2t}$$
+$$u(x,t) = \sum_{n=1}^\infty a_n(0) e^{-k(n\pi)^2t}\sin(n\pi x)$$
+From initial conditions we can find $a_n(0)$:
+$$u(x,0) = f(x) = \sum_{n=1}^\infty a_n(0)\sin(n\pi x)$$
+
+Our series is infinite differentiable if $t>0$.
+
+If $t=0$, we need 
+$$\lim_{t \to 0^-} u(x,t) = f(x)$$
+
+For $t<0$, coefficients diverge, and thus we can't find solutions for $t<0$. Physically we can see it from entropy grows.
+
+\paragraph{Example}
+$$
+\begin{cases}
+u_t-ku_{xx} = 0 \\
+u(x,0)  = 1\\
+u(0,t) = u(1,t) = 0 & t>0
+\end{cases}
+$$
+We acquire
+$$a_n = \frac{1}{2} \int_0^1 1 \cdot \sin(n\pi x) \dd{x}$$
+$$\abs{a_n} \leq \int_0^1 \dd{x} = \frac{1}{2} $$
+Thus
+$$\abs{a_n} \leq \frac{1}{2}e^{-k(n\pi)^2 t}$$
+Thus the series absolutely converges for $t>0$.
+
+In limit $t\to \infty $, $a_n \to 0$, and thus $u(x,t) \to 0$.
+
+\paragraph{Stability}
+For each $\epsilon>0$ exists $\delta > 0$ such that if
+$$\max\limits_{a\leq x\leq b} \abs{u(x,0)} < \delta$$ % TODO
+then
+$$\max\limits_{a\leq x\leq b} \abs{u(x,t)} < \epsilon$$
+\subparagraph{Proof}
+We'll proof the weaker version of the theorem, with condition that $\sum \abs{a_n} < \delta$.
+
+% If $u(x,0) = \sum_{n=1}^\infty a_n \sin(n\pi x)$, $a_n(0) < \frac{\delta}{2}$.
+Then coefficients of $u(x,t)$ are bounded by
+$$a_n(t) \leq e^{-k(n\pi)^2 t}\frac{\delta}{2}$$
+i.e.
+$$\abs{u(x,t)} \leq \sum_{n=1}^\infty \abs{a_n} e^{-k(n\pi)^2 t} < \sum |a_n| <\delta$$
+\section{Potential equation} 
+$$u_{xx} + u_{yy} = 0$$
+Bound conditions are
+$$\begin{cases}
+u(x,0) = f(x)\\
+u_x(x,0) = g(x)
+\end{cases}$$
+
+By variable separation we get
+$$u_n =A_n(x)B_n(y)$$
+we know that
+$$A_n(x) = \sin(n\pi x) $$
+Since
+$$(n\pi)^2 = \frac{A_n''}{A_n} = -\frac{B_n''}{B_n}$$
+$$B_n(y) = \alpha_n \sinh (n\pi y) + \beta_n \cosh(n \pi y)$$
+
+\paragraph{Stability}
+Is potential equation stable? Suppose $\max |f(x)| < \delta$ and $\max |g(x)| < \delta$
+
+No. For example
+$$u(x,y) = \frac{1}{n^3}e^{(n\pi)^2 y}\sin (n\pi x)$$
+Then
+$$u(x,0) = \frac{\sin(n\pi x)}{n^2}$$
+$$u_y(x,0) = \frac{\sin(n\pi x)}{n}$$
+This doesn't fulfills stability condition 
+$$\abs{u_n(x,y)}<\epsilon$$
+for large enough $n$.
+\paragraph{Laplace equation}
+$$\laplacian{u} = 0$$
+If $u$ fulfills $\laplacian{u} = 0$, it is called harmonic function.
+\paragraph{Poisson equation}
+$$\laplacian{u} = f$$
+Where $f$ describes mass/charge distribution in space.
+\paragraph{Elliptic PDEs}
+For elliptic equation $b^2-4ac<0$.
+In this case, we can get the canonical form
+$$u_{\xi\xi} + u_{\eta\eta} + L_1(\xi, \eta) = f$$
+where $L_1$ is first-order differential operator.
+\subsection{Laplace equation}
+$$\div{\grad{u}} = \laplacian{u} = 0$$
+\paragraph{Gauss law}
+For vector field $\va{w} \in \mathcal{C}^1(\Omega) \cap \mathcal{C}(\bar{\Omega}$ 
+$$\iint\limits_{\Omega} \div{\va{w}} \dd[3]{x} =  \oiint\limits_{\partial \Omega} \va{w} \vdot \vu{n} \dd{s}$$
+
+Thus
+$$\iiint\limits_{\Omega} \laplacian{\va{u}} \dd[3]{x} = \oiint\limits_{\partial \Omega} \pdv{u}{n} \dd{s}$$
+i.e., if function is harmonic,
+$$\oiint\limits_{\partial \Omega}  \pdv{u}{n} \dd{s} = 0$$
+
+\paragraph{Conclusion}
+The equation $\laplacian{u} = f $ in $\Omega$ for $u$ fulfilling $\pdv{u}{n}  = g$ in each point of  $\partial \Omega$ there is no solution if
+$$\iiint\limits_{\Omega} \neq \oiint\limits_{\partial \Omega} g \dd{s}$$
+The necessary condition for solution of Neumann problem 
+$$\iiint\limits_{\Omega} = \oiint\limits_{\partial \Omega} g \dd{s}$$
+
+For Dirichlet problem, there is no such constraint.
+
+\paragraph{Examples of harmonic functions}
+In $n=1$, linear functions are harmonic.
+
+In $n=2$, any real or imaginary part of analytic function is harmonic, e.g., $e^x \sin y$.
+\paragraph{The mean value property of harmonic function}
+If $u$ is harmonic in $\Omega$ which contains $B_R(x) = \left\{ y| |x-y|<R \right\}$
+then
+$$u(x) = \frac{1}{\abs{\partial B_R(x)}} \oint\limits_{\partial \Omega} u \dd{s} $$
+and
+$$u(x) = \frac{1}{\abs{ B_R(x)}} \int\limits_{\Omega} u(y) \dd[n]{y} $$
+\subparagraph{Proof}
+Suppose $x=0$.
+Rewrite $y\in B_R(x) $ as $y=\rho\alpha$ for $\alpha= \frac{y}{\norm{y}}$ and $\rho = \norm{y}$.
+
+For each $\rho\in [0,R]$:
+$$\int\limits_{B_\rho(0)} \pdv{u}{n} (\rho\alpha) \dd{s_y}=\int\limits_{B_\rho(0)} \pdv{u}{n} (y) \dd{s_y} = \iint \laplacian{u} \dd[n]{x} = 0$$
+With variable substitution $\dd{s_y} = \rho^{n-1}\dd{s_\alpha}$:
+$$\int\limits_{B_\rho(0)} \pdv{u}{n} (\rho\alpha) \dd{s_y}=\int\limits_{B_\rho(0)} \pdv{u}{n} (\rho\alpha) \rho^{n-1} \dd{s_\alpha}=\rho^{n-1} \int\limits_{B_\rho(0)} \pdv{u}{\rho} (\rho\alpha)  \dd{s_\alpha} = \rho^{n-1}  \pdv{\rho} \int\limits_{B_\rho(0)}  u(\rho\alpha)  \dd{s_\alpha}$$
+Thus
+$$\pdv{\rho} \int\limits_{B_\rho(0)}  u(\rho\alpha)  \dd{s_\alpha} = 0$$
+meaning
+$$H(\rho) = \int\limits_{B_\rho(0)}  u(\rho\alpha)  \dd{s_\alpha} = \text{const}$$
+Denote volume of unit ball as $\omega_n$, then $\abs{B_n} = \omega_n R^n$ and $\abs{\partial B_n} = \omega_{n-1}R^{n-1}$ 
+$$H(0) = \omega_n \cdot u(0)$$
+And since $H(1) = H(0)$:
+$$u(0) = \frac{1}{n\omega_n R^{n-1}} \int\limits_{\partial B_R(0)} \dd{s}$$
+as required.
+
+$$\omega_n \rho^{n-1} u(0) = \int\limits_{\partial B_\rho(0)} u(y) \dd{s_y}$$
+$$\int_0^R n \omega_n \rho^{n-1} u(0) \dd{\rho} = \int_0^R \dd{\rho} \int\limits_{\partial B_\rho(0)}  \dd{s_y} u(y)$$
+$$\omega_n R^n u(0) = \iint\limits_{B_r(0)} u(y) \dd[n]{y}$$
+i.e.,
+$$u(0) = \frac{1}{\abs{B_r(0)}} \iint\limits_{B_r(0)} u(y) \dd[n]{y}$$
+	\paragraph{Strong maximum principle }
+	If $u$ is harmonic and it acquires maximum or minimum, then it is constant.
+	\paragraph{Subharmonic and superharmonic functions}
+	Subharmonic function is function for which $\laplacian{u}\leq 0$ and superharmonic is one for which $\laplacian{u}\geq0$.
+	
+	In this case, strong maximum principle applies only in one direction. For mean value thoerem we get inequality instead of equality.
+	
+	\subparagraph{Proof}
+	let $u$ subharmonic, and $m = u(x) = \max\limits_{\Omega} u$.
+	The set $W= \left\{ y: u(y)=m \right\} $ is closedcrelatively to $\Omega$.
+	Let $z\in W$, $B_R(z) \in \Omega$.
+	$$m = u(z) \leq \frac{1}{\abs{B_R(z)}} \int\limits_{B_r(z)} \int u(y) \dd[n]{y} = m$$
+	
+	Thus for all $z\in W$
+	$$u(z) = \frac{1}{\abs{B_R(z)}} \int\limits_{B_r(z)} \int u(y) \dd[n]{y}$$
+	That means
+	$$\int\limits_{B_r(z)} u(x) - m \dd[n]{x}= 0$$
+	Thus $u(x) = m$ for all $x\in B_R(z)$, which turns $W$ is open set. Thus $W$ is both open and closed, i.e. $W=\Omega$.
+	
+	\paragraph{Conclusion}
+	Poisson equation $\laplacian{u} = f$ in $\Omega$ with bound condition $u_{\partial \Omega} = y$ has not more than one solution.
+	\subparagraph{Proof}
+	Suppose there are two solutions, $u_1=u_2$, define $v=u_1-u_2$ is harmonic function with ound condition  $v_{\partial \Omega} = 0$. The function $v$ is harmonic. If $v\neq 0$, it has either maximum or minimum, in contradiction with strong maximum principle.
+	
+	\paragraph{Weak maximum principle}
+	For compact connected $\Omega$ and $u = \mathcal{C}^2(\Omega) \cap \mathcal{C}(\partial \Omega)$ 
+	
+	If $\laplacian{u} \geq 0$, 
+	$$\max\limits_{\Omega} u = \max\limits_{\partial \Omega} u$$
+	If $\laplacian{u} \leq 0$, 
+	$$\min\limits_{\Omega} u = \min\limits_{\partial \Omega} u$$
+	\paragraph{Harnack's inequality}
+	If $u$ harmonic in interval $\Omega$ and $\bar{\Omega'} \subsetneq \Omega$, then exists constant $c(\Omega, \Omega')$ independent on $u$ such that
+	$$\sup\limits_{\Omega'} u \leq c \inf\limits_{\Omega} u$$
