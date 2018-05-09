@@ -1,0 +1,159 @@
+i.e., for any two points $x,y \in \Omega'$
+$$u(x) \leq cu(y)$$
+\subparagraph{Proof}
+Let $\Omega = B_{4R}(y)$ and $\Omega' = B_{R}(y)$. Choose $x_1, x_2 \in \Omega'$.
+
+Since $B_R(x_1) \subset B_{4R}(y)$, we can use the mean value property:
+$$u(x_1) = \frac{1}{\omega_n R^n } \int\limits_{B_R(x_1)} \dd{x} u \leq \frac{1}{\omega_n R^n } \int\limits_{B_{2R}(y)} \dd{x} u$$
+Similarly, since $B_{3R}(x_1) \subset B_{4R}(y)$, we can use the mean value property:
+$$u(x_2) = \frac{1}{\omega_n (3R)^n } \int\limits_{B_{3R}(x_2)} \dd{x} u \geq \frac{1}{\omega_n (3R)^n } \int\limits_{B_{2R}(y)} \dd{x} u = \frac{1}{3^n} \frac{1}{\omega_n R^n } \int\limits_{B_{2R}(y)} \dd{x} u \geq u(x_1)$$
+We got
+$$3^nu(x_2) \leq u(x_1)$$
+
+Since $\bar{\Omega'} \subsetneq \Omega$, there exists $R>0$ such that distance from any point of $\Omega'$ to any point of $\Omega^c$ is greater than $4R$.
+
+For any pair of points $x_1, x_2 \in \Omega$, the path between then can be covered by $m$ balls $B_j$ of radius $R$, such that intersection of each pair of consequentive balls is non-empty.
+
+So, let $y_j \in B_j \cap B_{j+1}$ and $y_1=p$, $y_m=q$, then $u(y_j) \leq 3^n u(y_{j+1})$, since $y_j, y_{j+1} \in _{j+1}$ and $B_{4R}(y_{j+1}) \subset \Omega$.
+Than means that
+$$u(q) \leq 3^{nm} u(p)$$
+\paragraph{Radial harmonic functions }
+Lets search for harmonic functions of form $u(x)=f(r)$ for $f$ defined on $\mathbb{R}^+$.
+$$\abs{x} = \sqrt{\sum x_i} = r$$
+is harmonic on $\mathbb{R}^n \setminus 0$ and radial.
+$$\pdv{r}{x_i} = \frac{x_i}{r}$$
+$$\pdv[2]{r}{x_i} = \frac{1}{r} - \frac{x_i^2}{r^2}$$
+Thus
+$$\pdv{u}{x_i} = f'(r) \pdv{r}{x_i} = f'(r) \frac{x_i}{r}$$
+$$\pdv[2]{u}{x_i} = f''(r) \qty(\frac{x_i}{r})^2 - f'(r) \qty(\frac{1}{r} - \frac{x_i^2}{r^2})$$
+$$\laplacian{u} = f''(r) \sum \qty(\frac{x_i}{r})^2  - f'(r) \qty(\frac{n}{r} - \frac{\sum x_i^2}{r^2}) = f''(r) + \frac{n-1}{n}f'(r) = 0$$
+This is Euler equation with solution
+For $n=2$
+$$f(r) = c_1 \ln r + c_2$$
+For $n>2$:
+$$f(r) = \frac{c_1}{r^{n-2}} + c_2$$
+\paragraph{Fundamental solution}
+Define fundamental solution of Laplace equation:
+$$
+\begin{cases}
+\Gamma(r) = \frac{1}{2\pi} \ln(r)&n=2\\
+\Gamma(r) = \frac{1}{n(2-n)\omega_n}r^{2-n}& n>2\\
+\end{cases}$$
+We conclude that $\Gamma(\abs{x-y})$ is harmonic function in $\mathbb{R}^n \setminus \{y\}$.
+
+For $n=2$
+$$\lim_{r\to \infty}\Gamma(n) = \infty $$
+and for $n>2$
+$$\lim_{r\to \infty}\Gamma(n) = 0 $$
+Also, for any $n\geq 2$
+$$\lim_{r\to 0} \Gamma(n) = -\infty$$
+
+\paragraph{Homogenity of $\Gamma$}
+For $n>2$
+$$\pdv{\Gamma(x-y)}{x_i} = \frac{1}{n\omega_n} \frac{x_i-y_i}{\abs{ x-y}^n} $$
+
+$$\pdv{\Gamma}{x_i}{x_j} = \frac{1}{n\omega_n} \qty[\abs{x-y}^2 \delta_{ij} - n(x_i-y_i)(x_j-y_j)] \abs{x-y}^{-n-2}$$
+$$\abs{\pdv{\Gamma(x-y)}{x_i}} \leq \frac{1}{n\omega_n} \abs{x-y}^{1-n}$$
+$$\abs{\pdv{\Gamma(x-y)}{x_i}{x_j}} \leq \frac{1}{n\omega_n} \abs{x-y}^{-n}$$
+	Also
+$$\begin{cases}
+\Gamma'(r) = \frac{1}{n\omega_n r}& n=2\\
+\Gamma'(r) = \frac{1}{n\omega_n} r^{1-n}
+\end{cases}$$
+\paragraph{Green identities}
+If $\Omega \subset \mathbb{R}^n$ bounded set with boundcin $\mathcal{C}^2$ and
+$u,v \in \mathcal{C}^2(\Omega) \cap \mathcal{C}^1(\bar{\Omega})$
+$$\int\limits_{\Omega} v\laplacian{u} + \grad{u} \vdot \grad{v}  \dd{x} = \int\limits_{\partial \Omega} v \pdv{u}{n} \dd{s} $$
+$$\int\limits_{\Omega} v\laplacian{u} - u \laplacian{v} \dd{x} = \int\limits_{\partial \Omega} v \pdv{u}{n} - u \pdv{v}{n} \dd{s} $$
+\paragraph{}
+If $\Omega \subset \mathbb{R}^n$ bounded set with bound in $\mathcal{C}^1$ and
+$u \in \mathcal{C}^2(\Omega) \cap \mathcal{C}^1(\bar{\Omega})$
+$$u(y) = \int\limits_{\Omega} \Gamma(x-y) \laplacian{u} \dd{x} + \int\limits_{\partial \Omega} \qty[u(x) \pdv{n_x}\Gamma(x-y) - \Gamma(x-y) \pdv{u}{n_x}] \dd{s_x} $$
+If $u$ harmonic
+$$u(y) =  \int\limits_{\partial \Omega} \qty[u(x) \pdv{n_x}\Gamma(x-y) - \Gamma(x-y) \pdv{u}{n_x}] \dd{s_x} $$
+
+\subparagraph{Proof}
+$\Gamma(x-y)$ is harmonic in $\Omega \setminus B_\rho(y) = \Omega_\delta$.
+Choose $v(x) = \Gamma(x-y)$,
+$$\int\limits_{\Omega_\delta} \Gamma\laplacian{u} \dd{x} = \int\limits_{\partial \Omega} \Gamma \pdv{u}{n} - u \pdv{\Gamma}{n} \dd{s_x} -  \int\limits_{\partial B_\rho(y)} \Gamma \pdv{u}{n} - u \pdv{\Gamma}{n} \dd{s} $$
+Now
+$$\int\limits{B_\rho(y)} \Gamma(\abs{x-y}) \laplacian{u(x)} \dd{x} \leq \max\limits_{B_\rho(y)} \cdot \int\limits{B_\rho(y)} \Gamma(\abs{x-y})  \dd{x} = \frac{\omega_n}{n\omega_n} \int_0^\rho r^{2-n}r^{n-1} \dd{r} = \frac{1}{n} \int_0^\rho  r \dd{r} = \frac{\rho^2}{2n} \stackrel{\rho\to 0}{\longrightarrow} 0 $$
+$$\abs{\pdv{u}{n}} = \abs{\laplacian{u} \cdot n} \leq C $$
+$$\abs{ \int\limits_{\partial B_\rho(y)} \Gamma \pdv{u}{n}} \leq C \int\limits_{B_\rho(y)} \abs{\Gamma} = \frac{c}{n\omega_n} \rho^{2-n} n\omega_n \rho^{n-1} =C \rho \to 0$$
+$$\int\limits_{B_\rho(y)} u \pdv{\Gamma}{n} \dd{s_x} = \Gamma'(\rho)\int\limits_{B_\rho(y)} u \dd{s_x} = \frac{1}{n\omega_n \rho^{n-1}} \int\limits_{B_\rho(y)} u \dd{s_x}\stackrel{\rho\to 0}{\longrightarrow} u(y) $$
+
+Substituting it back into equation we get exactly what was needed:
+$$u(y) = \int\limits_{\Omega} \Gamma(x-y) \laplacian{u} \dd{x} + \int\limits_{\partial \Omega} \qty[u(x) \pdv{n_x}\Gamma(x-y) - \Gamma(x-y) \pdv{u}{n_x}] \dd{s_x}$$
+
+\paragraph{Green function}
+For all $y\in \Omega$ define $h^y(x)$ such that
+\begin{itemize}
+	\item $h^y(x)$ is harmonic in $\Omega$
+	\item $h^y(x) = -\Gamma(\abs{x-y})$ for all $x\in \partial \Omega$ 
+\end{itemize}
+(suppose there exists one).
+
+Now define Green function $G(x,y) = \Gamma(\abs{x-y}) + h^y(x)$. Properties of $G$:
+\begin{enumerate}
+	\item $G$ harmonic for $x\neq y$
+	\item $G(x,y) = 0$ for all $x\in \partial \Omega$, $y\in \Omega$
+\end{enumerate}
+
+Using second Green identity
+$$\int\limits_{\Omega} h\laplacian{u} \dd{x} = \int\limits_{\partial \Omega} h \pdv{u}{n} - u \pdv{h}{n} \dd{s} $$
+and summing it with $u(y)$ we get:
+$$u(y) = \int\limits_{\Omega} G(x,y) \laplacian{u} \dd{x} + \int\limits_{\partial \Omega} u(x) \pdv{n_x}G(x,y) \dd{s_x}$$
+\paragraph{Conclusion}
+If $\laplacian{u} = f$ on $\Omega$ and $u=y$ on $\partial \Omega$
+the solution
+$$u(y) = \int\limits_{\Omega} G(x,y) f(x) \dd{x} + \int\limits_{\partial \Omega} g(x) \pdv{G}{n} \dd{s_x} $$
+\paragraph{Lemma}
+For all $x\neq y$, $x,y \in \Omega$
+$$G(x,y) = G(y,x)$$
+In particular, for constant $x$, $G$ is harmonic in $y$.
+\subparagraph{Proof}
+Define
+$$V_x(z) = G(z,x)$$
+and
+$$W_y(z) = G(z,y)$$
+We want to show that $V_x(y)= W_y(x)$ on $\Omega \setminus \qty(B_\epsilon(x) \cap B_\epsilon(y))$
+\begin{align*}
+0 = \int\limits_{\Omega_\epsilon} V_x\laplacian{W_y} -  V_y\laplacian{W_x} \dd{z} = \int\limits_{\partial \Omega_\epsilon} \qty[V_y \pdv{W_x}{n} - W_x \pdv{V_y}{n}] \dd{s} =\\= \underbrace{\int\limits_{\partial B_\epsilon(x) }\qty[V_y \pdv{W_x}{n} - W_x \pdv{V_y}{n}] \dd{s}}_{I_1} + \underbrace{\int\limits_{\partial B_\epsilon(y)} \qty[V_y \pdv{W_x}{n} - W_x \pdv{V_y}{n}] \dd{s}}_{I_2} = I_1(\epsilon) + I_2(\epsilon)
+\end{align*}
+$$$$
+$$W_y(x) = \int\limits_{B_\epsilon(x)} V_x\laplacian{W_y} \dd{z} - \int\limits_{\partial B_\epsilon(x) }\qty[W_x \pdv{V_y}{n} - V_y \pdv{W_x}{n} ] \dd{s} = I_1(\epsilon)$$
+$$V_x(z) = \Gamma(\abs{z-x}) + h^y(z)$$
+Now
+$$V_x(y) = \int\limits_{B_\epsilon(y)} W_y\laplacian{V_x} \dd{z} -  \int\limits_{\partial B_\epsilon(y)} \qty[V_y \pdv{W_x}{n} - W_x \pdv{V_y}{n}] \dd{s} = -I_2(\epsilon)$$
+Thus
+$$W_y(x) - V_x(y) = I_1(\epsilon) + I_2(\epsilon) = 0 \Rightarrow  W_y(x) = V_x(y)$$
+
+\paragraph{Green function in ball}
+Take a look at $y\in B_R(0)$, define reflection point $y^* = \frac{R^2}{y^2}y$. Note that
+$$\abs{y^*}\abs{y} = R^2$$
+and that if $y\to \partial B_R(0)$, $y^{*}\to \partial B_R(0)$.
+Define
+$$h^y = -\Gamma\qty(\abs{x-y^*}) \qty(\frac{\abs{y}}{R})^{2-n}$$
+Then
+$$G(x,y) =\Gamma(\abs{x-y}) -\Gamma\qty(\abs{x-y^*}) \qty(\frac{\abs{y}}{R})^{2-n}$$
+From harmony of $\Gamma$, $G$ is harmonic in $x$. For $x \in \partial B_r$:
+$$\qty(x-y^*)^2 = \qty(x - \frac{R^2}{y^2}y)^2 = \abs{x}^2 - 2x\frac{R^2}{y^2}y + \frac{R^4}{\abs{y}^2} = \frac{R^2}{y^2} \qty[R^2 - 2xy + \abs{x}^2] = \frac{R^2}{y^2} (x-y)^2$$
+$$\abs{x-y^*} = \frac{R}{\abs{y}} \abs{x-y}  $$
+$$h^y(x) = - \qty(\frac{\abs{y}}{R})^{2-n} \frac{1}{n(2-n)\omega_n}(x-y^*)^{2-n} = -\frac{1}{n(2-n)\omega_n} (x-y)^{2-n} = -\Gamma(\abs{x-y})$$
+i.e., $h^y(x)$ we defined fulfills conditions on $h^y(x)$.
+
+For $n=2$
+$$h^y(x) = \begin{cases}
+-\frac{1}{2\pi} \ln \abs{x-y^*} +\frac{1}{2\pi} \ln \frac{R}{\abs{y}} & y\neq0\\
+- \frac{1}{2\pi} \ln R & y=0
+\end{cases}$$
+For $n>2$
+$$h^y(x) = \begin{cases}
+- \qty(\frac{\abs{y}}{R})^{n-2} \frac{1}{n\omega_n} \abs{x-y^*}^{2-n} & y\neq0\\
+- \Gamma(R) & y=0
+\end{cases}$$
+
+And thus for $n=2$
+$$G(x,y) = \frac{1}{2\pi} \ln\qty[\qty(\frac{R}{\abs{y}}) \frac{\abs{x-y}}{\abs{x-y^*}}]$$
+For $n>2$:
+$$G(x,y) = \frac{1}{n\omega_n} \qty[ \abs{x-y}^{2-n} - \qty(\frac{\abs{y}}{R})^{n-2} \abs{x-y^*}^{2-n}]$$

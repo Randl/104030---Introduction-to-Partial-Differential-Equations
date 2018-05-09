@@ -194,11 +194,11 @@ $$u(0) = \frac{1}{\abs{B_r(0)}} \iint\limits_{B_r(0)} u(y) \dd[n]{y}$$
 	\paragraph{Subharmonic and superharmonic functions}
 	Subharmonic function is function for which $\laplacian{u}\leq 0$ and superharmonic is one for which $\laplacian{u}\geq0$.
 	
-	In this case, strong maximum principle applies only in one direction. For mean value thoerem we get inequality instead of equality.
+	In this case, strong maximum principle applies only in one direction (maximum for subharmonic, minimum for superharmonic). For mean value theorem we get inequality instead of equality.
 	
 	\subparagraph{Proof}
 	let $u$ subharmonic, and $m = u(x) = \max\limits_{\Omega} u$.
-	The set $W= \left\{ y: u(y)=m \right\} $ is closedcrelatively to $\Omega$.
+	The set $W= \left\{ y: u(y)=m \right\} $ is closed relatively to $\Omega$.
 	Let $z\in W$, $B_R(z) \in \Omega$.
 	$$m = u(z) \leq \frac{1}{\abs{B_R(z)}} \int\limits_{B_r(z)} \int u(y) \dd[n]{y} = m$$
 	
@@ -216,10 +216,11 @@ $$u(0) = \frac{1}{\abs{B_r(0)}} \iint\limits_{B_r(0)} u(y) \dd[n]{y}$$
 	\paragraph{Weak maximum principle}
 	For compact connected $\Omega$ and $u = \mathcal{C}^2(\Omega) \cap \mathcal{C}(\partial \Omega)$ 
 	
-	If $\laplacian{u} \geq 0$, 
-	$$\max\limits_{\Omega} u = \max\limits_{\partial \Omega} u$$
 	If $\laplacian{u} \leq 0$, 
-	$$\min\limits_{\Omega} u = \min\limits_{\partial \Omega} u$$
+	$$\max\limits_{\bar{\Omega}} u = \max\limits_{\partial \Omega} u$$
+	If $\laplacian{u} \geq 0$, 
+	$$\min\limits_{\bar{\Omega}} u = \min\limits_{\partial \Omega} u$$
 	\paragraph{Harnack's inequality}
-	If $u$ harmonic in interval $\Omega$ and $\bar{\Omega'} \subsetneq \Omega$, then exists constant $c(\Omega, \Omega')$ independent on $u$ such that
+	If $u$ harmonic and non-negative in interval $\Omega$ and $\bar{\Omega'} \subsetneq \Omega$, then exists constant $c(\Omega, \Omega')$ independent on $u$ such that
 	$$\sup\limits_{\Omega'} u \leq c \inf\limits_{\Omega} u$$
+	
