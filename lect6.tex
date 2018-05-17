@@ -86,6 +86,7 @@ Substituting it back into equation we get exactly what was needed:
 $$u(y) = \int\limits_{\Omega} \Gamma(x-y) \laplacian{u} \dd{x} + \int\limits_{\partial \Omega} \qty[u(x) \pdv{n_x}\Gamma(x-y) - \Gamma(x-y) \pdv{u}{n_x}] \dd{s_x}$$
 
 \paragraph{Green function}
+ Green function can be understood as inverse of Laplacian operator in a sense that if $\laplacian{u} = f$, $u(c) = \int G(x,y) f(y) \dd{y}$.
 For all $y\in \Omega$ define $h^y(x)$ such that
 \begin{itemize}
 	\item $h^y(x)$ is harmonic in $\Omega$

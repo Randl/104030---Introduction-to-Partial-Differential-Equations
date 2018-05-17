@@ -1,0 +1,144 @@
+If $u \in \bar{B}_R$ harmonic,
+$$u(y) = \oint\limits_{\partial B_R} u(x) \pdv{G}{n_x} (x,y) \dd{s_x}$$
+
+\paragraph{Definition} $K(x,y) = \pdv{G}{\vu{n}_x} (x,y)$ is called Poisson kernel;
+$$\pdv{x_i} G(x,y) = \pdv{x_i} \Gamma(x-y) - \pdv{x_i} \Gamma\qty(\frac{\abs{y}}{R} \abs{x-y^*})$$
+$$\pdv{x_i} \Gamma(x-y) = \frac{1}{n\omega_n} \frac{x_i-y_i}{\abs{x-y}} \abs{x-y}^{-n+1} = \frac{1}{n\omega_n}\frac{x_i-y_i}{\abs{x-y}^n}$$ 
+$$\pdv{x_i} \Gamma\qty(\frac{\abs{y}}{R} \abs{x-y^*}) = \frac{1}{n\omega_n} \qty(\frac{\abs{y}}{R})^2 (x_i - y^*_i) \abs{x-y}^{-n}$$
+Since we are on ball, $\vu{n}_x = \sum \frac{x_i}{R} \vu{x_i}$:
+\begin{align*}
+\pdv{n_x} G(x,y) = \sum_{i=1}^n \pdv{x_i} \Gamma(x-y) = \frac{1}{n\omega_n} \abs{x-y}^n \sum_{i=1}^n \qty[\frac{x_i}{R}(x_i-y_i) - \frac{x_i}{R}\qty(\frac{\abs{y}^2}{R^2}(x_i-y_i)) ]  =\\= \frac{1}{n\omega_n} \frac{1}{R}\abs{x-y}^n \sum_{i=1}^n \qty[x_i^2 - x_iy_i - \frac{x_i^2\abs{y}^2}{R^2} + x_iy_i ] = \frac{1}{n\omega_n} \frac{1}{R}\abs{x-y}^n(R^2-\abs{y}^2)
+\end{align*}
+\paragraph{Conclusion}
+If $u \in \bar{B}_R$ harmonic,
+$$u(y) = \oint\limits_{\partial B_R} u(x) K (x,y) \dd{s_x}$$
+In case $y=0$ we get $K(x,0) = \frac{1}{n\omega_n R^{n-1}}$ and acquire the mean value theorem.
+
+\paragraph{Claim}
+K fulfills following conditions
+\begin{enumerate}
+	\item $K(x,y)>0$, $y\in B_R$, $x\in \partial B_R$.
+	\item $\laplacian_y K(x,y) = 0$, $y\in B_R$
+	\item $\oint\limits_{\partial B_R}  K (x,y) \dd{s_x} = 1$ for all $y\in B_R$
+\end{enumerate}
+
+\paragraph{Theorem}
+If $g \in \mathcal{C}(\partial B_R)$ then 
+$$u(y) = \oint\limits_{\partial B_R}  K (x,y)g(x) \dd{s_x}$$
+is harmonic function and $u(x) = g(x) $ for all $x\in \partial B_R$.
+\subparagraph{Proof}
+Note that
+$$K(x,y) = \frac{1}{Rn\omega_n}\abs{x-y}^n(R^2-\abs{y}^2)$$
+is harmonic in $y$ in $B_R$ for $x \in \partial B_R$
+$$\laplacian_y{u(y)} = \oint\limits_{\partial B_R} \laplacian_y K (x,y)g(x) \dd{s_x} = 0$$
+
+Lets show that $\lim_{y\to y_0 \in \partial B_R} u(y) = g(y_0)$. Lets choose $\epsilon>0$.  We choose $\delta_1$ such that $\abs{g(x) - g(y_0)} < \epsilon$ if $x\in \partial B_R \cap B_{\delta_1}(y_0)$
+\begin{align*}
+\oint\limits_{\partial B_R} g(x) K (x,y) \dd{s_x} - g(y_0) = \oint\limits_{\partial B_R} \qty(g(x)- g(y_0)) K (x,y) \dd{s_x} =\\= \underbrace{\oint\limits_{\partial B_R \setminus \partial B_R \cap B_{\delta_1}(y_0)} \qty(g(x)- g(y_0)) K (x,y) \dd{s_x}}_{I_1} + \underbrace{\oint\limits_{\partial B_R \cap B_{\delta_1}(y_0)} \qty(g(x)- g(y_0)) K (x,y) \dd{s_x}}_{I_2} 
+\end{align*}
+$$\abs{I_2} \leq \oint\limits_{\partial B_R \cap B_{\delta_1}(y_0)} \qty(g(y)- g(y_0)) K (x,y) \dd{s_y} \leq \epsilon\oint\limits_{\partial B_R} K(x,y) \leq \epsilon $$
+
+$\abs{x-y_0 }\geq  \delta_1$ and $\abs{y-y_0} > \frac{\delta_1}{2}$, thus
+$$\abs{x-y} \geq \abs{x-y_0} - \abs{y-y_0} > \delta_1 - \frac{\delta_1}{2} = \frac{\delta_1}{2}$$
+$$K(x,y) \leq \frac{1}{Rn\omega_n} \qty(\frac{\delta_1}{2})^{-n} (R^2-\abs{y}^2) \stackrel{y\to y_0}{\longrightarrow} 0$$
+$$\abs{I_1(y)} \leq (R^2-\abs{y}^2) \max\limits_{\partial B_R} \abs{y} \frac{\delta_1^{-n}}{Rn\omega_n} \stackrel{y\to y_0}{\longrightarrow} 0$$
+\paragraph{Conclusion}
+$u$ is continuous in $y_0 \in \partial B_R$ and $\lim_{y\to y_0 \in \partial B_R} u(y) = g(y_0)$, i.e. Dirichlet problem has solution if the bound is continuous.
+
+\paragraph{Theorem} Continuous function in $\Omega$ is harmonic iff it fulfills mean value theorem.
+\subparagraph{Proof}
+Suppose $u$ fulfills mean value theorem, take a look at $B_R(x_0) \subset \Omega$ for some $x_0 \in \Omega$.
+
+Let $v$ harmonic function that equals to $u$ on $\partial B_R$. Since $v$ fulfills mean value theorem, then $u-v$ also fulfills it. However, $u-v=0$ on ball bound, and thus from weak extremum theorem we get that $u-v=0$ in the whole ball, i.e. $u=v$.
+\paragraph{Conclusion} If $u_n$ a sequence of harmonic functions uniformly converging to $u$, $u$ is harmonic.
+\subparagraph{Proof} If $u_n\to u$ uniformly in $\Omega$, then for all $x_0 \in \Omega$, exists $r>0$ such that $B_{r}(x_0) \subset \Omega$, and since $u_n\to u$ uniformly in $\partial B_r(x_0)$ thus
+$$\lim_{n \to \infty} \frac{1}{\abs{\partial B_r(x_0)}}  \int\limits_{\partial B_r(x_0)} u_n(x) \dd{s} = \int\limits_{\partial B_r(x_0)} u(x) \dd{s}$$
+and also 
+$$\lim_{n \to \infty} u_n(x_0) = u(x_0)$$
+However, from harmony, 
+$$u_n(x_0) = \frac{1}{\abs{\partial B_r(x_0)}}  \int\limits_{\partial B_r(x_0)} u_n(x) \dd{s}$$
+i.e.
+$$u(x_0) = \frac{1}{\abs{\partial B_r(x_0)}}  \int\limits_{\partial B_r(x_0)} u(x) \dd{s}$$
+and thus $u$ is harmonic.
+\paragraph{Conclusion}
+If $u$ is harmonic in $\Omega$, $u\in C^\infty(\Omega)$.
+\subparagraph{Proof}
+If $u$ harmonic, $u(y) = \int\limits_{\partial B_R} K(x,y)u(x) \dd{s_x} $ and $K$ is infinitely differentiable by $y\in B_R$:
+$$\pdv[m]{y_j} u(y) = \int\limits_{\partial B_R} \pdv[m]{y_j} K(x,y)u(x) \dd{s_x} $$
+\paragraph{Conclusion}
+If $u_n$ monotonic sequence of harmonic functions in $\Omega$ and exists $y\in \mathbb{R}$ such that $\left\{ u_n(y)\right\}$ is bounded then in every bounded interval $\bar{\Omega}' \subsetneq \Omega$ sequence $u_n$ converges uniformly to harmonic function.
+\subparagraph{Proof}
+$u_{n+1}(x) \geq u_n(x)$ for all $x\in \Omega$, lets show that for all $x\in \Omega'$ sequence converges to finite limit. Denote $\omega_{mn} = u_m - u_n$. By Harnack's identity for $m>n$
+$$\sup\limits_{\Omega'} \omega_{mn} \leq C \inf\limits_\Omega \omega_{mn}$$
+$$u_m(x) - u_n(x) = \omega_{mn}(x) \leq C\qty[u_m(y_0)-u_n(y_0)] < K$$
+$K$ is constant independent on $n$ and $m$, in particular, $u_n$ is bounded for all $x\in \Omega'$, thus exists $u(x) = \lim_{n \to \infty} u_n(x)$ in $\Omega'$.
+
+It's left to proof sequence converges uniformly and thus $u$ is harmonic.
+\paragraph{Definition} A sequence of function $u_n$ is equicontinuous in $x_0$ if for all $\epsilon>0$ exists $\delta>0$, $N>0$ such that if $x-x_0<\delta$ and $n>N$, 
+$$\abs{u_n(x) - u_n(x_0)} < \delta$$
+
+The particular case is when derivatives are bounded, since if $\abs{\grad u_n} < K$,
+$$\abs{u_n(x) - u_n(x_0)} < K\abs{x-x_0}$$
+\paragraph{Arzel\'{a}–Ascoli theorem }
+If $u_n$ sequence of functions equicontinuous  in compact interval and bounded, then exists uniformly converging subsequence.
+\paragraph{Note} The only bounded harmonic function in $\mathbb{R}^n$ is constant one.
+\paragraph{Theorem} If $u$ harmonic in $\Omega \subset \mathbb{R}^n$ then
+$$\abs{\pdv{u}{x_j} (x)} \leq \sup\limits_{\Omega} \abs{u} \cdot \frac{n}{d(x, \partial \Omega)}$$
+\subparagraph{Proof}
+$$u(x) = \frac{1}{\omega_n r^n} \int\limits_{B_r(x)} u(y) \dd{y}$$
+Since $u$ is harmonic and in particular $\pdv{u}{x_i}$ is harmonic
+$$\laplacian{u} = 0 \Rightarrow \laplacian{\pdv{x_i} u} = \pdv{x_i} \laplacian{u} = 0$$
+we get
+$$\pdv{x_j} u(x) =  \frac{1}{\omega_n r^n} \int\limits_{B_r(x)} \pdv{x_j} u(y) \dd{y}$$
+Consider function
+$$v_i(y) = \begin{cases}
+0 & i\neq j\\
+u(y) & i=j
+\end{cases}$$
+then
+$$\pdv{x_j} u(x) =  \frac{1}{\omega_n r^n} \int\limits_{B_r(x)} \div{v} \dd{y} =  \frac{1}{\omega_n r^n} \oint\limits_{ \partial B_r(x)} u(y) n_j(y) \dd{s_y}$$
+where $n_j(y) = \vu{n} \vdot \vu{x}_j$, and thus $\abs{n_j} \leq 1$:
+$$\abs{\pdv{x_j} u(x) } \leq \frac{1}{\omega_n r^n} \abs{\oint\limits_{ \partial B_r(x)} u(y) n_j(y) \dd{s_y}} \leq \frac{1}{\omega_n r^n} \oint\limits_{ \partial B_r(x)} \abs{u(y)}  \dd{s_y} < \frac{1}{\omega_n r^n} \sup \abs{u} n\omega_n r^{n-1} = \sup \abs{u} \frac{n}{r}$$
+for all $r< d(x, \partial \Omega)$.
+\paragraph{Theorem}
+If $\left\{ u_n \right\}$ sequence of bounded harmonic functions in $\Omega$ then on each compact set $K\subset \Omega$ exists subsequence  uniformly converging to $u$ harmonic on $\Omega$.
+\subparagraph{Proof} By previous theorem each compact set $K\subset \Omega$ $d9x, \partial \Omega < C(K)$ for all $x\in K$ and thus partial derivatives are bounded $\abs{\partial{u_n}{x_i}} < C(K)$ thus $\left\{u_n\right\}$ is equicontinuous on $K$ and thus it has subsequence  uniformly converging to $u$ harmonic in $K$.
+
+Lets choose sequence of compact intervals $K_n \subset K_{n+1}$ such that $\bigcup_{n=1}^\infty K_n = \Omega$. Suppose $u_{nj}$ is converging subsequence in $K_n$ thus exists subsequence of $u_{nj}$ converging in $K_{n+1}$. Diagonal sequence (of mutual indices) converges uniformly for all $K$ and its limit $u$ is harmonic.
+\subsection{Dirichlet problem in arbitrary interval}
+Let $\Omega$ bounded interval and $g\in \mathcal{C}(\partial \Omega)$ We want to solve the following problem:
+$$\begin{cases}
+\laplacian{u} = 0 & u \in \mathcal{C}(\bar{\Omega})\\
+u(x) = g(x) & x \in \partial \Omega
+\end{cases}$$
+\paragraph{Definition} $u$ is generalized subharmonic function iff $u$ is continuous, for any ball $\bar{B} \subsetneq \Omega$ and for all harmonic and continuous $h$ in $B$, $u\leq h$ on $\partial B$. Then $u\leq h$ in $B$.
+\paragraph{Example} $u(x) = \abs{x-x_0}$ is generalized subharmonic function  in $\mathbb{R}^n$.
+\paragraph{Conclusion} Generalized subharmonic function fulfills mean value inequality:
+$$u(x_0) \leq \frac{1}{\abs{\partial B_r(x_0)}} \oint\limits_{\partial B_r(x_0)} u$$
+Also, if function fulfills mean value inequality it is generalized subharmonic function.
+\paragraph{Lemma} Let $u$ generalized subharmonic function in $\Omega$, $v$ generalized superharmonic function in $\Omega$ and $u,v \in \mathcal{C}(\bar{\Omega})$ and $u\geq v$ on $\partial \Omega$, then $u \geq v$ in $\Omega$ 
+\subparagraph{Proof} Directly from weak extermum.
+\paragraph{Lemma}
+If $u$,$v$  generalized subharmonic functions, then $\max(u,v)(x) = \max(u(x), v(x))$ is  generalized subharmonic function.
+\subparagraph{Proof}
+If $h$ harmonic on ball and $h\geq\max(u,v)(x)$ on $\partial B$, in particular $h\geq u$, $h\geq v$ on $\partial B$ and thus $h\geq u$, $h\geq v$ on $B$ and thus $h\geq\max(u,v)(x)$ on $B$.
+\paragraph{Definition} Let $\Omega \subset \mathbb{R}^n$ bounded. Let $g$ bounded on $\partial \Omega$, define $S_g$ as set of all generalized subharmonic functions continuous on $\Omega$ such that for all $x\in \partial \Omega$ $u(x) \leq g(x)$.
+\subsection{Perron method}
+\paragraph{Lemma} Let $u$ generalized subharmonic function in $\Omega$, $\bar{B} \subsetneq \Omega$, define 
+$U(x) = 
+u(x) $ for $x\in \Omega \setminus B$ such that $\laplacian{U(x)}=0$ for $x\in B$. $U$ is generalized subharmonic function. $U(x) > u(x)$ for all $x$. $U(x)$ is called harmonic lifting of $u$.
+
+\subparagraph{Proof}
+Let $h$ harmonic on $B$ such that $h(x) \geq U(x) \geq u(x)$ on $\partial B_1$ and thus $h(x) \geq u(x) = U(x)$ in $x \in B_1 \setminus B$.
+$$\partial (B\cap B_1) = (\partial B \cap \bar{B}_1)\cup(\partial B_1 \cap \bar{B})$$
+
+For  $\partial B \cap \bar{B}_1$ $U=u< h$.
+For $\partial B_1 \cap \bar{B}$ $h\geq U$. 
+Thus $H \geq U$ on $\partial (B\cap B_1)$ however $h-U$ is nonnegative and harmonic on $\partial (B\cap B_1)$  and thus $H \geq U$ in $B\cap B_1$.
+\paragraph{Theorem}
+$u(x) = \sup\limits_{w\in \delta g} w(x)$ is harmonic.
+\subparagraph{Proof} $\bar{w}(x) = M$ is harmonic (constant) and it fulfills $w\geq y$ on $\partial \Omega$ thus $w\leq \bar{w} = M$ for all $w\in S_g$ in particular $w(x) \leq M$ for all $x\in \Omega$ and $w\in S_g$. Let $y\in \Omega$, there exists a sequence of functions $v_n \in S_g$ such that
+$$\lim_{n \to \infty} v_n(y) = w(y)$$
+Let $\bar{B}_n(y) \subsetneq \Omega$ and replace $v_n$ by $V_n$  that is harmonic lifting of $v_n$. Since $V_n(x) \geq v_n(x)$ for all $x\in \Omega$, 
+$$v_n(y) \leq V_n(y) \leq u(y)$$
+for all $y\in \Omega$ thus $v_n(y) \to u(y)$.
