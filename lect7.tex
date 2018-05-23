@@ -1,7 +1,7 @@
 If $u \in \bar{B}_R$ harmonic,
 $$u(y) = \oint\limits_{\partial B_R} u(x) \pdv{G}{n_x} (x,y) \dd{s_x}$$
 
-\paragraph{Definition} $K(x,y) = \pdv{G}{\vu{n}_x} (x,y)$ is called Poisson kernel;
+\paragraph{Definition} $K(x,y) = \pdv{G}{\vu{n}_x} (x,y)$ is called Poisson kernel:
 $$\pdv{x_i} G(x,y) = \pdv{x_i} \Gamma(x-y) - \pdv{x_i} \Gamma\qty(\frac{\abs{y}}{R} \abs{x-y^*})$$
 $$\pdv{x_i} \Gamma(x-y) = \frac{1}{n\omega_n} \frac{x_i-y_i}{\abs{x-y}} \abs{x-y}^{-n+1} = \frac{1}{n\omega_n}\frac{x_i-y_i}{\abs{x-y}^n}$$ 
 $$\pdv{x_i} \Gamma\qty(\frac{\abs{y}}{R} \abs{x-y^*}) = \frac{1}{n\omega_n} \qty(\frac{\abs{y}}{R})^2 (x_i - y^*_i) \abs{x-y}^{-n}$$
@@ -75,7 +75,7 @@ $K$ is constant independent on $n$ and $m$, in particular, $u_n$ is bounded for 
 
 It's left to proof sequence converges uniformly and thus $u$ is harmonic.
 \paragraph{Definition} A sequence of function $u_n$ is equicontinuous in $x_0$ if for all $\epsilon>0$ exists $\delta>0$, $N>0$ such that if $x-x_0<\delta$ and $n>N$, 
-$$\abs{u_n(x) - u_n(x_0)} < \delta$$
+$$\abs{u_n(x) - u_n(x_0)} < \epsilon$$
 
 The particular case is when derivatives are bounded, since if $\abs{\grad u_n} < K$,
 $$\abs{u_n(x) - u_n(x_0)} < K\abs{x-x_0}$$
@@ -102,31 +102,37 @@ $$\abs{\pdv{x_j} u(x) } \leq \frac{1}{\omega_n r^n} \abs{\oint\limits_{ \partial
 for all $r< d(x, \partial \Omega)$.
 \paragraph{Theorem}
 If $\left\{ u_n \right\}$ sequence of bounded harmonic functions in $\Omega$ then on each compact set $K\subset \Omega$ exists subsequence  uniformly converging to $u$ harmonic on $\Omega$.
-\subparagraph{Proof} By previous theorem each compact set $K\subset \Omega$ $d9x, \partial \Omega < C(K)$ for all $x\in K$ and thus partial derivatives are bounded $\abs{\partial{u_n}{x_i}} < C(K)$ thus $\left\{u_n\right\}$ is equicontinuous on $K$ and thus it has subsequence  uniformly converging to $u$ harmonic in $K$.
+\subparagraph{Proof}
+ By previous theorem each compact set $K\subset \Omega$ fulfills  $d(x, \partial \Omega) < C(K)$ for all $x\in K$ and thus partial derivatives are bounded $\abs{\partial{u_n}{x_i}} < C(K)$ thus $\left\{u_n\right\}$ is equicontinuous on $K$ and thus it has subsequence  uniformly converging to $u$ harmonic in $K$.
 
-Lets choose sequence of compact intervals $K_n \subset K_{n+1}$ such that $\bigcup_{n=1}^\infty K_n = \Omega$. Suppose $u_{nj}$ is converging subsequence in $K_n$ thus exists subsequence of $u_{nj}$ converging in $K_{n+1}$. Diagonal sequence (of mutual indices) converges uniformly for all $K$ and its limit $u$ is harmonic.
+
+Lets choose compact sets
+$$K_j = \left\{ x\in \Omega, \: \abs{x} \leq j, \: d(x, \Omega^C) \geq \frac{1}{j} \right\}$$
+such that $\bigcup_{n=1}^\infty K_n = \Omega$. Suppose $u_{nj}$ is converging subsequence in $K_n$ thus exists subsequence of $u_{nj}$ converging in $K_{n+1}$. Diagonal sequence (of mutual indices) converges uniformly for all $K$ and its limit $u$ is harmonic.
 \subsection{Dirichlet problem in arbitrary interval}
 Let $\Omega$ bounded interval and $g\in \mathcal{C}(\partial \Omega)$ We want to solve the following problem:
 $$\begin{cases}
 \laplacian{u} = 0 & u \in \mathcal{C}(\bar{\Omega})\\
 u(x) = g(x) & x \in \partial \Omega
 \end{cases}$$
-\paragraph{Definition} $u$ is generalized subharmonic function iff $u$ is continuous, for any ball $\bar{B} \subsetneq \Omega$ and for all harmonic and continuous $h$ in $B$, $u\leq h$ on $\partial B$. Then $u\leq h$ in $B$.
+\paragraph{Definition} $u$ is generalized subharmonic function iff $u$ is continuous, for any ball $\bar{B} \subsetneq \Omega$ and for all harmonic  and continuous $h$ such that  $u\leq h$ in $B$, $u\leq h$ on $\partial B$. 
 \paragraph{Example} $u(x) = \abs{x-x_0}$ is generalized subharmonic function  in $\mathbb{R}^n$.
 \paragraph{Conclusion} Generalized subharmonic function fulfills mean value inequality:
 $$u(x_0) \leq \frac{1}{\abs{\partial B_r(x_0)}} \oint\limits_{\partial B_r(x_0)} u$$
 Also, if function fulfills mean value inequality it is generalized subharmonic function.
+\paragraph{Theorem}
+If $\laplacian{u}\geq 0$ on $\Omega$, $u$ isgeneralized subharmonic function on $\Omega$.
 \paragraph{Lemma} Let $u$ generalized subharmonic function in $\Omega$, $v$ generalized superharmonic function in $\Omega$ and $u,v \in \mathcal{C}(\bar{\Omega})$ and $u\geq v$ on $\partial \Omega$, then $u \geq v$ in $\Omega$ 
 \subparagraph{Proof} Directly from weak extermum.
 \paragraph{Lemma}
-If $u$,$v$  generalized subharmonic functions, then $\max(u,v)(x) = \max(u(x), v(x))$ is  generalized subharmonic function.
+If $u$,$v$  generalized subharmonic functions, then $\max(u,v)(x) = \max(u(x), v(x))$ is  generalized subharmonic function. This is right for any finite amount of functions.
 \subparagraph{Proof}
 If $h$ harmonic on ball and $h\geq\max(u,v)(x)$ on $\partial B$, in particular $h\geq u$, $h\geq v$ on $\partial B$ and thus $h\geq u$, $h\geq v$ on $B$ and thus $h\geq\max(u,v)(x)$ on $B$.
-\paragraph{Definition} Let $\Omega \subset \mathbb{R}^n$ bounded. Let $g$ bounded on $\partial \Omega$, define $S_g$ as set of all generalized subharmonic functions continuous on $\Omega$ such that for all $x\in \partial \Omega$ $u(x) \leq g(x)$.
+\paragraph{Definition} Let $\Omega \subset \mathbb{R}^n$ bounded. Let $g$ bounded on $\partial \Omega$, define $S_g$ as set of all generalized subharmonic functions continuous on $\bar{\Omega}$ such that for all $x\in \partial \Omega$ $u(x) \leq g(x)$.
 \subsection{Perron method}
 \paragraph{Lemma} Let $u$ generalized subharmonic function in $\Omega$, $\bar{B} \subsetneq \Omega$, define 
 $U(x) = 
-u(x) $ for $x\in \Omega \setminus B$ such that $\laplacian{U(x)}=0$ for $x\in B$. $U$ is generalized subharmonic function. $U(x) > u(x)$ for all $x$. $U(x)$ is called harmonic lifting of $u$.
+u(x) $ for $x\in \Omega \setminus B$ such that $\laplacian{U(x)}=0$ for $x\in B$ and $U(x)=u(x)$ on $\partial B$. $U$ is generalized subharmonic function. $U(x) > u(x)$ for all $x$. $U(x)$ is called harmonic lifting of $u$ and is unique from maximum principle.
 
 \subparagraph{Proof}
 Let $h$ harmonic on $B$ such that $h(x) \geq U(x) \geq u(x)$ on $\partial B_1$ and thus $h(x) \geq u(x) = U(x)$ in $x \in B_1 \setminus B$.
@@ -136,9 +142,17 @@ For  $\partial B \cap \bar{B}_1$ $U=u< h$.
 For $\partial B_1 \cap \bar{B}$ $h\geq U$. 
 Thus $H \geq U$ on $\partial (B\cap B_1)$ however $h-U$ is nonnegative and harmonic on $\partial (B\cap B_1)$  and thus $H \geq U$ in $B\cap B_1$.
 \paragraph{Theorem}
-$u(x) = \sup\limits_{w\in \delta g} w(x)$ is harmonic.
-\subparagraph{Proof} $\bar{w}(x) = M$ is harmonic (constant) and it fulfills $w\geq y$ on $\partial \Omega$ thus $w\leq \bar{w} = M$ for all $w\in S_g$ in particular $w(x) \leq M$ for all $x\in \Omega$ and $w\in S_g$. Let $y\in \Omega$, there exists a sequence of functions $v_n \in S_g$ such that
-$$\lim_{n \to \infty} v_n(y) = w(y)$$
-Let $\bar{B}_n(y) \subsetneq \Omega$ and replace $v_n$ by $V_n$  that is harmonic lifting of $v_n$. Since $V_n(x) \geq v_n(x)$ for all $x\in \Omega$, 
+$u(x) = \sup\limits_{w\in S g} w(x)$ is harmonic.
+\subparagraph{Proof} Constant $M$ is harmonic (constant) and it fulfills $M\geq y$ on $\partial \Omega$ thus $w\leq M$ for all $w\in S_g$ in particular $w(x) \leq M$ for all $x\in \Omega$ and $w\in S_g$. 
+
+Let $y\in \Omega$, there exists a sequence of functions $v_n \in S_g$ such that
+$$\lim_{n \to \infty} v_n(y) = u(y)$$
+Let $\bar{B}_r(y) \subsetneq \Omega$ and define $V_n$  that is harmonic lifting of $v_n$. Since $V_n(x) \geq v_n(x)$ for all $x\in \Omega$ and $V_n \in S_g$ (it is generalized subharmonic and equals to $v_n$ on $\partial \Omega$), 
 $$v_n(y) \leq V_n(y) \leq u(y)$$
-for all $y\in \Omega$ thus $v_n(y) \to u(y)$.
+for all $y\in \Omega$ thus $V_n(y) \to u(y)$. Thus there is subsequence of $V_n$ uniformly converging to $v$ in $B_\rho(y) \subset B_r(y)$. In $B_\rho$ $v\leq u$.
+
+Suppose exists $z \in B_\rho(y)$ such that $v(z) < u(z)$. Exists $\bar{u} \in S_g$ such that $v(z) < \bar{u}(z) \leq u(z)$. Then
+$$\bar{u} < w_j = \bar{u} \lor V_n \in S_g$$
+Let $W_j$ harmonic lift of $w_j$ on $B_r(y)$. $W_j\in S_g$ thus once again exists subsequence uniformly converging to $w$ in $B_\rho$. We know that
+$$v\leq w \leq u$$ 
+and $v(y)=w(y)=u(y)$. Thus, since both are harmonic, $w-v$ is harmonic and non-negative, thus $w-v=0$. We got the contradiction, thus $v=u$.

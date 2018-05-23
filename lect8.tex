@@ -1,0 +1,145 @@
+\paragraph{Conclusion}
+If Direchelet problem
+$$\begin{cases}
+\laplacian{w}(x) = 0 & x\in \Omega\\
+w(y) = g(y) & x \in \partial \Omega
+\end{cases}$$
+has solution, then $u(x)=\sup\limits_{v\in S g} v(x)$ is solution.
+\subparagraph{Solution}
+$u(x)$ is harmonic and $g \geq u$ on $\partial \Omega$, thus $w\geq u$ on $\Omega$.
+
+On the other hand, $w$ is harmonic and in particular subharmonic, thus $w\in S_g$ and $w\leq u$. We conclude $w=u$.
+\paragraph{Exercise}
+$$\Omega = B_1 \setminus \left\{ 0 \right\}$$
+Then
+$$\partial \Omega = \partial B_1 \cup \left\{ 0 \right\}$$
+
+For bound condition $u(\partial B_1) = 1$ and $u(0)=0$ there is no solution.
+\paragraph{Definition}
+$y\in \partial \Omega$ is called regular if exists generalized subharmonic function $w$ on $\bar{\Omega}$ such that $w(y)=0$ and $w(\bar{\Omega} \setminus \left\{0\right\}) < 0$.
+\paragraph{Exercise}
+If there exist a ball $B_\epsilon(z)$ in $\Omega^C$ tangent to $\partial \Omega$ in $y$, then $y$ is regular. 
+\paragraph{Theorem} If $\Omega$ is bounded interval, $\partial \Omega $ is regular in every point, $g\in \mathcal{C}(\partial \Omega)$  exists $u \in \mathcal{C}(\bar{\Omega})$ such that $u=g$ on  $\partial \Omega $ and $\grad{u}  = 0$.
+\subparagraph{Proof}
+We need
+$$\lim_{x \to y \in \partial \Omega} u(x) = g(y)$$
+
+Define 
+$$\begin{cases}
+v_1(x) = g(y) -\epsilon + hw(x)\\
+v_2(x) = g(y) + \epsilon - hw(x)
+\end{cases}$$
+where $h>0$ is constant to be determined later and $w$ is the function from definition of regular point.
+
+$v_1$ is subharmonic and $v_2$ is superharmonic. For $h$ big enough we know that $v_1(x) < g(x)$ and $v_2(x) > g(x)$ for $x\in \partial{\Omega}$.
+
+$0> -m \geq w(x)$ if $\abs{x-y} > \delta$. Thus 
+$$v_1(x) \leq g(x) - \epsilon - hm$$
+Choose $h$ such that
+$$g(x) + \epsilon - hm < \min\limits_{x\in \partial \Omega} g(x)$$
+Since
+$\abs{g(x) -g(y)}<\epsilon $ if $\abs{x-y} < \delta$ thus $v_1(x) < g(x) $  if $\abs{x-y} \leq \delta$ and thus $v_1(x) \leq g$ in $\partial \Omega$ and similarly $v_2(x) \geq g$ in $\partial \Omega$. Thus 
+$$v_2 \geq u \geq v_1$$
+for $u = \sup_{w \in S_g} w(x)$.
+$$g(x) + \epsilon - hw(x) \geq u(x) \geq g(x) - \epsilon + hw(x)$$
+$$-\epsilon \leq \liminf_{x\to y} u(x) - g(x) \leq \limsup_{x\to y} u(x) - g(x) < \epsilon$$
+\paragraph{Theorem} Regularity is sufficient condition for solution existence.
+\subparagraph{Proof} Suppose there exists solution of Dirichlet problem in interval with bound condition $g(x) = -\abs{x-y}$ for $y\in \partial \Omega$. Thus exists harmonic function $h$ which equals to $g$ on $\partial \Omega$, then $h<0$ in $\Omega$ and $h(y)=0$, i.e., $y$ is regular.
+
+\paragraph{Hilbert proof of Direchlet problem}
+For all $u \in \mathcal{C}^2(\Omega) \cap \mathcal{C}(\partial \Omega)$ and $u=g$ on $\partial \Omega$.
+
+Define Direchlet integral- functional
+$$I(u) = \int\limits_{\Omega} \abs{\grad{u}}^2$$
+Suppose there exists minimum of $I$ , $u_0$ (this is not easy to show). Then
+$$I(u_0) \leq \int\limits_{\Omega} \abs{\grad{u}}^2$$ 
+Let $\phi\in \mathcal{C}^2(\Omega) \cap \mathcal{C}(\partial \Omega)$ such that $\phi=0$ on $\partial \Omega$. Then $u_0+\epsilon \phi$ fulfills the condition.
+$$I(u_0+\epsilon \phi) = \int\limits_{\Omega} \abs{\grad(u_0+\epsilon \phi)}^2 = \int\limits_{\Omega} \abs{\grad{u_0}}^2 + 2\epsilon\int\limits_{\Omega} \grad{u_0}\grad{\phi}+ \epsilon^2\int\limits_{\Omega} \abs{\grad{\phi}}^2 \geq I(u_0) = \int\limits_{\Omega} \abs{\grad{u_0}}^2$$
+
+Thus 
+$$\int\limits_{\Omega} \grad{u_0}\grad{\phi} \geq 0$$
+$$\grad(\grad{u_0}\phi) = \grad{u_0} \grad{\phi} + \laplacian{u_0} \phi$$
+
+$$\int\limits_{\Omega} \grad{u_0}\grad{\phi} = -\int \laplacian{u_0} \phi + \int \grad(\grad{u_0}\phi) = - \int \laplacian{u_0} \phi + \oint\limits_{\partial \Omega} \phi \grad{u_0} \geq 0$$
+Thus
+$$\int \laplacian{u_0} \phi = 0$$
+for any $\phi \in \mathcal{C}(\bar{\Omega})$ thus
+$$\laplacian{u_0}=0$$
+\subsection{Neumann bound condition}
+Is there solution of Neumann bound condition
+$$\begin{cases}
+\laplacian{u} (x) = 0 & x \in \Omega\\
+\pdv{u}{n} (y)= g & y\in \partial \Omega
+\end{cases}$$
+\paragraph{Proof}
+Let $ u \in \mathcal{C}^2(\Omega) \cap \mathcal{C} (\bar{\Omega})$. Define functional
+$$I(u)  = \frac{1}{2} \int\limits_{\Omega} \abs{\grad{u}}^2 + \oint\limits_{\partial\Omega} ug $$ 
+If there exists minimum $u_0$, take a look on $u_0 + \epsilon \phi$ for $\phi \in \mathcal{C}(\bar{\Omega})$.
+
+$$0 \leq I(u_0+\epsilon \phi) - I(u_0) = \epsilon \iint\limits_{ \Omega} + \epsilon \int\limits_{\partial\Omega} \phi g +\frac{1}{2} \epsilon^2 \abs{\grad u_0}^2$$
+Thus
+$$\iint\limits_{ \Omega} \grad{u_i} \grad{\phi} - \oint\limits_{ \partial \Omega} \phi g = 0$$
+For any $\phi \in \mathcal{C}^2 \cap \mathcal{\bar{\Omega}}$.
+$$-\int \laplacian u_0 \phi + \int\limits_{ \partial \Omega} \phi \pdv{u}{n} - \int\limits_{ \partial \Omega} = 0$$
+thus
+$$\oint\qty(\pdv{u}{n}-g)\phi = 0$$
+i.e.
+$$\pdv{u}{n} = g$$
+
+
+
+
+If $\oint\limits_{\partial \Omega} g>0 $ obviously there is no minimum of $I$:
+for $u=\lambda$
+$$I(u) = - \lambda \oint\limits_{\partial \Omega} g$$
+
+
+Thus $\oint g = 0$ is necessary condition for $I$ to be bounded. By Gauss
+$$0 = \int\limits_{ \Omega} \laplacian{u} = \oint\limits_{ \partial\Omega} \pdv{u}{n} = \oint\limits_{ \partial\Omega} g $$
+
+
+\section{Heat equation in higher dimensions}
+$$\pdv{u}{t} = \laplacian_x{u}$$
+for $x\in \mathbb{R}^n$ and $t\in \mathbb{R}^+$.
+
+Note the equation is unchanged under transformation 
+$$\begin{cases}
+x \to ax= x'\\
+t \to a^2t = t'
+\end{cases}$$
+Thus if $u(x,t)$ is solution then $u(ax, a^2t)$ is solution. Thus, lets search for solutions dependent on
+$\xi = \frac{\abs{x}}{\sqrt{t}}$:
+$$u(x,t) = w\qty(\frac{\abs{x}}{\sqrt{t}})$$
+
+Define heat as
+$$Q(t) = \int\limits_{\mathbb{R}^n} u(x,t) \dd{x} = \int\limits_{\mathbb{R}^n} w\qty(\frac{\abs{x}}{\sqrt{t}}) \dd{x} = \int w(\xi) t^{\frac{n}{2}} \dd{\xi} = t^{\frac{n}{2}} \int w(\xi) \dd{\xi} = \text{const}$$
+So, to keep $Q$ constant we want
+$$u(x,t) = t^{-\frac{n}{2}} w\qty(\frac{\abs{x}}{\sqrt{t}}) $$
+Substituting into equation:
+$$(\xi^{n-1}w')' + \frac{1}{2} (\xi^n w)' = 0$$
+$$\xi^{n-1}w' + \frac{1}{2} \xi^n w = c$$
+Substituting $\xi=0$ we get $c=0$:
+$$\xi^{n-1}w' + \frac{1}{2} \xi^n w = 0$$
+$$w' + \frac{1}{2} \xi w = 0$$
+$$w(\xi) = ce^{-\frac{\abs{\xi}^2}{4}}$$
+If we want to normalize
+$$\int u(x,t) \dd{x} = 1$$
+We get
+$$u(x,t) = \frac{1}{(4\pi t)^{\frac{n}{2}}} e^{-\frac{\abs{x}^2}{4t}}$$
+Which is $n$ dimensional Gaussian.
+
+\paragraph{Kernel of heat}
+$$K(x,y,t) = \frac{1}{(4\pi t)^{\frac{n}{2}}} e^{-\frac{\abs{x-y}^2}{4t}}$$
+Then
+$$\pdv{K}{t} = \laplacian_x{K}$$
+
+$$u(x,t) = \int\limits_{\mathbb{R}^n} K(x,y,t) f(y) \dd{y}$$
+\paragraph{Theorem} 
+If $\abs{f}$ is bounded and continuous, $u(x,t)$ is solution of the heat equation in $\mathbb{R}^n \times (0, \infty)$ fulfilling $\lim_{t\to0} u(x,t) = f(x)$.
+\subparagraph{Proof}
+$$\pdv{u}{t} = \iint\limits_{\mathbb{R}^n} \pdv{K}{t} f(x) \dd{x}$$
+$$\laplacian_x{u} = \iint\limits_{\mathbb{R}^n} \laplacian_x{K} f(x) \dd{x}$$
+
+To be allowed to switch between integral and derivative we need to show that
+$$u(x,t+h) - u(x,t) = \int\limits_{\mathbb{R}^n} \qty[K(x,y,t+h) -K(x,y,h) ] f(x) \dd{x}$$
+is bounded by integrable function. Since $K$ is decaying exponent, it is true.
