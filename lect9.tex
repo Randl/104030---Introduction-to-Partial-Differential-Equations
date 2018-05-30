@@ -1,0 +1,107 @@
+Lets show that $\lim_{t\to0} u(x,t) = f(x)$.
+
+$$u(x,t) = \int\limits_{\abs{x-y} \leq \delta} K(x,y,t) f(y) \dd[n]{y} + \int\limits_{\abs{x-y} > \delta} K(x,y,t) f(y) \dd[n]{y}$$
+Since integral of $K$ is $1$
+$$f(x) = \iint\limits_{\mathbb{R}^n} K(x,y,t) f(x) \dd[n]{x}$$
+and thus
+
+$$u(x,t) = \int\limits_{\abs{x-y} \leq \delta} K(x,y,t) \qty\big(f(y)-f(x)) \dd[n]{y} + \int\limits_{\abs{x-y} > \delta} K(x,y,t) \qty\big(f(y)-f(x)) \dd[n]{y}$$
+Since $f$ is bounded:
+$$\int\limits_{\abs{x-y} > \delta} K(x,y,t) \qty\big(f(y)-f(x)) \dd[n]{y} \leq 2c \int\limits_{\abs{x-y}> \delta} K(x,y,t)  \to 0 $$
+Always exists $\epsilon$ such that $\abs{f(x)-f(y)} < \epsilon$ 
+$$\int\limits_{\abs{x-y} \leq \delta} K(x,y,t) \qty\big(f(y)-f(x)) \dd[n]{y} \leq
+\int\limits_{\abs{x-y} \leq \delta} K(x,y,t) \abs{(f(y)-f(x)} \dd[n]{y} \leq \epsilon\int\limits_{\abs{x-y} \leq \delta} K(x,y,t)  \dd[n]{y} \leq \epsilon\int\limits_{\mathbb{R}^n} K(x,y,t)  \dd[n]{y} \leq \epsilon $$
+Thus
+$$\limsup_{t\to 0} \abs{u(x,y) -f(x)} = \epsilon$$
+and
+$$\lim_{t\to0} u(x,t) = f(x)$$
+
+Note that temperature has infinite velocity - even if we start with $f$ with compact support, for any $t>0$ for any point we have $u>0$.
+
+\paragraph{Heat eqaution in compact region}
+Let $\Omega = D \cross [0,T]$ for some compact $D \subsetneq \mathbb{R}^n$. We call $\partial_p \Omega \left\{ D \cross \left\{0 \right\} \right\} \cup \left\{ \partial D \cross (0,T] \right\}$ parabolic bound of $\Omega$.
+\paragraph{Theorem}
+If $u\in \mathcal{C} (\bar{\Omega})$, $u_t, u_{x_ix_j} \in \mathcal{C}(\Omega)$ and $u_t - \laplacian{u} \leq 0$ on $\Omega$ then
+$$\max\limits_{(x,t)\in \bar{\Omega}} u(x,t) = \max\limits_{(x,t)\in \partial_p \Omega} u(x,t)$$
+\subparagraph{Proof}
+Suppose $u_t - \laplacian{u}<0$ for all $(x,t) \in \Omega$. Suppose $(x_0,t_0) \in \Omega$ is maximum of $u$. Then
+$$\laplacian{u}\leq 0$$
+$$u_t = 0$$
+i.e., $u_t - \laplacian{u} \geq 0$ in contradiction.
+
+If $(x_0, T)$ is maximum, then 
+$$\laplacian{u}\leq 0$$
+$$\eval{\pdv{u}{t}}_{t=T} = T$$
+thus still $u_t - \laplacian{u} \geq 0$ in contradiction.
+
+If we suppose that  $u_t - \laplacian{u}\leq0$ define $v(x,t) = u(x,t) - \delta t$. Then $v$ fulfills $v_t - \laplacian{v} < 0$. 
+
+Suppose $\max u(x,t) = u(x_0,t_0) = m$, then
+$$\max \limits_{ \Omega} v \geq m -\delta T$$
+is acquired in $(x_\delta, t_\delta) \in \partial_p \Omega$. Looking on sequence $\delta_n \to 0$, since $\partial_p \Omega$ is compact, $(x_{\delta_n}, t_{\delta_n}) \to (x_0, t_0) \in \partial_p \Omega$, i.e.
+$$\lim_{\delta to 0} v(x_{\delta}, t_{\delta}) = u(x_0,t_0) = m$$
+Thus maximum is acquired on parabolic boundary.
+\paragraph{Theorem}
+If $f$ is bounded on $\mathbb{R}^n$ and $u(x,t)$ fulfills
+$$u_t - \laplacian{u} \geq 0$$
+and $u \in \mathcal{C}^2(\mathbb{R}^n \cross \mathbb{R}^+) \cap \mathcal{C}(\mathbb{R}^n \cross \bar{\mathbb{R}}^+)$, $u(x,0) = f$ and in addition
+$$u(x,t) \leq M e^{a\abs{x}^2}$$
+for some $M,a>0$ then
+$$u(x,t) < \sup f(x)$$ 
+for all $x$, $t$. 
+
+Note that it's enough to show theorem for $0<t\leq T$ for some constant $T>0$, since then we can use $u(x,T)$ as new initial conditions to get to arbitrary $t$.
+
+\subparagraph{}
+$$K(x,y,t) = \frac{1}{\qty(4\pi t)^{\frac{n}{2}}} e^{-\frac{\abs{x}^2}{4t}}$$
+is solution of heat equation. So is 
+$$K(x,y,t+T) = \frac{1}{\qty(4\pi (t+T))^{\frac{n}{2}}} e^{-\frac{\abs{x}^2}{4 (t+T)}}$$
+However $K(x,y,-t)$ is not solution of heat equation. But
+$$K'(x,y,-t) = \frac{1}{\qty(-4\pi t)^{\frac{n}{2}}} e^{+\frac{\abs{x}^2}{-4t}}$$
+is solution of heat equation. It can be seen by extending to complex plane, we can note that under transformation
+$$\begin{cases}
+t \to -t\\
+x \to ix
+\end{cases}$$
+heat equation is preserved.
+
+So lets look at
+$$w_{y,T}(x,t) = K'(x,y,T-t) = \frac{1}{\qty(4\pi (T-t))^{\frac{n}{2}}} e^{\frac{\abs{x}^2}{4(T-t)}}$$
+with
+$$w_{y,T}(x,0) = \frac{1}{\qty(4\pi T)^{\frac{n}{2}}} e^{\frac{\abs{x}^2}{4T}} $$
+for $0<t\leq T$.
+This function solves heat equation, however this function is increasing and goes to infinity in finite time. This happens due to value of $w_{y,T}(x,0) $ in infinity - it is infinite, i.e. there is infinite amount of heat in $x\to \infty$.
+\subparagraph{Proof}
+Define
+$$v_\mu(x,t) = u(x,t) = \mu w_{T,y} (x,t)$$
+Then
+$$\pdv{t} v_\mu(x,t) - \laplacian{v_\mu} \leq 0$$
+Define 
+$$\Omega_{\rho, T} = \left\{ (x,t)  \: : \: \abs{x-y} < \rho, \: 0 \leq t < T \right\}$$
+We know that
+$$\max\limits_{ \bar{\Omega}_{\rho,T}} v_\mu(t) = \max\limits_{ \partial_p\Omega_{\rho,T}} v_\mu(t)$$
+In particular, for $x=y$
+$$v_\mu(y,t) \leq \max\limits_{ \bar{\Omega}_{\rho,T}} v_\mu(t) = \max\limits_{ \partial_p\Omega_{\rho,T}} v_\mu(t)$$
+In ball $B_{\rho}(y)$
+$$v_\mu (x,0) \leq u(x,0)$$
+For $0\leq t\leq \frac{T}{2}$
+$$v_{\mu}(x,t) = u(x,t) - \mu w(x, t) \leq Me^{a\abs{x}^2} - \mu \frac{1}{\qty(4\pi T)^{\frac{n}{2}}} e^{\frac{\rho^2}{4T}} \leq Me^{a\qty(\abs{y}+\rho)^2} - \mu \frac{1}{\qty(4\pi T)^{\frac{n}{2}}} e^{\frac{\rho^2}{4T}}= e^{a\rho^2} \qty[Me^{2\abs{y}\rho + a\abs{y}^2} - \frac{1}{\qty(4\pi T)^{\frac{n}{2}}} e^{\rho^2 \qty(\frac{1}{4T}-a)}]$$
+Since we are free to choose $T$ and $\rho$, we can choose them such that $\frac{1}{4T}-a>0$ and then for rho big enough
+$$v_{\mu}(x,t) \leq e^{a\rho^2} \qty[Me^{2\abs{y}\rho + a\abs{y}^2} - \frac{1}{\qty(4\pi T)^{\frac{n}{2}}} e^{\rho^2 \qty(\frac{1}{4T}-a)}] < C$$
+for any $C$.
+Thus, $v_\mu(x,t)$ can acquire maximum only in $t=0$:
+$$\max\limits_{\substack{\abs{x-y}\leq\rho \\ 0\leq t\leq \frac{T}{2}}} v_\mu(x,t) = \max\limits_{\abs{x-y}\leq\rho } v_\mu(x,0)$$
+Thus, taking $\mu$ to $0$:
+$$u(x,t) \leq \max_{\mathbb{R}^n} u(x,0)$$
+for $y \in \mathbb{R}^n$ and $0\leq t \leq \frac{2}{a}$.
+\paragraph{Conclusion}
+If $u_t - \laplacian{u} = 0$ then
+$$\sup\limits_{x\in \mathbb{R}^n} \abs{u(x,t) } \leq \sup\limits_{x\in \mathbb{R}^n} \abs{u(x,0)}$$
+\paragraph{Conclusion}
+If $u_1$, $u_2$ fulfill heat equation such that $u_1(x,0) = u_2(x,0)$ and in addition
+$$\begin{cases}
+\abs{u_1(x,t)} < Me^{a\abs{x}^2}\\
+\abs{u_2(x,t)} < Me^{a\abs{x}^2}\\
+\end{cases}$$
+then $u_1(x,t) = u_2(x,t)$ for all $x,t \in \mathbb{R}^n \cross \mathbb{R}^+$.
+

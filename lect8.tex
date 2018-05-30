@@ -133,7 +133,25 @@ $$K(x,y,t) = \frac{1}{(4\pi t)^{\frac{n}{2}}} e^{-\frac{\abs{x-y}^2}{4t}}$$
 Then
 $$\pdv{K}{t} = \laplacian_x{K}$$
 
-$$u(x,t) = \int\limits_{\mathbb{R}^n} K(x,y,t) f(y) \dd{y}$$
+Also note that $K>0$ and that, from normalization,
+$$\int\limits_{\mathbb{R}^4} K(x,y,t) \dd[n]{x} = 1$$
+
+Moreover, for all $\delta>0$ and for all $y\in \mathbb{R}^n$ 
+$$\lim_{t\to0} \int\limits_{\abs{x-y}\geq \delta} K(x,y,t) \dd[n]{x} = 0$$
+i.e.,
+$$\lim_{t\to0} \frac{1}{(4\pi t)^{\frac{n}{2}}}\int\limits_{\abs{x-y}\geq \delta} e^{-\frac{\abs{x-y}^2}{4t}} \dd[n]{x} = 0$$
+\subparagraph{Proof}
+By variable substitution $\xi = \frac{x}{\sqrt{t}}$:
+$$\lim_{t\to0} \frac{1}{(4\pi t)^{\frac{n}{2}}}\int\limits_{\abs{x-y}\geq \delta} e^{-\frac{\abs{x-y}^2}{4t}} \dd[n]{x} =\lim_{t\to0} \frac{1}{(4\pi t)^{\frac{n}{2}}}\int\limits_{\abs{x}\geq \delta} e^{-\frac{x^2}{4t}} \dd[n]{x}  =\lim_{t\to0} \frac{1}{(4\pi)^{\frac{n}{2}}}\int\limits_{\abs{\xi}\geq \frac{\delta}{\sqrt{t}}} e^{-\frac{\xi^2}{4}} \dd[n]{\xi}= 0$$
+
+
+
+Define
+$$u(x,t) = \int\limits_{\mathbb{R}^n} K(x,y,t) f(y) \dd[n]{y}$$
+\paragraph{Conclusion}
+If $u_t=\laplacian{u}$
+then $\min\limits_{ \Omega} u $, $\max\limits_{ \Omega} u $ are acquired on $\partial_p \Omega$. In particular there is unique solution of heat equation Dirichlet problem in $\Omega = D \times [0,T]$:
+if $u_1$, $u_2$ are solutions of heat equation in $\Omega$ and $u_1=u_2$ on $\partial_p \Omega$ then $u_1=u_2$ on $\Omega$.
 \paragraph{Theorem} 
 If $\abs{f}$ is bounded and continuous, $u(x,t)$ is solution of the heat equation in $\mathbb{R}^n \times (0, \infty)$ fulfilling $\lim_{t\to0} u(x,t) = f(x)$.
 \subparagraph{Proof}
@@ -143,3 +161,4 @@ $$\laplacian_x{u} = \iint\limits_{\mathbb{R}^n} \laplacian_x{K} f(x) \dd{x}$$
 To be allowed to switch between integral and derivative we need to show that
 $$u(x,t+h) - u(x,t) = \int\limits_{\mathbb{R}^n} \qty[K(x,y,t+h) -K(x,y,h) ] f(x) \dd{x}$$
 is bounded by integrable function. Since $K$ is decaying exponent, it is true.
+
