@@ -105,7 +105,7 @@ $$\int\limits_{\Omega} h\laplacian{u} \dd{x} = \int\limits_{\partial \Omega} h \
 and summing it with $u(y)$ we get:
 $$u(y) = \int\limits_{\Omega} G(x,y) \laplacian{u} \dd{x} + \int\limits_{\partial \Omega} u(x) \pdv{n_x}G(x,y) \dd{s_x}$$
 \paragraph{Conclusion}
-If $\laplacian{u} = f$ on $\Omega$ and $u=y$ on $\partial \Omega$
+If $\laplacian{u} = f$ on $\Omega$ and $u=g$ on $\partial \Omega$
 the solution
 $$u(y) = \int\limits_{\Omega} G(x,y) f(x) \dd{x} + \int\limits_{\partial \Omega} g(x) \pdv{G}{n} \dd{s_x} $$
 \paragraph{Lemma}
@@ -138,7 +138,7 @@ $$h^y = -\Gamma\qty(\abs{x-y^*}) \qty(\frac{\abs{y}}{R})^{2-n}$$
 Then
 $$G(x,y) =\Gamma(\abs{x-y}) -\Gamma\qty(\abs{x-y^*}) \qty(\frac{\abs{y}}{R})^{2-n}$$
 From harmony of $\Gamma$, $G$ is harmonic in $x$. For $x \in \partial B_r$:
-$$\qty(x-y^*)^2 = \qty(x - \frac{R^2}{y^2}y)^2 = \abs{x}^2 - 2x\frac{R^2}{y^2}y + \frac{R^4}{\abs{y}^2} = \frac{R^2}{y^2} \qty[R^2 - 2xy + \abs{x}^2] = \frac{R^2}{y^2} (x-y)^2$$
+$$\qty(x-y^*)^2 = \qty(x - \frac{R^2}{y^2}y)^2 = \abs{x}^2 - 2x\frac{R^2}{y^2}y + \frac{R^4}{\abs{y}^2} = \frac{R^2}{y^2} \qty[R^2 - 2xy + y^2] = \frac{R^2}{y^2} (x-y)^2$$
 $$\abs{x-y^*} = \frac{R}{\abs{y}} \abs{x-y}  $$
 $$h^y(x) = - \qty(\frac{\abs{y}}{R})^{2-n} \frac{1}{n(2-n)\omega_n}(x-y^*)^{2-n} = -\frac{1}{n(2-n)\omega_n} (x-y)^{2-n} = -\Gamma(\abs{x-y})$$
 i.e., $h^y(x)$ we defined fulfills conditions on $h^y(x)$.

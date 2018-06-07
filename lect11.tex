@@ -1,0 +1,161 @@
+Take a look on time integral of heat kernel,
+$$G(x,y) = \int_0^\infty K(x,y,t) \dd{t}$$
+If $n\geq 3$ the integral converges both in infinity and in 0, for $x\neq y$.
+
+Also
+$$u(x,t) = \int\limits_{\mathbb{R}^n} \dd{y} K(x,y,t) f(y) $$
+Assume $f$ has compact support (we don't have to, but it makes things easier). We see that
+$$u = \order{\frac{1}{t^{\frac{n}{2}}}}$$
+$$\int_0^\infty \dd{t} u(x,t) = \int_0^\infty  \int\limits_{\mathbb{R}^n}\dd{y} K(x,y,t) f(y) =  \int\limits_{\mathbb{R}^n}\dd{y}  f(y)  \int_0^\infty K(x,y,t) =\int\limits_{\mathbb{R}^n}\dd{y}  f(y)G(x,y) $$
+Integrating heat equation
+$$\int_0^\infty \pdv{u}{t} = u(x,\infty) - u(x,0) = -f(x)$$
+since $u(x,0)=f(x)$ and $u(x,\infty)=0$.
+on the other hand
+$$\int_0^\infty \laplacian_x{u(x,t)} \dd{t} = \laplacian_x{\int_0^\infty u(x,t) \dd{t}}$$
+Denote 
+$$V = \int_0^\infty u(x,t) \dd{t}$$
+then
+$$\laplacian{V} = -f$$
+This is Laplace equation, with $n\geq 3$, i.e.
+$$V(x) = -\int \Gamma\qty(\abs{x-y}) f(y) \dd{y}$$
+where $\Gamma(r) = \frac{1}{(2-r)\omega_n}r^{2-n}$.
+\section{Wave equation in $\mathbb{R}^n \cross \mathbb{R}$}
+We look at
+$$\begin{cases}
+\pdv[2]{u}{t} = c^2\laplacian_x{u}\\
+	u(x,0) = f(x)\\
+	u_t(x,0) = g(x)
+\end{cases}$$
+
+Lets assume radial solution: 
+$u(x,t) = w(\abs{x},t)$ for some $w = w(r,t)$
+Then we get
+$$\pdv[2]{w}{t} = \pdv[2]{w}{r} + \frac{n-1}{r} \pdv{w}{r}$$
+Define $v(r) = rw$, then
+$$v_r= w + w_rr$$
+$$v_{rr} = 2w_r+w_{rr}r$$
+$$\frac{1}{r} v_{rr} = w_{rr} + \frac{2}{r} w_r$$
+which exactly Laplacian for $n=3$.
+$$\pdv[2]{v}{t} = r \pdv[2]{w}{t} =c^2\qty( r \pdv[2]{w}{r} + (n-1)\pdv{w}{r})$$
+For $n=3$:
+$$\pdv[2]{v}{t} = c^2\pdv[2]{r} v$$
+which is one-dimensional wave equation for $r>0$. Since
+$$\pdv{x_i} w(\abs{x},t ) = w_r(0,t) \pdv{\abs{x}}{x_i}$$
+ and $ \pdv{\abs{x}}{x_i}$ is not continuous in 0, we require
+ $$\pdv{w}{r} (0) = \pdv{w}{r} w_t(0) = 0$$
+ 
+Assume  initial condition of form $w(r,0)=f(r)$, $w_t(r,0) = g(r)$ and $f'(0)=g'(0)=0$. Define extension of $f$ and $g$ on $\mathbb{R}$: $f(\abs{r})$ and $g(\abs{r})$.
+
+Then, for $v(r,0) = rf(\abs{r})$ and $v_t(r,0) = rg(\abs{r})$.
+The D'Alembert solution is
+$$rw(r,t) = v(r,t) = \frac{(r+ct)f(\abs{r+ct})+ (r-ct)f(\abs{r-ct})}{2} + \frac{1}{2ct} \int_{r-ct}^{r+ct} sg(\abs{s}) \dd{s}$$ 
+i.e.,
+
+$$w(r,t) = \frac{(r+ct)f(\abs{r+ct})+ (r-ct)f(\abs{r-ct})}{2r} + \frac{1}{2ctr} \int_{r-ct}^{r+ct} sg(\abs{s}) \dd{s}$$ 
+Note that if $g$ and $f$ has compact support, exist time $t_0$ such that
+$w(r,t>t_0) = 0$
+
+In 1D wave equation we required $f\in \mathcal{C}^2$ and $g\in \mathcal{C}^1$, however in 3D it's not enough.
+
+For example, assuming $t=0$
+$$\lim_{r\to0} w(r,t) = f(ct) + ctf'(ct) = w(0,t)$$
+
+\paragraph{Sperical average}
+For $h(x)$, $x\in \mathbb{R}^n$, spherical average of $h$ is
+$$M_h(x,r) = \frac{1}{\abs{\partial B_r(x)}} \int\limits_{\abs{\partial B_r(x)}} h(y) \dd{s_y}$$
+Note that
+$$M_h(x,0) = 0$$
+With variable substitution $x+r\xi = y$ we get
+$$M_h(x,r) = \frac{1}{n\omega_x r^{n-1}} \int\limits_{\partial B_1(0)} r^{n-1}h(x+r\xi) \dd{s_\xi}= \frac{1}{n\omega_x } \int\limits_{\partial B_1(0)} h(x+r\xi) \dd{s_\xi}$$
+
+Now $M_h(x,r)$ is even in $r$.
+\begin{align*}
+\pdv{r} M_h(x,r) = \frac{1}{n\omega_x } \int\limits_{\partial B_1(0)}  \sum_{x_i} \xi_i \pdv{h}{x_i}  \qty(x+r\xi) \dd{s_\xi} = \frac{1}{n\omega_x r} \int\limits_{\partial B_1(0)}  \va{\xi} \vdot \grad_{\xi}{h(x+r\xi)} \dd{s_\xi} \stackrel{\text{Guass}}{=} \frac{1}{n\omega_x r} \int\limits_{ B_1(0)}  \laplacian_{\xi}{h(x+r\xi)} \dd{\xi} =\\= \frac{r}{n\omega_x } \int\limits_{ B_1(0)}  \laplacian_{x}{h(x+r\xi)} \dd[n]{\xi} = \frac{1}{n\omega_n r^{n-1}}\int\limits_{ B_r(x)}  \laplacian_x{h(y)} \dd[n]{y} = \frac{1}{n\omega_n r^{n-1}}\laplacian\int_0^r \dd{\rho}\int\limits_{ \partial B_\rho(x)}  h(y) \dd{s_y} =\\= \frac{1}{ r^{n-1}}\laplacian\int_0^r \dd{\rho} \rho^{n-1}\underbrace{\frac{1}{n\omega_n \rho^{n-1}}\int\limits_{ \partial B_\rho(x)}  h(y) \dd{s_y} }_{M_h(x,\rho)} = r^{1-n} \laplacian_x \int_0^r \dd{\rho} \rho^{n-1} M_h(x,\rho)
+\end{align*}
+Since radial Laplacian is
+$$\laplacian = \pdv[2]{r} + \frac{n-1}{r} \pdv{r} = r^{1-n} \pdv{r} \qty(r^{n-1}\pdv{r})$$
+$$\pdv{r} \qty[r^{n-1} \pdv{r} M_h(x,r)] = \pdv{r} \laplacian_x \int_0^r \dd{\rho} \rho^{n-1} M_h(x,\rho) = \laplacian_x r^{n-1} M_h(x,r) = = r^{n-1} \laplacian_x M_h(x,r) = r^{n-1} M_{\laplacian h} (x,r) $$
+Thus
+$$r^{1-n} \pdv{r} \qty[r^{n-1} \pdv{r} M_h(x,r)] = \pdv[2]{r} M_h(x,r) + \frac{n-1}{r}M_{h}(x,r) = \laplacian_x M_h(x,r) = M_{\laplacian{h} } (x,r)$$
+
+Let $u$ solution of  wave equation, then
+$$M_u(x,r,t) = \frac{1}{n\omega_n} \int\limits_{\abs{\xi} = 1} u(x+r\xi, t) \dd{s_\xi}$$
+$$\pdv[2]{u}{t} = c^2 \laplacian_x{u}$$
+$$\pdv[2]{t} M_u(x,r,t) = c^2 M_{\laplacian{u}}(x,r,t) = c^2\qty[\pdv[2]{M_u}{r} + \frac{n-2}{r}\pdv{r}M_u]$$
+
+\subparagraph{COnclusion} Spherical average of wave equation in $x$ is acquired as solution of wave equation for $M_u(x,r,t)$ as a function of $r$ and $t$.
+
+For $n=3$:
+$$M_u(x,r,t) = \frac{1}{2r}\qty[(ct+r) M_f(x,ct+r) - (ct-r)M_f(x,ct-r)] + \frac{1}{c}\frac{1}{2r} \int+{ct-r}^{ct+r} \rho M_g(x,\rho) \dd{\rho}$$
+Then
+\begin{align*}
+u(x,t) = \lim_{r\to 0} M_u(x,r,t) = \eval{\pdv{\rho} \rho M_f(x,\rho)}_{\rho=ct} + \eval{\frac{1}{c} \rho M_g(x,\rho)}_{\rho=ct}= M_f(x,ct) + \eval{ct \pdv{\rho} M_f(x,\rho)}_{\rho=ct} + tM_g(x,ct) =\\=
+\pdv{t} \qty(t M_f(x,ct)) + tM_g(x,ct) = \qty(\frac{t}{n\omega_n} \int\limits_{\abs{\xi} = 1} f(x+ct\xi) \dd{s_\xi}) + \frac{t}{n\omega_n} \int\limits_{\abs{\xi} = 1} g(x+ct\xi) \dd{s_\xi} =\\= \pdv{t} \qty(\frac{1}{4\pi c^2 t} \int\limits_{\abs{y-x} =ct} f(x) \dd{s_y} ) + \frac{1}{4\pi c^2 t} \int\limits_{\abs{y-x} =ct} g(x) \dd{s_y} =\\= \frac{1}{4\pi} \int\limits_{\xi=1} f(x+ct\xi) \dd{s_\xi} + \frac{ct}{4\pi}  \int\limits_{\xi=1} \qty(\grad_{x+ct\xi}f)\vdot \xi \dd{s_\xi}+ \frac{t}{4\pi}  \int\limits_{\xi=1}  g(x+ct\xi) \dd{s_\xi}
+\end{align*}
+
+
+\paragraph{2D wave equation}
+We can reduce dimensionality by with initial conditions. If
+$$\begin{cases}
+u(x_1,x_2,x_3,0)= f(x_1,x_2)\\
+u_t(x_1,x_2,x_3,0)= g(x_1,x_2)\\
+\end{cases}$$
+Thus $u=u(x_1,x_2,t)$ is solution of 2D wave equation. Take a look at sphere around $(x_1,x_2,0)$:
+$$\abs{y-x}= \sqrt{(x_1-y_1)^2+(x_2-y_2)^2 +y_3^2} = ct$$
+$$y_3 = \sqrt{c^2t^2 - (x_1-y_1)^2-(x_2-y_2)^2}$$
+And thus
+$$\dd{s_y} = \sqrt{1+\qty(\pdv{y_3}{y_1})^2 +\qty(\pdv{y_3}{y_2})^2}\dd{y_1}\dd{y_2} = \abs{ \frac{ct}{y_3}} \dd{y_1}\dd{y_2}$$
+Define
+$$r = \sqrt{(x_1-y_1)^2+(x_2-y_2)^2}$$
+and
+\begin{align*}
+u(x_1,x_2,t) = \pdv{t} \qty(\frac{2}{4\pi c^2 t } \iint\limits_{r<ct} f(y_1,y_2) \abs{ \frac{ct}{y_3}}\dd{y_1}\dd{y_2}) + \frac{2}{4\pi c^2 t } \iint\limits_{r<ct} g(y_1,y_2) \abs{ \frac{ct}{y_3}}\dd{y_1}\dd{y_2} =\\= \pdv{t} \qty[\frac{1}{2\pi c} \iint\limits_{r<ct} \frac{f(y_1,y_2)}{\sqrt{(ct)^2-r^2}} \dd{y_1}\dd{y_2}] + \frac{1}{2\pi c} \iint\limits_{r<ct} \frac{g(y_1,y_2)}{\sqrt{(ct)^2-r^2}} \dd{y_1}\dd{y_2}
+\end{align*}
+\section{Algebric theory of PDEs}
+Take a look at heat equation
+$$\pdv{u}{t} = \laplacian_x u$$
+Define $L(u) = \laplacian u$. $L$ is linear operator on functions in $\mathcal{C}^2$. However since for $f\in \mathcal{C}^k$, $L(f) \in \mathcal{C}^{k-2}$, we can say that $L: \mathcal{C}^\infty \to \mathcal{C}^\infty$ and then
+$$\pdv{u}{t}  =L(u)$$
+
+In case of wave equation
+Define $v=\pdv{u}{t}$ and then
+$$\dv{t} \begin{pmatrix}u\\v\end{pmatrix} = L \begin{pmatrix}u\\v\end{pmatrix}$$
+Then wave equation is
+$$ L \begin{pmatrix}u\\v\end{pmatrix}=  \begin{pmatrix}v\\\laplacian{u}\end{pmatrix} $$
+
+In case of Poisson equation
+$$Lu = f$$
+i.e.
+$u=L^{-1}f$.
+
+To solve such equations we want to diagonalize $L$, for that we'd like $L$ to be symmetric.
+\subsection{Sturm-Liouville problem }
+$$\pdv{u}{t} = s(x) u_{xx} + b(x) u_x c(x) u$$
+Given interval $[a,b]$ with initial conditions we want to rewrite the equation as
+$$\pdv{u}{t} = (pu_x)_x qu$$
+for some $p(x)$ $q(x)$. It's always possible to find  $r(x)$ such that multiplication of first equation by $r(x)$ will give the second one for $v=ru$. 
+
+Define operator
+$$L(v) = \frac{1}{r(x)}[\qty(p(x) v_x)_x + qv]$$
+Then we write equation as
+$$L(v) = \pdv{v}{t}$$
+And we want to diagonalize the operator, i.e. find $v$ and $\lambda$ such that
+$$Lv + \lambda v = 0$$
+
+$L$ is defined over vector space $\mathcal{C}^2[a,b]$ and fulfills a pair of bound conditions:
+$$\begin{cases}
+B_a(u) = \alpha u(a) + \beta u'(a) = 0& \abs{\alpha} + \abs{\beta}>0\\
+B_b(u)  = \gamma u(b) + \delta u'(b) = 0& \abs{\gamma} + \abs{\delta}>0
+\end{cases}$$
+
+Denote
+$$X = \left\{ f\in \mathcal{C}^2[a,b], B_a(f)=B_b(f) = 0 \right\}$$
+Note that for $f\in X$ in's possible that $L(f) \notin X$.
+$$\left\langle u,v\right\rangle = \int_a^b \int_a^b u(x)v(x) r(x) \dd{x} $$
+This is innter product, since it's linear, symmetric and positive.
+\paragraph{Definition} $L$ is symmetric operator relatively to inner product iff
+$$\left\langle u,Lv\right\rangle =\left\langle Lu,v\right\rangle $$
+
+Let's check if $L$ we defined is symmetric:
+$$uLv-vLu = \frac{1}{r}\qty\Big[u\qty[(pv_x)_x + qv ]- v\qty[(pu_x)_x + qu]] =\frac{1}{r}\qty[ pu_xv - pv_x u]_x$$
+$$\left\langle u,Lv\right\rangle - \left\langle Lu,v\right\rangle = \int_a^b \qty[ pu_xv - pv_x u]_x \dd{x} = \eval[pu_xv - pv_x u|_{a}^{b} = 0$$
