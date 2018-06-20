@@ -1,0 +1,169 @@
+\paragraph{Definition}
+$E(a,b)$ are all the piecewise continuously differentiable  functions in $[a,b]$, which means function is continuously differentiable in all but countable number of points and has one-side derivative everywhere.
+\paragraph{Theorem}
+For each $u \in E(a,b)$ generalized Fourier series
+$$\lim_{n\to \infty} \sum_{n=1}^\infty \left\langle u, \phi_i \right\rangle \phi_i(x) = \frac{u(x^+) + u(x^-)}{2}$$
+In particular, if $u$ continuous in $x$, then series converges to $u(x)$. If $u\in E(a,b) \cap \mathcal{C}(a,b)$ and fulfills bound condition then series uniformly converges to $u$. 
+\paragraph{Definition}
+For all $u\in X$ define
+$$B(u) = -\left\langle \mathcal{L}u, u \right\rangle_r = -\int_a^b \dd{x} \qty[\qty(pu')'+ qu]u = \int_a^b \qty[p(u')^2 - qu^2] \dd{x} - p(b)u'(b)u(b) + p(a)u'(a) u(a) $$
+We know $\mathcal{L}$ has infinite increasing sequence of eigenvalues.
+\paragraph{Theorem}
+$$\lambda_0 = \inf\limits_{\substack{u\in X \\  \norm{u}_r=1}} B(u) = B(\phi_0) = \inf\limits_{\substack{v\in X \\  \norm{v}_r\neq0}} \frac{B(v)}{\norm{v}^2}  = \inf\limits_{\substack{B(w)\in \mathbb{R} \\  \norm{w}_r=1}} B(w)  = B(\phi_0)$$
+where $\norm{\phi_0}=1$ is eigenfunction of $\mathcal{L}$ of $\lambda_0$.
+\subparagraph{(Partial) proof}
+Take a look at
+$$X_N = \text{span} \qty{\phi_0, \phi_1, \dots, \phi_N}$$
+Then $u\in X_N \Rightarrow u = \sum_1^N \alpha_i \phi_i$. Obviously $\norm{u}=1$.
+$$B(u) = -\left\langle \mathcal{L}u, u \right\rangle_r $$
+$$\mathcal{L}u = \sum_i \alpha_i \mathcal{L}\phi_i = -\sum \alpha_i \lambda_i \phi_i$$
+Then
+$$B(u) = -\left\langle \mathcal{L}u, u \right\rangle_r =  -\left\langle \sum_i\alpha_i \lambda_i \phi_i, \sum_i\alpha_i \phi_i \right\rangle_r = \sum_i^N \lambda_i \alpha_i^2  \geq \lambda_0$$
+Thus 
+$$B(u) \geq \lambda_0 \norm{u}^2$$
+with obvious equality if $u=\phi_0$.
+\paragraph{Conclusion} $\phi_0> 0$ and $\lambda_0$ is simple eigenvalue.
+\subparagraph{Proof}
+Suppose $\phi_0$ has zero in $(a,b)$. $\abs{ \phi_0} \in E(a,b) \cap \mathcal{C}(a,b)$. Also, $B(\phi_0) = B(\abs{ \phi_0})$, i.e., $\qty(\abs{u}')^2 = \qty(u')^2$ in all points $u$ is differentiable and $u\neq 0$.
+
+Thus $\abs{\phi_0}$ is also minimum of $B(u)$, i.e.,  $\abs{\phi_0}$ is eigenfunction. Thus $\abs{\phi_0}\in \mathcal{C}^2$. If there is point where $\phi_0(x) = 0$, $\abs{\phi_0}$ if differentiable in same point iff $\phi'_0=0$, however then $\phi_0=0$ since it solves second-order ODE. In addition, if there were two eigenfunctions corresponding to $\lambda_0$, we could find two orthogonal eigenfunctions of $\lambda_0$, but both are positive and integral of their multiplication is positive, in contradiction to orthogonality.
+\paragraph{Exercise}
+Proof that $\qty{u: \: B(u) \in \mathbb{R}}$ is inner product space, if $B(u_1), B(u_2) < \infty $ then $B(u_1+u_2) < \infty $ and 
+$$B(u,v) = -\left\langle \mathcal{L}u, v \right\rangle_r $$
+is inner product.
+\paragraph{Example}
+For both Neumann and Dirichlet bound condition:
+$$B(u) = \int_a^b  p\cdot (u')^2 - qu^2 \dd{x}$$
+However, in case of Dirichlet we need $u(a)=u(b)=0$, and in case of Neumann we dont have special requirements. This is due to small change in $u$ is enough to force $u'(a)=u'(b)=0$, however to force $u(a)=u(b)=0$ we need bigger change in $u$, and, as a result $u'$, resulting in divergence of $B$.
+\paragraph{Heat equation}
+$$ru_t = (pu_x)_x + qu$$
+$u(x,0) = f(x)$ and $B_a\qty[u(x,t)]=B_b\qty[u(x,t)]=0$ for all $t>0$.
+$$u(x,t) = \sum_{n=1}^\infty \left\langle f, \phi_i \right\rangle e^{-\lambda_n t} \phi_i(x)$$
+
+If $\lambda_0 < 0$, 
+$$\lim_{t\to 0} u(x,t) = \infty$$
+And
+$$Q(t) = \left\langle u(x,t), \phi_0 \right\rangle = \left\langle f, \phi_0 \right\rangle e^{-\lambda_0 t}$$
+This if $\lambda_0 < 0$, $Q(t) \to \infty$ exponentially.
+\paragraph{Example}
+Given two bound conditions:
+$$\begin{cases}
+u(0,t) = 0\\
+u_x(1,t) = \beta u(1,t)
+\end{cases}$$
+and 
+$$\begin{cases}
+u_x(0,t) = 0\\
+u_x(1,t) = \beta u(1,t)
+\end{cases}$$
+
+In both cases, 
+$$B(u) = \int_0^1 \qty(u')^2 - \beta u^2(x)$$
+however, in first case we want $u(a) = 0$.
+
+To show that $\lambda_0$ it's enough to find $\phi$ such that $B(\phi)<0$.
+
+Choose $\phi(x) = \sin(\alpha x)$:
+$$B(\phi)  = \alpha^2 \int_0^1 \cos[2](\alpha x) \dd{x} - \beta \sin[2](\alpha x) \leq \alpha^2 - \beta\sin[2](\alpha ) = \alpha^2 \qty[1- \beta\qty(\frac{\sin(\alpha ) }{\alpha})^2] \to\alpha^2 \qty[1- \beta] < 0$$
+if $\beta > 1$, we get $\lambda_0<0$.
+
+In second case, we can choose $\phi(x) = \cos(\alpha x)$, since we don't need $\phi(0)=0$:
+$$B(\phi)  = \alpha^2 \int_0^1 \sin[2](\alpha x) \dd{x} - \beta \cos[2](\alpha x) \leq \alpha^2 - \beta\cos[2](\alpha ) \to -\beta$$
+Thus the condition is weaker -- it's enough $\beta>0$ to have negative eigenvalue.
+\paragraph{Lemma}
+Define
+$$L_1(u) = (pu')' + q_1u = 0$$
+$$L_2(v) = (pv')' + q_2v = 0$$
+where
+$u(x_1)=u(x_2) = 0$, $>0$ on $(x_1,x_2)$ and $q_2>q_1$. Then $v$ has at least one zero in $(x_1,x_2)$.
+\subparagraph{Proof}
+Take a look at
+$$vL_1u - uL_1v = p\qty(u'v-v'u)'$$
+$$L_1v + (q_2-q_1)v  = L_2v$$
+$$L_1v   = L_2v -  (q_2-q_1)v$$
+$$vL_1u - uL_2v + (q_2-q_1)uv = p\qty(u'v-v'u)'$$
+Since $L_2 v = L_1 u = 0$, if $v>0$:
+$$0<\int (q_2-q_1)uv = p(x_2)u'(x_2)v(x_2)-p(x_1)u'(x_1)v(x_1)<0$$
+in contradiction, thus $v$ has $0$.
+
+\paragraph{Theorem}
+For Sturm–Liouville problem with Dirichlet bound conditions, eigenfunction $\phi_n$  has exactly $n$ zeros in $(a,b)$.
+\subparagraph{Proof}
+If $\phi_n(x_j)$ the sequence $\qty{x_j}\subset (a,b)$ then there is subsequence
+$$x_j \to x_0 \in [a,b]$$
+We get that
+$$\phi(x_j) - \phi(x_0) = 0 \Rightarrow \begin{cases}
+\phi(x_0) = 0\\\phi'(x_0)= 0 
+\end{cases} \Rightarrow \phi(x_0) = \phi'(x_0) = 0 \Rightarrow \phi = 0$$
+
+
+$$L(u) = (pu')'+qu+\lambda_nu  =0 $$
+Then $L_1  =q_1= q +\lambda_1$, choose $x_1$, $x_2$ to be subsequent zeros of $u$. Then $q_2 = q+\lambda_{n+1} > q_1$ and from previous theorem $v$ has zero between $x_1$ and $x_2$.
+
+\subsection{Sturm–Liouville problem in $\mathbb{R}^n$}
+Let $\Omega \in \mathbb{R}^n$ bounded interval and
+$u \in \mathcal{C}^2(\Omega) \cap \mathcal{C}^1(\bar{ u}\Omega)$
+Take a look at family of operators
+$$Lu = \sum_{i=1}^n \sum_{j=1}^n a_{ij} \pdv{u}{x_i}{x_j} + \sum_{i=1}^n b_i \pdv{u}{x_i} +cu$$
+where $a_{ij}, b_i, c \in \mathcal{C}(\Omega)$.
+If 
+$$Lu = \frac{1}{r} \qty[\sum_{i=1}^n \pdv{x_i}\:\qty(\sum_{j=1}^n a_{ij} \pdv{u}{x_j}) + cu]$$
+we say operator in divergence form. 
+If $n=1$, 
+$$Lu = au'' +bu'+c$$
+which is equivalent to $\frac{1}{r}\qty[(pu')'+qu]$. In higher dimensions it's not always possible.
+
+
+Operator $L$ is called elliptical if $A = \qty{a_{ij}}$ is positive defined symmetric matrix.
+
+Alternatively
+$$\sum_{i=1}^n \sum_{j=1}^n a_{ij}(x) \xi_i \xi_j \geq \mu \sum_{i=1}^n \xi_i^2$$ 
+for all $\xi \in \mathbb{R}^n$ and $\mu>0$.
+
+Take a look at $Lu = f$ in $\Omega$ and bound condition:
+$$\sigma_2 (A \vdot \grad{u}) \vdot \vu{n} + \sigma_1 u = 0$$
+for $x\in \partial \Omega$, where $\vu{n}$ is normal vector to $\partial \Omega$ and $\sigma_1, \sigma_2 \in \mathcal{C}(\partial \Omega)$ such thatn $\abs{ \sigma_1}+\abs{ \sigma_2}>0$ for $x\in \partial \Omega$.
+
+Define inner product 
+$$\left\langle u,v \right\rangle = \iint\limits_{\Omega} ruv \dd[n]{r}$$
+$$\left\langle Lu,v \right\rangle = \iint\limits_{\Omega}v \cdot \qty[\sum_{i=1}^n \pdv{x_i}\:\qty(\sum_{j=1}^n a_{ij} \pdv{u}{x_j})] \dd[n]{r} +\iint\limits_{\Omega} cuv\dd[n]{r} = -\iint \sum_{i=1}^n \sum_{j=1}^n a_{ij} \pdv{u}{x_i} \pdv{v}{x_j} \dd[n]{r} + \int\limits_{\partial \Omega}   (A \vdot \grad{u}) \vdot \vu{n} \dd{s} +\iint\limits_{\Omega} cuv\dd[n]{r} $$
+And
+$$ \int\limits_{\partial \Omega}   (A \vdot \grad{u}) \vdot \vu{n} \dd{s} = \int\limits_{\partial \Omega}   \frac{\sigma_1}{\sigma_2}uv \dd{s}  $$
+We define quadratic form
+$$B(u) = -\left\langle Lu,u \right\rangle = \iint \sum_{i=1}^n \sum_{j=1}^n a_{ij} \pdv{u}{x_i} \pdv{v}{x_j} \dd[n]{r} - \int\limits_{\partial \Omega}   \frac{\sigma_1}{\sigma_2}u^2 \dd{s} - \iint\limits_{\Omega} cu^2 \dd[n]{r} $$
+Also, since
+$$\left\langle Lu,v \right\rangle = \left\langle u,Lv \right\rangle$$
+$L$ is self-adjoint, and thus it has orthogonal eigenfunctions and real eigenvalues.
+\paragraph{Theorem}
+Under this conditions there us infinite sequence of eigenvalues:
+$$\lambda_0 < \lambda_1 \leq \lambda_2 \dots \leq \lambda_n$$
+and orthonormal eigenfunctions under defined inner product.
+\paragraph{Example}
+$$
+\laplacian{u} + \lambda u = 0
+$$
+in $B =\qty{ \abs{x} \leq 1 } \subset \mathbb{R}^2 $ with Dirichlet bound conditions.
+
+Rewrite in polar coordinates:
+$$\pdv[2]{u}{r} + \frac{1}{r} \pdv{r} + \frac{1}{r^2} \pdv[2]{u}{\theta} +\lambda u = 0$$
+and $u(1,\theta) = 0$. Guess solution of form
+$$u(r,\theta) = R(r)\Theta(\theta)$$
+$$\frac{r^2}{R\Theta}\qty[ \Theta \qty(R''(r) \Theta(\theta) + \frac{R'}{r})+ \frac{R}{r^2}\Theta' + \lambda R\Theta ] = 0$$
+i.e.
+$$\frac{r^2 \qty(R''+\frac{1}{r}R')}{R} + \frac{\Theta''}{\Theta} + \lambda r^2 = 0$$
+Thus for $\Theta$
+$$\frac{\Theta''}{\Theta} = -n^2$$
+i.e.
+$$\Theta = a\sin(n\theta) + b\cos(n\theta)$$
+For $R$
+$$R'' + \frac{1}{r} R' - \frac{Rn^2}{r^2} + \lambda R = 0$$
+with $R(1)=0$ and $R(0),R'(0) < \infty$.
+To simplify, define $x=r$, we got Sturm–Liouville:
+$$(xR')' - \frac{n^2}{x}R + \lambda xR = 0$$
+with $p(x) = x$, $q(x) = -\frac{n^2}{x}$ and $r(x) = x$.
+
+However, since we don't have bound condition in one of bounds ($x_1=0$), there is degeneracy in problem, due to $p(x_1)=0$. The operator is
+$$Lu = \frac{1}{x} \qty[(xu')'-\frac{n^2}{x}u]$$
+and
+$$\left\langle u,v \right\rangle = \int_0^1 xuv \dd{x}$$
+$$\left\langle Lu,v \right\rangle - \left\langle u,Lv \right\rangle = u(1)v'(1) - v(1) u'(1)$$

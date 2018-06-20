@@ -18,6 +18,26 @@
 \usepackage{esint} % beatiful integrals
 \usepackage{physics}
 
+\usepackage[T1]{fontenc}
+% Nicer default font (+ math font) than Computer Modern for most use cases
+% \usepackage{mathpazo} % problems with greek vectors
+\usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+% Prevent overflowing lines due to hard-to-break entities
+\sloppy 
+% Colors for the hyperref package
+\definecolor{urlcolor}{rgb}{0,.145,.698}
+\definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+\definecolor{citecolor}{rgb}{.12,.54,.11}
+% Setup hyperref package
+\hypersetup{
+	breaklinks=true,  % so long urls are correctly broken across lines
+	colorlinks=true,
+	urlcolor=urlcolor,
+	linkcolor=linkcolor,
+	citecolor=citecolor,
+}
+
+
 
 \DeclareFontFamily{OMX}{lmex}{}
 \DeclareFontShape{OMX}{lmex}{m}{n}{<-> lmex10}{}
@@ -61,4 +81,5 @@
 \input{lect9.tex}
 \input{lect10.tex}
 \input{lect11.tex}
+\input{lect12.tex}
 \end{document}

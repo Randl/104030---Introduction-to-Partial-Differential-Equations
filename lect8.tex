@@ -76,11 +76,11 @@ Let $ u \in \mathcal{C}^2(\Omega) \cap \mathcal{C} (\bar{\Omega})$. Define funct
 $$I(u)  = \frac{1}{2} \int\limits_{\Omega} \abs{\grad{u}}^2 + \oint\limits_{\partial\Omega} ug $$ 
 If there exists minimum $u_0$, take a look on $u_0 + \epsilon \phi$ for $\phi \in \mathcal{C}(\bar{\Omega})$.
 
-$$0 \leq I(u_0+\epsilon \phi) - I(u_0) = \epsilon \iint\limits_{ \Omega} + \epsilon \int\limits_{\partial\Omega} \phi g +\frac{1}{2} \epsilon^2 \abs{\grad u_0}^2$$
+$$0 \leq I(u_0+\epsilon \phi) - I(u_0) = \epsilon \iint\limits_{ \Omega} \qty[\grad{u_0} \grad{\phi} +\frac{1}{2} \epsilon\abs{\grad \phi}^2]+ \epsilon \int\limits_{\partial\Omega} \phi g $$
 Thus
-$$\iint\limits_{ \Omega} \grad{u_i} \grad{\phi} - \oint\limits_{ \partial \Omega} \phi g = 0$$
-For any $\phi \in \mathcal{C}^2 \cap \mathcal{\bar{\Omega}}$.
-$$-\int \laplacian u_0 \phi + \int\limits_{ \partial \Omega} \phi \pdv{u}{n} - \int\limits_{ \partial \Omega} = 0$$
+$$\iint\limits_{ \Omega} \grad{u_0} \grad{\phi} + \oint\limits_{ \partial \Omega} \phi g = 0$$
+For any $\phi \in \mathcal{C}^2 \cap \mathcal{C}\qty(\bar{\Omega})$.
+$$-\int \laplacian u_0 \phi + \int\limits_{ \partial \Omega} \phi \pdv{u}{n} + \iint\limits_{ \Omega} \grad{u_0} \grad{\phi} = 0$$
 thus
 $$\oint\qty(\pdv{u}{n}-g)\phi = 0$$
 i.e.
