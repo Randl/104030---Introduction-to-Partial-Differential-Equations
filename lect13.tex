@@ -1,0 +1,131 @@
+Meaning the operator is self-adjoint.
+
+Lets perform variable substitution $s=\sqrt{\lambda}x$ and $\psi(s) = R(s)$:
+$$\psi''(s) +\frac{1}{s} \psi'(s) + \qty(1-\frac{n^2}{s^2})\psi(s) = 0$$
+and bound condition
+$$\psi(\sqrt{\lambda}) = 0$$
+
+Guess solution of form
+$$\psi(s) = s^\sigma \psi_0(s)$$ 
+where
+$$\psi(s) = a_) + a_1s^2 + \dots$$
+
+Then
+$$\sigma(\sigma-1) + \sigma - n^2 = 0$$
+$$\sigma = \pm n$$
+
+Since the solution can't be singular in $0$, we choose positive $\sigma$. The solution is Bessel functions of the first kind $J_n(s)$.
+
+Then if $J(\alpha_{n,k}) = 0$, eigenvalue is $\lambda_{n,k} = \alpha^2_{n,k}$ and eigenfunction is $v_{n,k}(x) = J_{n}(\alpha_{nk} x)$.
+
+\paragraph{Calculation of Bessel function}
+Define
+$$v(t)  = e^{iy}$$
+$$\laplacian{v} = \pdv[2]{v}{y} = -v$$
+i.e.
+$$\laplacian{v} +v= 0$$
+In spherical, $v(r,\theta) = e^{ir\sin(\theta)}$. Its Fourier series is
+$$v(r,\theta) = \sum_{-\infty}^\infty \psi_n(r) e^{in\theta}$$
+where
+$$\psi_n(r) = \frac{1}{2\pi} \int_{-\pi}^\pi e^{i(r\sin(\theta) - n\theta)} \dd{\theta}$$
+$$\laplacian{v} = \sum_{-\infty}^\infty \qty[\psi''_n +\frac{1}{r} \psi'_n- \frac{n^2}{r^2}\psi_n]e^{in\theta} = -\sum_{-\infty}^\infty \psi_n(r) e^{in\theta} \Rightarrow 0 =   \sum_{-\infty}^\infty \qty[\psi''_n +\frac{1}{r} \psi'_n+\qty(1-\frac{n^2}{r^2})\psi_n]e^{in\theta}  $$
+Concluding
+$$\psi_n = J_n$$
+\paragraph{Claim}
+$$nJ_n(r) = rJ_{n+1}(r) + rJ'(r)$$
+\subparagraph{Proof}
+$$J'_n(r) = \frac{i}{2\pi} \int_{-\pi}^\pi \sin(\theta) e^{i\qty(r\sin(\theta)-n\theta)}\dd{\theta}$$
+$$J{n+1}(r) = \frac{1}{2\pi} \int_{-\pi}^\pi e^{i\qty(r\sin(\theta)-n\theta)} \qty(\cos(\theta) + i\sin(\theta))\dd{\theta}$$
+$$\dv{\theta} e^{ir\sin(\theta)} = ir\cos(\theta) e^{ir\sin(\theta)} $$
+Thus, by parts,
+$$J'_n(r) + J{n+1}(r)  = \frac{1}{2\pi} \int_{-\pi}^\pi e^{i\qty(r\sin(\theta)-n\theta)} \cos(\theta) \dd{\theta}  = \frac{1}{ir}\frac{1}{2\pi} \int_{-\pi}^\pi \qty[\dv{\theta} e^{ir\sin(\theta)} ]e^{-in\theta} \dd{\theta} = \frac{n}{r}\frac{1}{2\pi} \int_{-\pi}^\pi e^{i(r\sin(\theta) -n\theta)} \dd{\theta} = \frac{n}{r} J_n(r)$$
+\paragraph{Eigenfunctions of Laplacian}
+We found that eigenvalues $\lambda_{nk} = \alpha_{nk}^2$ and eigenfunctions are
+$$v_{nk}(r,\theta) = \beta_{nk} J_n(\alpha_{nk} r) e^{in\theta}$$
+where $\beta_{nk}$ is normalization. $n\ in \mathbb{Z}$ and $J_{-n} = J_n$:
+$$1 = \norm{v_{nk}}^2 = \int_0^{2\pi} \int_0^1 r \abs{v_{nk}}^2 \dd{r}\dd{\theta} = \iint\limits_{B_1(0)} \abs{v_{nk}}^2$$
+$$2\pi \beta^2_{nk} = \int_0^1 r J_n^2(\alpha_{nk} r)\dd{r} = 1$$
+We get that
+$$\beta_{nk} = \frac{1}{\sqrt{2\pi} } \frac{1}{\sqrt{\int_0^1 J_n^2(\alpha_{nk} r) \dd{r}}}$$
+which results in
+$$\int_0^1 r J_n^2 (\alpha_{nk} r) \dd{r} = \frac{1}{2} \qty(J'_n(\alpha_{nk}))^2$$ 
+and also
+$$v_{nk}(r,\theta) = \beta_{nk} J_n(\alpha_{nk} r) e^{in\theta}= \frac{1}{\sqrt{2\pi} } \frac{1}{J'_n(\alpha_{nk})} J_n(\alpha_{nk} r) e^{in\theta}$$
+
+\paragraph{Solution of Poisson equation in circle}
+$$\laplacian{u} + f = 0$$
+We know the solution is
+$$u(x,y) = \int\limits_{B_1(0)} G(x,y) f(y) \dd{y}$$
+$$G(x,y) = -\sum_{n=1}^\infty \frac{v_n(x)v_n(y)}{\lambda_n}$$
+i.e.,
+$$u(x,y) = -\sum_{n=1}^\infty\frac{v_n(x)}{\lambda_n} \int\limits_{B_1(0)} v_n(y) f(y) \dd{y} $$
+Since $\laplacian{v_n} + \lambda_nv_n = 0$,
+$$u = \sum a_n(u) v_n(x)$$
+$$\laplacian u = \sum a_n(u) \laplacian{v_n} = -\sum \lambda_n a_n(u) v_n = \sum \lambda_n a_n(f) v_n $$
+i.e.,
+$$a_n(u) = -\frac{a_n(f)}{\lambda_n}$$
+
+And Green function is
+$$G(r,\theta ; \rho, \eta) = \frac{1}{r} \sum_{n=-\infty}^\infty \sum_{k=0}^\infty \frac{J_n(\alpha_{nk}r)J_n(\alpha_{nk}\rho)}{\qty(J'_n(\alpha_{nk}))^2 \alpha_{nk}^2} e^{in(\theta-\eta)}$$
+Then Poisson kernel is
+$$K_p(\rho, \theta-\eta) = \eval{\pdv{G}{n}}_{r=1} =  \sum_{n=-\infty}^\infty \sum_{k=0}^\infty \frac{J_n(\alpha_{nk}\rho)}{J'_n(\alpha_{nk})\alpha_{nk}} e^{in(\theta-\eta)}=\frac{1}{\pi} \qty[\frac{1}{2} + \sum_{n=1}^\infty \rho^n \cos(n(\theta-\eta))]$$
+$$\sum_k \frac{J_n(\alpha_{nk}\rho)}{J'_n(\alpha_{nk}) \alpha_{nk}} = \rho^n$$
+
+\paragraph{Heat equation}
+$$u_t = \laplacian{u}$$
+with initial conditions $u(x,0) = f(x)$. The solution is
+$$u(x) = \int K(x,y,t) f(y) \dd{y}$$
+$$K(r,\theta; \rho, \eta ; t) = \sum_{k=0}^\infty \sum_{n=-\infty}^\infty  e^{-\alpha_{nk}^2 t} \frac{J_n(\alpha_{nk}r)J_n(\alpha_{nk}\rho)}{\qty(J'_n(\alpha_{nk}))^2 } e^{in(\theta-\eta)}$$
+Since, similarly from coefficient comparison
+$$K(x,y,t) = \sum_{n=-\infty}^\infty e^{-\lambda_n t} v_n(x)v_n(y)$$
+i.e.,
+$$\int_0^\infty K(x,y,t) \dd{t} = -G(x,y)$$
+Also, in $\mathbb{R}^n$:
+$$\int_0^\infty K(x,y,t) = \int_0^\infty \frac{1}{\omega_n t^{\frac{n}{2}}} e^{-\frac{(x-y)^2}{nt}} \dd{t} = -\frac{1}{2-n} \frac{1}{\abs{x-y}^{n-2}} = G_{\mathbb{R}^n} (x,y)$$
+\paragraph{Rayleigh quotient} %TODO
+Denote $B(u) = \left\langle Ln,n\right\rangle$
+$$\min_{k\neq 0} \frac{B(u)}{\norm{u}^2} = \lambda_0$$
+
+Thus to proof first eigenvalue is minimal, we need to find some function such that $\frac{B(u)}{\norm{u}^2} <0$.
+
+In case of Sturm-Liuville 
+$$B(u) = \int_a^b p(u')^2 - qu^2$$
+$$Lu = (pu')' - qu$$
+
+Thus, since
+$$u'' + qu + \lambda u = 0$$
+in case of Neumann bound condition we can choose constant function, and then, if $\int_a^b q >0$, $\lambda_0 < 0 $.
+If $q=0$,
+$$\lambda_0 = \frac{\int_a^b (u')^2}{\int_a^b u^2}$$
+\subsection{Complex form of Fourier series}
+Over complex numbers, define
+$$\left\lbrace u,v \right\rbrace = \frac{1}{2\pi} \int_{-\pi}^{\pi} u(x) \bar{v}(x) \dd{x} $$
+Then sequence of functions $e^{inx}$ for $n\in \mathbb{Z}$ is orthonormal:
+$$\frac{1}{2\pi} \int_{-\pi}^{\pi} e^{inx} e^{-imx} \dd{x} = \frac{1}{2\pi} \int_{-\pi}^\pi e^{i(n-m)x} \dd{x} = \delta_{nm}$$
+Thus
+$$f \sim \sum_{-\infty}^{\infty} a_n(f) e^{inx} $$
+where
+$$a_n(f) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd{x}$$
+On the other hand
+$$a_n(f)e^{inx} +a_{-n}e^{-inx}  = A_n \cos(nx) + B_n\sin(nx)$$
+or
+$$ a_n(f) =   \frac{1}{2} \qty[A_n(f) - i B_n(f)]$$
+\paragraph{Theorem}
+If $f'$ has convergent Fourier series, then
+$$f'(x) = \sum_{-\infty}^\infty ina_n(f) e^{inx}$$
+
+From Parseval's identity
+$$\frac{1}{2\pi } \int_{-\infty}^\infty \abs{f(x)}^2 \dd{x} = \sum_{-\infty}^\infty \abs{a_n(f)}^2 < \infty $$
+Thus
+$$ \sum_{-\infty}^\infty \abs{a_n(f')}^2 = \sum_{-\infty}^\infty n^2\abs{a_n(f)}^2 $$
+i.e., for $n\neq 0$.
+$$a_n(f) = \frac{1}{n}a_n(f')$$
+However, $a_0$ diverges, since we take integral of constant on infinite interval. Thus, take a look on $g(x) = f(x) -a_0(f)$, then $a_0(g) = 0$. Then, given some function $g'$, we can find $g$ up to constant factor $a_0(g)$.
+
+If $f$ is real, we get $a_n(f) = \bar{a}_{-n}(f)$.
+
+If $f$ is even, we get $a_n(f) = a_{-n}(f)$, and similarly, if $f$ is odd, $a_n(f) = -a_{-n}(f)$.
+
+\paragraph{Properties of Fourier series}
+Define $f_\alpha(x) = f(x-\alpha)$, then
+$$a_n(f_\alpha) = \frac{1}{2\pi} \int_{-\pi}^\pi f_\alpha(x) e^{-inx} \dd{x}= \frac{1}{2\pi} \int_{-\pi-\alpha}^{\pi-\alpha} f_\alpha(x) e^{-inx} \dd{x} = \frac{1}{2\pi}  e^{-in\alpha}\int_{-\pi}^{\pi}f(y) e^{-iny} \dd{y} =  e^{-in\alpha}a_n(f) $$

@@ -160,10 +160,11 @@ $$R'' + \frac{1}{r} R' - \frac{Rn^2}{r^2} + \lambda R = 0$$
 with $R(1)=0$ and $R(0),R'(0) < \infty$.
 To simplify, define $x=r$, we got Sturm–Liouville:
 $$(xR')' - \frac{n^2}{x}R + \lambda xR = 0$$
+$$\frac{1}{x}\qty[(xR')' - \frac{n^2}{x}R] + \lambda R = 0$$
 with $p(x) = x$, $q(x) = -\frac{n^2}{x}$ and $r(x) = x$.
 
 However, since we don't have bound condition in one of bounds ($x_1=0$), there is degeneracy in problem, due to $p(x_1)=0$. The operator is
 $$Lu = \frac{1}{x} \qty[(xu')'-\frac{n^2}{x}u]$$
 and
 $$\left\langle u,v \right\rangle = \int_0^1 xuv \dd{x}$$
-$$\left\langle Lu,v \right\rangle - \left\langle u,Lv \right\rangle = u(1)v'(1) - v(1) u'(1)$$
+$$\left\langle Lu,v \right\rangle - \left\langle u,Lv \right\rangle = u(1)v'(1) - v(1) u'(1) = 0$$
