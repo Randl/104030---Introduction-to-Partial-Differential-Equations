@@ -10,7 +10,7 @@ $$B(u) = -\left\langle \mathcal{L}u, u \right\rangle_r = -\int_a^b \dd{x} \qty[\
 We know $\mathcal{L}$ has infinite increasing sequence of eigenvalues.
 \paragraph{Theorem}
 $$\lambda_0 = \inf\limits_{\substack{u\in X \\  \norm{u}_r=1}} B(u) = B(\phi_0) = \inf\limits_{\substack{v\in X \\  \norm{v}_r\neq0}} \frac{B(v)}{\norm{v}^2}  = \inf\limits_{\substack{B(w)\in \mathbb{R} \\  \norm{w}_r=1}} B(w)  = B(\phi_0)$$
-where $\norm{\phi_0}=1$ is eigenfunction of $\mathcal{L}$ of $\lambda_0$.
+where $\norm{\phi_0}=1$ is eigenfunction of $\mathcal{L}$ with eigenvalue  $\lambda_0$.
 \subparagraph{(Partial) proof}
 Take a look at
 $$X_N = \text{span} \qty{\phi_0, \phi_1, \dots, \phi_N}$$
@@ -102,7 +102,7 @@ Then $L_1  =q_1= q +\lambda_1$, choose $x_1$, $x_2$ to be subsequent zeros of $u
 
 \subsection{Sturm–Liouville problem in $\mathbb{R}^n$}
 Let $\Omega \in \mathbb{R}^n$ bounded interval and
-$u \in \mathcal{C}^2(\Omega) \cap \mathcal{C}^1(\bar{ u}\Omega)$
+$u \in \mathcal{C}^2(\Omega) \cap \mathcal{C}^1(\bar{ \Omega})$
 Take a look at family of operators
 $$Lu = \sum_{i=1}^n \sum_{j=1}^n a_{ij} \pdv{u}{x_i}{x_j} + \sum_{i=1}^n b_i \pdv{u}{x_i} +cu$$
 where $a_{ij}, b_i, c \in \mathcal{C}(\Omega)$.
@@ -111,7 +111,7 @@ $$Lu = \frac{1}{r} \qty[\sum_{i=1}^n \pdv{x_i}\:\qty(\sum_{j=1}^n a_{ij} \pdv{u}
 we say operator in divergence form. 
 If $n=1$, 
 $$Lu = au'' +bu'+c$$
-which is equivalent to $\frac{1}{r}\qty[(pu')'+qu]$. In higher dimensions it's not always possible.
+which is equivalent to $\frac{1}{r}\qty\bigg[(pu')'+qu]$. In higher dimensions it's not always possible.
 
 
 Operator $L$ is called elliptical if $A = \qty{a_{ij}}$ is positive defined symmetric matrix.

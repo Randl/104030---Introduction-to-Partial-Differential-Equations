@@ -84,7 +84,7 @@ Also, in $\mathbb{R}^n$:
 $$\int_0^\infty K(x,y,t) = \int_0^\infty \frac{1}{\omega_n t^{\frac{n}{2}}} e^{-\frac{(x-y)^2}{nt}} \dd{t} = -\frac{1}{2-n} \frac{1}{\abs{x-y}^{n-2}} = G_{\mathbb{R}^n} (x,y)$$
 \paragraph{Rayleigh quotient} %TODO
 Denote $B(u) = \left\langle Ln,n\right\rangle$
-$$\min_{k\neq 0} \frac{B(u)}{\norm{u}^2} = \lambda_0$$
+$$\min_{u\neq 0} \frac{B(u)}{\norm{u}^2} = \lambda_0$$
 
 Thus to proof first eigenvalue is minimal, we need to find some function such that $\frac{B(u)}{\norm{u}^2} <0$.
 
@@ -99,7 +99,7 @@ If $q=0$,
 $$\lambda_0 = \frac{\int_a^b (u')^2}{\int_a^b u^2}$$
 \subsection{Complex form of Fourier series}
 Over complex numbers, define
-$$\left\lbrace u,v \right\rbrace = \frac{1}{2\pi} \int_{-\pi}^{\pi} u(x) \bar{v}(x) \dd{x} $$
+$$\left\langle u,v \right\rangle = \frac{1}{2\pi} \int_{-\pi}^{\pi} u(x) \bar{v}(x) \dd{x} $$
 Then sequence of functions $e^{inx}$ for $n\in \mathbb{Z}$ is orthonormal:
 $$\frac{1}{2\pi} \int_{-\pi}^{\pi} e^{inx} e^{-imx} \dd{x} = \frac{1}{2\pi} \int_{-\pi}^\pi e^{i(n-m)x} \dd{x} = \delta_{nm}$$
 Thus
@@ -107,7 +107,7 @@ $$f \sim \sum_{-\infty}^{\infty} a_n(f) e^{inx} $$
 where
 $$a_n(f) = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-inx} \dd{x}$$
 On the other hand
-$$a_n(f)e^{inx} +a_{-n}e^{-inx}  = A_n \cos(nx) + B_n\sin(nx)$$
+$$a_n(f)e^{inx} +a_{-n}(f)e^{-inx}  = A_n \cos(nx) + B_n\sin(nx)$$
 or
 $$ a_n(f) =   \frac{1}{2} \qty[A_n(f) - i B_n(f)]$$
 \paragraph{Theorem}

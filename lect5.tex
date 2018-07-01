@@ -150,9 +150,9 @@ $$\oiint\limits_{\partial \Omega}  \pdv{u}{n} \dd{s} = 0$$
 
 \paragraph{Conclusion}
 The equation $\laplacian{u} = f $ in $\Omega$ for $u$ fulfilling $\pdv{u}{n}  = g$ in each point of  $\partial \Omega$ there is no solution if
-$$\iiint\limits_{\Omega} \neq \oiint\limits_{\partial \Omega} g \dd{s}$$
+$$\iiint\limits_{\Omega} f \dd{V}\neq \oiint\limits_{\partial \Omega} g \dd{s}$$
 The necessary condition for solution of Neumann problem 
-$$\iiint\limits_{\Omega} = \oiint\limits_{\partial \Omega} g \dd{s}$$
+$$\iiint\limits_{\Omega} f \dd{V}= \oiint\limits_{\partial \Omega} g \dd{s}$$
 
 For Dirichlet problem, there is no such constraint.
 
@@ -180,7 +180,7 @@ meaning
 $$H(\rho) = \int\limits_{B_\rho(0)}  u(\rho\alpha)  \dd{s_\alpha} = \text{const}$$
 Denote volume of unit ball as $\omega_n$, then $\abs{B_n} = \omega_n R^n$ and $\abs{\partial B_n} = \omega_{n-1}R^{n-1}$ 
 $$H(0) = \omega_n \cdot u(0)$$
-And since $H(1) = H(0)$:
+And since $H(R) = H(0)$:
 $$u(0) = \frac{1}{n\omega_n R^{n-1}} \int\limits_{\partial B_R(0)} \dd{s}$$
 as required.
 
@@ -200,18 +200,18 @@ $$u(0) = \frac{1}{\abs{B_r(0)}} \iint\limits_{B_r(0)} u(y) \dd[n]{y}$$
 	let $u$ subharmonic, and $m = u(x) = \max\limits_{\Omega} u$.
 	The set $W= \left\{ y: u(y)=m \right\} $ is closed relatively to $\Omega$.
 	Let $z\in W$, $B_R(z) \in \Omega$.
-	$$m = u(z) \leq \frac{1}{\abs{B_R(z)}} \int\limits_{B_r(z)} \int u(y) \dd[n]{y} = m$$
+	$$m = u(z) \leq \frac{1}{\abs{B_R(z)}} \iint\limits_{B_r(z)}  u(y) \dd[n]{y} = m$$
 	
 	Thus for all $z\in W$
-	$$u(z) = \frac{1}{\abs{B_R(z)}} \int\limits_{B_r(z)} \int u(y) \dd[n]{y}$$
+	$$u(z) = \frac{1}{\abs{B_R(z)}} \iint\limits_{B_r(z)} u(y) \dd[n]{y}$$
 	That means
-	$$\int\limits_{B_r(z)} u(x) - m \dd[n]{x}= 0$$
-	Thus $u(x) = m$ for all $x\in B_R(z)$, which turns $W$ is open set. Thus $W$ is both open and closed, i.e. $W=\Omega$.
+	$$\int\limits_{B_r(z)} \qty(u(x) - m) \dd[n]{x}= 0$$
+	Thus $u(x) = m$ for all $x\in B_R(z)$, which turns $W$ into open set. Thus $W$ is both open and closed, i.e. $W=\Omega$.
 	
 	\paragraph{Conclusion}
 	Poisson equation $\laplacian{u} = f$ in $\Omega$ with bound condition $u_{\partial \Omega} = y$ has not more than one solution.
 	\subparagraph{Proof}
-	Suppose there are two solutions, $u_1=u_2$, define $v=u_1-u_2$ is harmonic function with ound condition  $v_{\partial \Omega} = 0$. The function $v$ is harmonic. If $v\neq 0$, it has either maximum or minimum, in contradiction with strong maximum principle.
+	Suppose there are two solutions, $u_1=u_2$, define $v=u_1-u_2$ is harmonic function with bound condition  $v_{\partial \Omega} = 0$. The function $v$ is harmonic. If $v\neq 0$, it has either maximum or minimum, in contradiction with strong maximum principle.
 	
 	\paragraph{Weak maximum principle}
 	For compact connected $\Omega$ and $u = \mathcal{C}^2(\Omega) \cap \mathcal{C}(\partial \Omega)$ 

@@ -60,7 +60,7 @@ In 1D wave equation we required $f\in \mathcal{C}^2$ and $g\in \mathcal{C}^1$, h
 For example, assuming $t=0$
 $$\lim_{r\to0} w(r,t) = f(ct) + ctf'(ct) = w(0,t)$$
 
-\paragraph{Sperical average}
+\paragraph{Spherical average}
 For $h(x)$, $x\in \mathbb{R}^n$, spherical average of $h$ is
 $$M_h(x,r) = \frac{1}{\abs{\partial B_r(x)}} \int\limits_{\abs{\partial B_r(x)}} h(y) \dd{s_y}$$
 Note that
@@ -74,7 +74,7 @@ Now $M_h(x,r)$ is even in $r$.
 \end{align*}
 Since radial Laplacian is
 $$\laplacian = \pdv[2]{r} + \frac{n-1}{r} \pdv{r} = r^{1-n} \pdv{r} \qty(r^{n-1}\pdv{r})$$
-$$\pdv{r} \qty[r^{n-1} \pdv{r} M_h(x,r)] = \pdv{r} \laplacian_x \int_0^r \dd{\rho} \rho^{n-1} M_h(x,\rho) = \laplacian_x r^{n-1} M_h(x,r) = = r^{n-1} \laplacian_x M_h(x,r) = r^{n-1} M_{\laplacian h} (x,r) $$
+$$\pdv{r} \qty[r^{n-1} \pdv{r} M_h(x,r)] = \pdv{r} \laplacian_x \int_0^r \dd{\rho} \rho^{n-1} M_h(x,\rho) = \laplacian_x r^{n-1} M_h(x,r) = r^{n-1} \laplacian_x M_h(x,r) = r^{n-1} M_{\laplacian h} (x,r) $$
 Thus
 $$r^{1-n} \pdv{r} \qty[r^{n-1} \pdv{r} M_h(x,r)] = \pdv[2]{r} M_h(x,r) + \frac{n-1}{r}M_{h}(x,r) = \laplacian_x M_h(x,r) = M_{\laplacian{h} } (x,r)$$
 
@@ -83,10 +83,10 @@ $$M_u(x,r,t) = \frac{1}{n\omega_n} \int\limits_{\abs{\xi} = 1} u(x+r\xi, t) \dd{
 $$\pdv[2]{u}{t} = c^2 \laplacian_x{u}$$
 $$\pdv[2]{t} M_u(x,r,t) = c^2 M_{\laplacian{u}}(x,r,t) = c^2\qty[\pdv[2]{M_u}{r} + \frac{n-2}{r}\pdv{r}M_u]$$
 
-\subparagraph{COnclusion} Spherical average of wave equation in $x$ is acquired as solution of wave equation for $M_u(x,r,t)$ as a function of $r$ and $t$.
+\paragraph{Conclusion} Spherical average of wave equation in $x$ is acquired as solution of wave equation for $M_u(x,r,t)$ as a function of $r$ and $t$.
 
 For $n=3$:
-$$M_u(x,r,t) = \frac{1}{2r}\qty[(ct+r) M_f(x,ct+r) - (ct-r)M_f(x,ct-r)] + \frac{1}{c}\frac{1}{2r} \int+{ct-r}^{ct+r} \rho M_g(x,\rho) \dd{\rho}$$
+$$M_u(x,r,t) = \frac{1}{2r}\qty\bigg[(ct+r) M_f(x,ct+r) - (ct-r)M_f(x,ct-r)] + \frac{1}{c}\frac{1}{2r} \int_{ct-r}^{ct+r} \rho M_g(x,\rho) \dd{\rho}$$
 Then
 \begin{align*}
 u(x,t) = \lim_{r\to 0} M_u(x,r,t) = \eval{\pdv{\rho} \rho M_f(x,\rho)}_{\rho=ct} + \eval{\frac{1}{c} \rho M_g(x,\rho)}_{\rho=ct}= M_f(x,ct) + \eval{ct \pdv{\rho} M_f(x,\rho)}_{\rho=ct} + tM_g(x,ct) =\\=
@@ -112,18 +112,18 @@ and
 u(x_1,x_2,t) = \pdv{t} \qty(\frac{2}{4\pi c^2 t } \iint\limits_{r<ct} f(y_1,y_2) \abs{ \frac{ct}{y_3}}\dd{y_1}\dd{y_2}) + \frac{2}{4\pi c^2 t } \iint\limits_{r<ct} g(y_1,y_2) \abs{ \frac{ct}{y_3}}\dd{y_1}\dd{y_2} =\\= \pdv{t} \qty[\frac{1}{2\pi c} \iint\limits_{r<ct} \frac{f(y_1,y_2)}{\sqrt{(ct)^2-r^2}} \dd{y_1}\dd{y_2}] + \frac{1}{2\pi c} \iint\limits_{r<ct} \frac{g(y_1,y_2)}{\sqrt{(ct)^2-r^2}} \dd{y_1}\dd{y_2}
 \end{align*}
 \section{Algebric theory of PDEs}
-Take a look at heat equation
+\paragraph{Heat equation}
 $$\pdv{u}{t} = \laplacian_x u$$
-Define $L(u) = \laplacian u$. $L$ is linear operator on functions in $\mathcal{C}^2$. However since for $f\in \mathcal{C}^k$, $L(f) \in \mathcal{C}^{k-2}$, we can say that $L: \mathcal{C}^\infty \to \mathcal{C}^\infty$ and then
+Define $L(u) = \laplacian u$. $L$ is linear operator on functions in $\mathcal{C}^2$. However since for $f\in \mathcal{C}^k$, $L(f) \in \mathcal{C}^{k-2}$, we can say that $L: \mathcal{C}^\infty \to \mathcal{C}^\infty$ and then we can rewrite heat equation as
 $$\pdv{u}{t}  =L(u)$$
 
-In case of wave equation
+\paragraph{Wave equation}
 Define $v=\pdv{u}{t}$ and then
 $$\dv{t} \begin{pmatrix}u\\v\end{pmatrix} = L \begin{pmatrix}u\\v\end{pmatrix}$$
 Then wave equation is
 $$ L \begin{pmatrix}u\\v\end{pmatrix}=  \begin{pmatrix}v\\\laplacian{u}\end{pmatrix} $$
 
-In case of Poisson equation
+\paragraph{Poisson equation}
 $$Lu = f$$
 i.e.
 $u=L^{-1}f$.
@@ -133,7 +133,7 @@ To solve such equations we want to diagonalize $L$, for that we'd like $L$ to be
 $$\pdv{u}{t} = s(x) u_{xx} + b(x) u_x c(x) u$$
 Given interval $[a,b]$ with initial conditions we want to rewrite the equation as
 $$\pdv{u}{t} = (pu_x)_x + qu$$
-for some $p(x)$ $q(x)$. It's always possible to find  $r(x)$ such that multiplication of first equation by $r(x)$ will give the second one for $v=ru$. 
+for some $p(x)$ and $q(x)$. It's always possible to find  $r(x)$ such that multiplication of first equation by $r(x)$ will give the second one for $v=ru$. 
 
 Define operator
 $$L(v) = -\frac{1}{r(x)}[\qty(p(x) v_x)_x + qv]$$
@@ -159,5 +159,5 @@ This is innter product, since it's linear, symmetric and positive.
 $$\left\langle u,Lv\right\rangle =\left\langle Lu,v\right\rangle $$
 
 Let's check if $L$ we defined is symmetric:
-$$uLv-vLu = \frac{1}{r}\qty\Big[u\qty[(pv_x)_x + qv ]- v\qty[(pu_x)_x + qu]] =\frac{1}{r}\qty[ pu_xv - pv_x u]_x$$
+$$uLv-vLu = \frac{1}{r}\qty\Big[u\qty\big[(pv_x)_x + qv ]- v\qty[(pu_x)_x + qu]] =\frac{1}{r}\qty\big[ pu_xv - pv_x u]_x$$
 $$\left\langle u,Lv\right\rangle - \left\langle Lu,v\right\rangle = \int_a^b \qty[ pu_xv - pv_x u]_x \dd{x} = \eval[pu_xv - pv_x u|_{a}^{b} = 0$$

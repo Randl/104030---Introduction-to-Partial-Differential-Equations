@@ -8,7 +8,7 @@ In other cases, if for example initial curve is tangent to characteristic curve 
 
 \paragraph{Example}
 $$yu_x - xu_y = 0$$
-with initial curve $(s,0,H(s))$ and $0<\alpha\leq s\leq \beta$
+with initial curve $(s,0,h(s))$ and $0<\alpha\leq s\leq \beta$
 \subparagraph{Solution}
 $$\begin{cases}
 \dot{x} = y\\
@@ -37,7 +37,7 @@ Note that characteristic curves are rings.
 
 \paragraph{Example}
 $$yu_x - xu_y = u$$
-with initial curve $(s,0,H(s))$ and $0<\alpha\leq s\leq \beta$
+with initial curve $(s,0,h(s))$ and $0<\alpha\leq s\leq \beta$
 \subparagraph{Solution}
 $$\begin{cases}
 \dot{x} = y\\
@@ -61,7 +61,7 @@ z = h(s)e^t
 \end{cases}$$
 Now we want to find $s$, $t$ as a function of $x$,$y$:
 $$x^2+y^2 = s^2 \Rightarrow s = \sqrt{x^2+y^2}$$
-Now
+And
 $$\tan t  = -\frac{y}{x} \Rightarrow t = \arctan \left(-\frac{y}{x}\right)$$
 $$u(x,y)  = h\left(\sqrt{x^2+y^2}\right)e^{ \arctan \left(-\frac{y}{x}\right)}$$
 
@@ -70,12 +70,12 @@ $$u(x,y)  = h\left(\sqrt{x^2+y^2}\right)e^{ \arctan \left(-\frac{y}{x}\right)}$$
 $$u_y + uu_x = 0$$
 (which is partial case of equation of form $$\pdv{u}{y} + \pdv{ y} F(u) = 0$$ for $F=\frac{1}{2}u^2$)
 
-Note that $$\frac{u_y}{u_x} = -u \Rightarrow \dv{x}{y} = - u \Rightarrow u = \dv{x}{y}$$
+Note that $$\frac{u_y}{u_x} = -u \Rightarrow \dv{x}{y} = - u \Rightarrow u = -\dv{x}{y}$$
 Here $y$ denotes time.
 
 To solve it, we take integral:
 $$\int_a^b \left[ \pdv{ u(x,y)}{y} + \pdv {x} F(u(x,y))\right] \dd{x} = 0$$
-$$\pdv{y} \underbrace{\int_a^b u \dd{x}}_{Q(y)}  + F\Big(u(b,y)\Big) - F\Big(u(a,y)\Big)$$
+$$\pdv{y} \underbrace{\int_a^b u \dd{x}}_{Q(y)}  + F\Big(u(b,y)\Big) - F\Big(u(a,y)\Big) = 0$$
 $$\dv{Q}{y} = F\Big(u(a,y)\Big) - F\Big(u(b,y)\Big)$$
 
 Now as for any quasilinear PDE:
@@ -86,7 +86,7 @@ x= c_2 t + c_3\\y = t + c_1\\\dot{z}= c_2
 \end{cases} $$
 For initial conditions $\Big(s,0,h(s)\Big)$:
 $$ \begin{cases}
-x= h(s) t + s\\y = t \\\dot{z}= h(s)
+x= h(s) t + s\\y = t \\z= h(s)
 \end{cases} $$
 Now 
 $$s=x-yu \Rightarrow u = h(x-yu)$$
@@ -188,7 +188,7 @@ Weak solution is unique if characteristic curves meet shock wave from direction 
 \subsection{Fully non-linear equations}
 \paragraph{Hamilton-Jacoby equation}
 $$u_x^2+u_y^2=1$$
-can we generalize the method of solution of quasilinear equations to fully non-linear equations? Yes. 
+Can we generalize the method of solution of quasilinear equations to fully non-linear equations? The answer is yes. 
 We have some $$F(x,y,u,u_x,u_y) = 0$$. In our case $$F(x,y,u,p,q) = p^2+q^2-1$$
 
 Characteristic equations:
@@ -229,7 +229,7 @@ $$u(x,y) = \min (x-\bar{x}(s))^2 + (y-\bar{y}(s))^2 + \phi(s)$$
 We can trivially extend quasilinear equations to more dimensions. In this case we have initial surface instead of curve.
 \section{Wave equation}
 $$u_{tt} -c^2u_{xx} = 0$$
-More generally the equation is
+More generally, any second order linear equation can be written as
 $$a(x,y) u_{xx} + 2b(x,y) u_{xy} + c(x,y) u_{yy} + du_x + eu_y + fu = g$$
 
 \paragraph{Definition}
@@ -247,8 +247,8 @@ $$u_{xy} =\pdv{x}\pdv{u}{y} = w_{\xi \xi} \xi_x\xi_y + w_{\xi\eta}\xi_y\eta_x + 
 Now we can get equation of form
 $$A(\xi,\eta) w_{\xi\xi} + 2B(\xi,\eta) w_{\xi\eta} + C(\xi,\eta) w_{\eta \xi} + D(\xi,\eta) w_{\eta\eta}+ F(\xi,\eta) = 0$$
 If we can find variable substitution such that
-$$A=C=D=F=0$$
-Then
+$$A=C=0$$
+Then, in case of $d=e=f=0$,
 $$Bw_{\xi\eta} = 0$$
 i.e.,
 $$w(\xi,\eta) = f(\xi)+g(\eta)$$

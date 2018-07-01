@@ -5,7 +5,7 @@ $$\begin{cases}
 w(y) = g(y) & x \in \partial \Omega
 \end{cases}$$
 has solution, then $u(x)=\sup\limits_{v\in S g} v(x)$ is solution.
-\subparagraph{Solution}
+\subparagraph{Proof}
 $u(x)$ is harmonic and $g \geq u$ on $\partial \Omega$, thus $w\geq u$ on $\Omega$.
 
 On the other hand, $w$ is harmonic and in particular subharmonic, thus $w\in S_g$ and $w\leq u$. We conclude $w=u$.
@@ -16,7 +16,7 @@ $$\partial \Omega = \partial B_1 \cup \left\{ 0 \right\}$$
 
 For bound condition $u(\partial B_1) = 1$ and $u(0)=0$ there is no solution.
 \paragraph{Definition}
-$y\in \partial \Omega$ is called regular if exists generalized subharmonic function $w$ on $\bar{\Omega}$ such that $w(y)=0$ and $w(\bar{\Omega} \setminus \left\{0\right\}) < 0$.
+$y\in \partial \Omega$ is called regular if exists generalized subharmonic function $w$ on $\bar{\Omega}$ such that $w(y)=0$ and $w(\bar{\Omega} \setminus \left\{y\right\}) < 0$.
 \paragraph{Exercise}
 If there exist a ball $B_\epsilon(z)$ in $\Omega^C$ tangent to $\partial \Omega$ in $y$, then $y$ is regular. 
 \paragraph{Theorem} If $\Omega$ is bounded interval, $\partial \Omega $ is regular in every point, $g\in \mathcal{C}(\partial \Omega)$  exists $u \in \mathcal{C}(\bar{\Omega})$ such that $u=g$ on  $\partial \Omega $ and $\grad{u}  = 0$.
@@ -102,7 +102,7 @@ $$0 = \int\limits_{ \Omega} \laplacian{u} = \oint\limits_{ \partial\Omega} \pdv{
 $$\pdv{u}{t} = \laplacian_x{u}$$
 for $x\in \mathbb{R}^n$ and $t\in \mathbb{R}^+$.
 
-Note the equation is unchanged under transformation 
+Note that the equation is unchanged under transformation 
 $$\begin{cases}
 x \to ax= x'\\
 t \to a^2t = t'
@@ -116,7 +116,7 @@ $$Q(t) = \int\limits_{\mathbb{R}^n} u(x,t) \dd{x} = \int\limits_{\mathbb{R}^n} w
 So, to keep $Q$ constant we want
 $$u(x,t) = t^{-\frac{n}{2}} w\qty(\frac{\abs{x}}{\sqrt{t}}) $$
 Substituting into equation:
-$$(\xi^{n-1}w')' + \frac{1}{2} (\xi^n w)' = 0$$
+$$\qty(\xi^{n-1}w')' + \frac{1}{2} \qty(\xi^n w)' = 0$$
 $$\xi^{n-1}w' + \frac{1}{2} \xi^n w = c$$
 Substituting $\xi=0$ we get $c=0$:
 $$\xi^{n-1}w' + \frac{1}{2} \xi^n w = 0$$
@@ -159,6 +159,6 @@ $$\pdv{u}{t} = \iint\limits_{\mathbb{R}^n} \pdv{K}{t} f(x) \dd{x}$$
 $$\laplacian_x{u} = \iint\limits_{\mathbb{R}^n} \laplacian_x{K} f(x) \dd{x}$$
 
 To be allowed to switch between integral and derivative we need to show that
-$$u(x,t+h) - u(x,t) = \int\limits_{\mathbb{R}^n} \qty[K(x,y,t+h) -K(x,y,h) ] f(x) \dd{x}$$
+$$u(x,t+h) - u(x,t) = \int\limits_{\mathbb{R}^n} \qty\bigg[K(x,y,t+h) -K(x,y,h) ] f(x) \dd{x}$$
 is bounded by integrable function. Since $K$ is decaying exponent, it is true.
 

@@ -48,8 +48,8 @@ $\qty(\frac{u}{v})'$ or
 $\qty(\frac{v}{u})'$ is $0$, i.e., $u$ and $v$ are linearly dependent.
 \paragraph{Example}
 $$Lu = u''$$
-with periodic bound conditions on $[-\pi, \pi]$. Solutions are $\sin(\theta)$ $\cos(\theta)$. 
-\paragraph{}
+with periodic bound conditions on $[-\pi, \pi]$. Solutions are $\sin(\theta)$ and $\cos(\theta)$. 
+\paragraph{Projection}
 Suppose $u_i$ are normalized eigenfunctions of $L$, and
 $$V_n = \text{span}\qty(u_1, \dots, u_n)$$
 If $f\in X$, what is closest function to $f$ in $V_n$:
@@ -60,15 +60,18 @@ We call $w$ a projection of $f$ on $V_N$.
 $$w = \sum_i^N \langle f, u_i\rangle u_i \in V_N$$
 \subparagraph{Proof}
 $$w\in V_N \Rightarrow w = \sum_1^N \alpha_i u_i$$
+$\alpha_1, \dots, \alpha_N$ fulfill
 $$\min\limits_{\alpha_1, \dots, \alpha_N} \norm{f-\sum_1^N \alpha_i u_i}^2$$
-$$\norm{f-\sum_1^N \alpha_i u_i}^2 = \left\langle  f-\sum_1^N \alpha_i u_i,f-\sum_1^N \alpha_i u_i\right\rangle = \left\langle  f,f\right\rangle - 2 \sum \alpha_i \left\langle  f,u_i\right\rangle + \sum_{i,j} \alpha_i \alpha_j \left\langle  u_i,u_j\right\rangle = \norm{f}^2 -2\alpha_i  \left\langle  f,u_i\right\rangle + \sum \alpha_i^2 = H(\alpha_i, \dots, \alpha_N)$$
+\begin{align*}
+\norm{f-\sum_1^N \alpha_i u_i}^2 = \left\langle  f-\sum_1^N \alpha_i u_i,f-\sum_1^N \alpha_i u_i\right\rangle = \left\langle  f,f\right\rangle - 2 \sum \alpha_i \left\langle  f,u_i\right\rangle + \sum_{i,j} \alpha_i \alpha_j \left\langle  u_i,u_j\right\rangle =\\= \norm{f}^2 -2\alpha_i  \left\langle  f,u_i\right\rangle + \sum \alpha_i^2 = H(\alpha_i, \dots, \alpha_N)
+\end{align*}
+$$$$
 $$\pdv{H}{\alpha_i} = 2[\alpha_i - \left\langle  f,u_i\right\rangle ] = 0$$
 Thus
 $$\alpha_i = \left\langle  f,u_i\right\rangle$$
-\paragraph{Theorem}
-Let $\qty{u_i}$ is infinite sequence of orthonormal functions in $X$, for all $f\in X$
+\paragraph{Bessel inequality}
+Let $\qty{u_i}$ -- infinite sequence of orthonormal functions in $X$, for all $f\in X$
 $$\sum_i \abs{\left\langle  f,u_i\right\rangle}^2 \leq \norm{f}^2$$
-this is Bessel equation.
 
 $$0 \leq \norm{f- \sum_1^N \left\langle  f,u_i\right\rangle u_i }^2 = \norm{f}^2 - \sum_{i=1}^N  \abs{\left\langle  f,u_i\right\rangle}^2$$
 If
@@ -82,10 +85,9 @@ $$\sum_i^\infty \langle f, u_i\rangle u_i(x) \neq f(x)$$
 but rather norm convergence:
 $$\lim_{N \to \infty} \int_a^b \abs{f(x) - \sum_i^\infty \langle f, u_i\rangle u_i(x)}^2 r(x) \dd{x}$$
 
-\paragraph{Definition}
+\paragraph{Parseval's identity}
 Orthonormal sequence is called total if for all $f\in X$ 
 $$\sum_{i=1}^\infty \abs{\left\langle  f,u_i\right\rangle}^2 = \norm{f}^2$$
-(Parseval's identity).
 \paragraph{Theorem}
 \begin{enumerate}
 	\item Sequence of eigenfunctions of  Sturm–Liouville is total sequence.

@@ -5,7 +5,7 @@ Suppose string is fixed in one of its ends, at $x=0$: $u(0,t) = 0$. This is call
 \subparagraph{Property of wave equation}
 If $u(x,t)$ is solution, then $u(-x,t)$ is also solution:
 $$u(x,t) = F(x+ct) + G(x-ct)$$
-$$u(-x,t) = F(-x+ct)+G(-x-xt) = \bar{F}(x+ct) + \bar{G}(x-ct)$$
+$$u(-x,t) = F(-x+ct)+G(-x-ct) = \bar{F}(x+ct) + \bar{G}(x-ct)$$
 Where $\bar{F}(s) = G(-s)$ and $\bar{G}(s) = F(-s)$.
 
 Lets extend $f$ and $g$ on the whole plane in odd way:
@@ -26,14 +26,14 @@ $$u(x,t) = \begin{cases}
 \paragraph{Neumann boundary condition}
 In this case, instead of giving boundary condition on $u$, we give boundary condition of $u_x$: $u_x(0,t) = 0$. Physical meaning is that there is no force in this point. In this case we will extend function in even way (derivative of even function in 0 is 0). Then we get$$u(x,t) = \begin{cases}
 \frac{f(x+ct) + f(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct} g(s) \dd{s}& x>ct\\
-\frac{f(x+ct) + f(ct-x)}{2} + \frac{1}{c} \int_{0}^{ct-x} g(s) \dd{s} + \frac{1}{2c} \int_{ct-x}^{x+ct} g(s) \dd{s}& x<ct\\
+\frac{f(x+ct) + f(ct-x)}{2} + \frac{1}{2c} \int_{0}^{ct-x} g(s) \dd{s} + \frac{1}{2c} \int_{ct-x}^{x+ct} g(s) \dd{s}& x<ct\\
 \end{cases}$$ 
 \paragraph{Uniquness}
 Suppose we have two solutions, by subtracting them, we get
 $$\begin{cases}
 u_{tt} -c^2u_{xx} = 0\\u(x,0) = u_x(x,0) = 0\\ u(0,t) = 0
 \end{cases}$$
-We acquire $u(x,t)=0$. Since $u(x,t)$ is of form $F(x+ct)+G(x-ct)$, we get that twobsolutions are identical.
+We acquire $u(x,t)=0$. Since $u(x,t)$ is of form $F(x+ct)+G(x-ct)$, we get that two solutions are identical.
 \paragraph{Wave equation with finite string}
 Suppose we have string from $a$ to $b$:
 $$\begin{cases}

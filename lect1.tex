@@ -26,13 +26,13 @@ For homogeneous linear PDE solution always exist. In addition, if $u_1$, $u_2$, 
 
 \paragraph{Autonomous PDE } If $F$ is independent on $x_i$, then if $u(x_1, \dots, x_i, \dots, x_m)$ is solution then $u(x_1, \dots, x_i+\lambda, \dots x_m)$ is solution too. 
 
-In particular if $u$ is independent on all $x_i$, then $u(x_1+\lambda_1, \dots, x_i+\lambda_i, \dots, x_m+\lambda_m)$.
+In particular if $F$ is independent on all $x_i$, then $u(x_1+\lambda_1, \dots, x_i+\lambda_i, \dots, x_m+\lambda_m)$ is a solution.
 
 \subsection{Wave equation}
 $$u_{tt} - c^2 u_{xx} = 0$$
 Solution describes movement of wave.
 
-Lets start ODE describing harmonic oscillator, would be
+To get physical intuition, lets start ODE describing harmonic oscillator, which is
 $$m \dv[2]{x}{t} = k(x - x_0)$$
 
 Now suppose that we have $N$ such masses and position of mass is $\bar{x}_i = x_i+u(x_i, t)$, where $u$ is displacement of mass and $x_i - x_{i-1} = \Delta$. Then the position of mass is described as
@@ -44,26 +44,26 @@ $$\dv[2]{t}u(x,t) = c^2\dv[2]{x}u(x,t)$$
 Where
 $$c^2 = \lim_{\Delta \to 0} \frac{\Delta^2 k_\Delta}{m_\Delta} $$
 \paragraph{Possible solutions}
-For each function $f$ in $\mathcal{C}^2$, $u=f(x-ct)$ is a solution of wave equation:
+For each function $f \in \mathcal{C}^2$, $u=f(x-ct)$ is a solution of wave equation:
 $$\begin{cases}
 u_{xx} = f''(x-ct)\\
 u_{tt} = c^2 f''(x-ct)
 \end{cases}$$
 
-This solution is moving wave, because it moves along $x$ axis with constant velocity $c$. Since $c$ can be negative too, we have solution
+This solution is moving wave, because it moves along $x$ axis with constant velocity $c$. Since $c$ can be negative too, we have a general solution
 $$u(x,t) = f(x+ct) + g(x-ct)$$
 \subsection{Heat equation}
 $$\pdv{u}{t} = k \pdv[2]{u}{x} $$
-Here, $u$ means amount of heat in point $x$ at time $t$.
+Here, $u$ denotes amount of heat in point $x$ at time $t$.
 
 Amount of heat in interval $[a,b]$ is
 $$Q(t) = \int_a^b u(x,t) \dd{x}$$
 And heat flux in point $x$ at time $t$ is $k\pdv{u}{x}$
 
 Then flux out of interval is
-$$\dv{Q}{t} = k\pdv{u}{x}(b,t) - k\pdv{u}{x}(a,t)$$
+$$\dv{Q}{t} = k\pdv{u}{x} \qty(b,t) - k\pdv{u}{x} \qty(a,t)$$
 Thus
-$$\int_a^b \pdv{t}u(x,t) \dd{x}  = k\pdv{u}{x}(b,t) - k\pdv{u}{x}(a,t)$$
+$$\int_a^b \pdv{t}u(x,t) \dd{x}  = k\pdv{u}{x}\qty(b,t) - k\pdv{u}{x}\qty(a,t)$$
 In limit $b\to a$ we get
 $$\pdv{u}{t} = k \pdv[2]{u}{x} $$
 
@@ -89,7 +89,7 @@ $$\laplacian{u}  = f(x_1,x_2)$$
 $$\pdv{u}{t} + c\pdv{u}{x} = 0$$
 We can easily guess solution similarly to wave equation: $u(x,t) = f(x-ct)$ for some differentiable $f$. 
 
-Suppose we have initial conditions $u(x,0)= u_0(x)$. Is it determines uniquely a solution of equation? Obviously, $u(x,t) = u_0(x-ct)$ is a solution.
+Suppose we have initial conditions $u(x,0)= u_0(x)$. Does it determines uniquely a solution of equation? Obviously, $u(x,t) = u_0(x-ct)$ is a solution.
 
 Lets show it's unique. Take a look at parametrization $x(t) = s_1 + ct$.
 $$\dv{t} u(x(t),t) = c\pdv{u}{x}(x(t),t) + \pdv{u}{t}(x(t),t) = 0$$ 
@@ -97,7 +97,7 @@ Thus $u$ is constant on every line of form $x(t)=s+ct$. Such lines, along which 
 
 \paragraph{} Is it possible to find a solution if we are given initial conditions for some curve $x(t)$ for $t \in [a,b]$. So we want to find a solution such that the surface of solution comprises a given curve in 3D.
 
-The solution exists if the curve of initial conditions doesn't merges with characteristic line, we have a unique solution. If it does, either there is no solution, or there are infinite number of solution.
+If the curve of initial conditions doesn't merges with characteristic line, we have a unique solution. If it does, either there is no solution, or there are infinite number of solution.
 
 \subsection{Quasilinear first-order equations}
 $$a(x,y,u)u_x + b(x,y,u)u_y = c(x,y,u)$$

@@ -124,7 +124,7 @@ Consider non-homogeneous equation
 $$u_{tt} - c^2 u_{xx} = \varphi(x,t)$$
 
 Remember Green's theorem, for differentiable $P$ and $Q$ defined in $\Omega$:
-$$\iint\limits_\Omega \pdv{Q}{x} - \pdv{Q}{t} \dd{x} \dd{t} = \oint\limits_{\partial \Omega} P(x,t) \dd{x} + Q(x,t) \dd{t}$$
+$$\iint\limits_\Omega \pdv{Q}{x} - \pdv{P}{t} \dd{x} \dd{t} = \oint\limits_{\partial \Omega} P(x,t) \dd{x} + Q(x,t) \dd{t}$$
 
 Lets define $Q=c^2u_x$ and $P=u_t$, and choose $\Omega(x_0, t_0)$ to be characteristic triangle.
 
@@ -153,13 +153,13 @@ $$H(x,t,\tau) = \int_{x-c(t-\tau)}^{x+c(t-\tau)} \varphi(\xi, \tau) \dd{\xi}$$
 and then
 $$v(x,t) = \frac{1}{2c} \int_0^t H(x,t,\tau) \dd{\tau}$$
 $$\pdv{v}{t} = \frac{1}{2c} \underbrace{H(x,t,t)}_{0} +\frac{1}{2c} \int_0^t \pdv{H}{t}(x,t,\tau) \dd{\tau}$$
-$$\pdv{H}{t} =c[\varphi(x+c(t-\tau), \tau) + \varphi(x-c(t-\tau), \tau) ]$$
-$$\pdv[2]{H}{t} =c^2[\varphi_x(x+c(t-\tau), \tau) - \varphi_x(x-c(t-\tau), \tau) ]$$
-$$\pdv[2]{v}{t} =\frac{1}{2c} \int_0^t \pdv[2]{H}{t}(x,t,\tau) \dd{\tau} =  \varphi(x,t) + \frac{c}{2} \int_0^t \varphi_x(x+c(t-\tau), \tau) - \varphi_x(x-c(t-\tau), \tau)  \dd{\tau} $$
+$$\pdv{H}{t} =c\qty\Big[\varphi\qty\big(x+c(t-\tau), \tau) + \varphi\qty\big(x-c(t-\tau), \tau) ]$$
+$$\pdv[2]{H}{t} =c^2\qty\Big[\varphi_x\qty\big(x+c(t-\tau), \tau) - \varphi_x\qty\big(x-c(t-\tau), \tau) ]$$
+$$\pdv[2]{v}{t} =\frac{1}{2c} \int_0^t \pdv[2]{H}{t}(x,t,\tau) \dd{\tau} =  \varphi(x,t) + \frac{c}{2} \int_0^t \varphi_x\qty\big(x+c(t-\tau), \tau) - \varphi_x\qty\big(x-c(t-\tau), \tau)  \dd{\tau} $$
 $$\pdv{v}{x} = \frac{1}{2c} \int_0^t \pdv{H}{x} \dd{\tau}$$
-$$\pdv{H}{x} = \varphi(x+c(t-\tau),\tau) - \varphi(x-c(t-\tau),\tau)$$
-$$\pdv[2]{H}{x} = \varphi_x(x+c(t-\tau),\tau) - \varphi_x(x-c(t-\tau),\tau)$$
-$$\pdv[2]{v}{x} = \frac{1}{2c} \int_0^t \varphi_x(x+c(t-\tau),\tau) - \varphi_x(x-c(t-\tau),\tau) \dd{\tau}$$
+$$\pdv{H}{x} = \varphi\qty\big(x+c(t-\tau),\tau) - \varphi\qty\big(x-c(t-\tau),\tau)$$
+$$\pdv[2]{H}{x} = \varphi_x\qty\big(x+c(t-\tau),\tau) - \varphi_x\qty\big(x-c(t-\tau),\tau)$$
+$$\pdv[2]{v}{x} = \frac{1}{2c} \int_0^t \varphi_x\qty\big(x+c(t-\tau),\tau) - \varphi_x\qty\big(x-c(t-\tau),\tau) \dd{\tau}$$
 Thus we got
 $$\pdv[2]{v}{t} - c^2\pdv[2]{v}{x} = \varphi(x,t)$$
 
