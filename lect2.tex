@@ -118,7 +118,10 @@ $$Q_{a,b}(y) = \int_a^b u(x,y) \dd{x} = \int_a^{\gamma(y)} u^+(x,y) \dd{x} + \in
 \pdv{Q}{y} = \int_a^{\gamma(y)} \pdv{u^+(x,y)}{y} \dd{x} + u^+(x,\gamma(y)) \cdot \gamma'(y) + \int_{\gamma(y)}^{b} \pdv{u^-(x,y)}{y} \dd{x}-  u^-(x,\gamma(y)) \cdot \gamma'(y) =\\= - \int_{a}^{\gamma(y)}  \dv{F(u^+)}{x} \dd{x} - \int_{\gamma(y)}^{b} \dv{F(u^-)}{x} \dd{x} + \gamma'(y) \left[ u^+\Big(x,\gamma(y)\Big) -  u^-\Big(x,\gamma(y)\Big) \right] =\\= -\left[F\Big(u^+\big(\gamma(y),y\big)\Big)-F\Big(u^+(a,y)\Big)\right]-\left[F\Big(u^-(b,y)\Big)-F\Big(u^+\big(\gamma(y),y\big)\Big)\right] + \gamma'(y) \left[ u^+\Big(x,\gamma(y)\Big) -  u^-\Big(x,\gamma(y)\Big)  \right]
 \end{align*}
 Meaning
-$$-\bigg[F\Big(u^+\big(\gamma(y),y\big)\Big)-F(u^+(a,y))\bigg]-\bigg[F\Big(u^-(b,y)\Big)-F\Big(u^+\big(\gamma(y),y\big)\Big)\bigg] + \gamma'(y) \bigg[ u^+(x,\gamma(y)) -  u^-(x,\gamma(y))  \bigg] = F\Big(u^-(a,y)\Big) - F\Big(u^+(b,y)\Big)  $$
+\begin{align*}
+-\bigg[F\Big(u^+\big(\gamma(y),y\big)\Big)-F(u^+(a,y))\bigg]-\bigg[F\Big(u^-(b,y)\Big)-F\Big(u^+\big(\gamma(y),y\big)\Big)\bigg] + \gamma'(y) \bigg[ u^+(x,\gamma(y)) -  u^-(x,\gamma(y))  \bigg] =\\= F\Big(u^-(a,y)\Big) - F\Big(u^+(b,y)\Big) 
+\end{align*}
+$$ $$
 $$  \gamma'(y) \bigg[ u^+\Big(x,\gamma(y)\Big) -  u^-\Big(x,\gamma(y)\Big)  \bigg] = F\Big(u^+\big(\gamma(y),y\big)\Big) - F\Big(u^-\big(\gamma(y),y\big)\Big)  $$
 $$\gamma' = \frac{ F\Big(u^+(\gamma(y),y)\Big) - F\Big(u^-\big(\gamma(y),y\big)\Big)}{u^+\big(x,\gamma(y)\big) -  u^-\big(x,\gamma(y)\big) }$$
 This equation is called Rankine–Hugoniot conditions.

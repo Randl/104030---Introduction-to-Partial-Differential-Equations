@@ -166,5 +166,5 @@ in $(s_0,0)$.
 
 Now define $u(x,y) = z\big(s(x,y), t(x,y)\big)$.
 \begin{align*}
-a\pdv{u}{x}+b\pdv{u}{y} = a\left[\pdv{z}{s}\pdv{s}{x}+\pdv{z}{t}\pdv{t}{x}\right]+b\left[\pdv{z}{s}\pdv{s}{y}+\pdv{z}{t}\pdv{t}{y}\right] = \pdv{z}{t} \left[a\pdv{t}{x} + b\pdv{t}{y}\right] + \pdv{z}{s} \left[a\pdv{s}{x} + b\pdv{s}{y}\right] =\\= \pdv{z}{t} \underbrace{\left[\pdv{x}{t}\pdv{t}{x} + \pdv{y}{t}\pdv{t}{y}\right]}_{\dv{t}{t}} + \pdv{z}{s} \underbrace{ \left[\pdv{x}{t}\pdv{s}{x} + \pdv{y}{t}\pdv{s}{y}\right]}_{\dv{s}{t}} = \pdv{s}{t} = c
+a\pdv{u}{x}+b\pdv{u}{y} = a\left[\pdv{z}{s}\pdv{s}{x}+\pdv{z}{t}\pdv{t}{x}\right]+b\left[\pdv{z}{s}\pdv{s}{y}+\pdv{z}{t}\pdv{t}{y}\right] = \pdv{z}{t} \left[a\pdv{t}{x} + b\pdv{t}{y}\right] + \pdv{z}{s} \left[a\pdv{s}{x} + b\pdv{s}{y}\right] =\\= \pdv{z}{t} \underbrace{\left[\pdv{x}{t}\pdv{t}{x} + \pdv{y}{t}\pdv{t}{y}\right]}_{\dv{t}{t}} + \pdv{z}{s} \underbrace{ \left[\pdv{x}{t}\pdv{s}{x} + \pdv{y}{t}\pdv{s}{y}\right]}_{\dv{s}{t}} = \pdv{z}{t}\dv{t}{t}+\pdv{z}{s}\dv{s}{t} = \pdv{z}{t} = c
 \end{align*}

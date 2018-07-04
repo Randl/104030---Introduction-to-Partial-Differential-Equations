@@ -172,13 +172,13 @@ Rewrite $y\in B_R(x) $ as $y=\rho\alpha$ for $\alpha= \frac{y}{\norm{y}}$ and $\
 
 For each $\rho\in [0,R]$:
 $$\int\limits_{B_\rho(0)} \pdv{u}{n} (\rho\alpha) \dd{s_y}=\int\limits_{B_\rho(0)} \pdv{u}{n} (y) \dd{s_y} = \iint \laplacian{u} \dd[n]{x} = 0$$
-With variable substitution $\dd{s_y} = \rho^{n-1}\dd{s_\alpha}$:
-$$\int\limits_{B_\rho(0)} \pdv{u}{n} (\rho\alpha) \dd{s_y}=\int\limits_{B_\rho(0)} \pdv{u}{n} (\rho\alpha) \rho^{n-1} \dd{s_\alpha}=\rho^{n-1} \int\limits_{B_\rho(0)} \pdv{u}{\rho} (\rho\alpha)  \dd{s_\alpha} = \rho^{n-1}  \pdv{\rho} \int\limits_{B_\rho(0)}  u(\rho\alpha)  \dd{s_\alpha}$$
+With variable substitution $\dd{s_y} = \rho^{n-1}\dd{s_\alpha}$ (integrating over solid angle):
+$$\int\limits_{B_\rho(0)} \pdv{u}{n} (\rho\alpha) \dd{s_y}=\int\limits_{B_\rho(0)} \pdv{u}{n} (\rho\alpha) \rho^{n-1} \dd{s_\alpha}=\rho^{n-1} \int\limits_{B_\rho(0)} \pdv{u}{r} (\rho,\alpha)  \dd{s_\alpha} = \rho^{n-1}  \pdv{r} \int\limits_{B_\rho(0)}  u(\rho,\alpha)  \dd{s_\alpha}$$
 Thus
-$$\pdv{\rho} \int\limits_{B_\rho(0)}  u(\rho\alpha)  \dd{s_\alpha} = 0$$
+$$\pdv{r} \int\limits_{B_\rho(0)}  u(\rho,\alpha)  \dd{s_\alpha} = 0$$
 meaning
-$$H(\rho) = \int\limits_{B_\rho(0)}  u(\rho\alpha)  \dd{s_\alpha} = \text{const}$$
-Denote volume of unit ball as $\omega_n$, then $\abs{B_n} = \omega_n R^n$ and $\abs{\partial B_n} = \omega_{n-1}R^{n-1}$ 
+$$H(\rho) = \int\limits_{B_\rho(0)}  u(\rho,\alpha)  \dd{s_\alpha} = \text{const}$$
+Denote volume of unit ball as $\omega_n$, then $\abs{B_R} = \omega_n R^n$ and $\abs{\partial B_R} = n\omega_{n}R^{n-1}$ 
 $$H(0) = \omega_n \cdot u(0)$$
 And since $H(R) = H(0)$:
 $$u(0) = \frac{1}{n\omega_n R^{n-1}} \int\limits_{\partial B_R(0)} \dd{s}$$
@@ -197,13 +197,13 @@ $$u(0) = \frac{1}{\abs{B_r(0)}} \iint\limits_{B_r(0)} u(y) \dd[n]{y}$$
 	In this case, strong maximum principle applies only in one direction (maximum for subharmonic, minimum for superharmonic). For mean value theorem we get inequality instead of equality.
 	
 	\subparagraph{Proof}
-	let $u$ subharmonic, and $m = u(x) = \max\limits_{\Omega} u$.
+	Let $u$ subharmonic, and $m = u(x) = \max\limits_{\Omega} u$.
 	The set $W= \left\{ y: u(y)=m \right\} $ is closed relatively to $\Omega$.
 	Let $z\in W$, $B_R(z) \in \Omega$.
-	$$m = u(z) \leq \frac{1}{\abs{B_R(z)}} \iint\limits_{B_r(z)}  u(y) \dd[n]{y} = m$$
+	$$m = u(z) \leq \frac{1}{\abs{B_R(z)}} \iint\limits_{B_R(z)}  u(y) \dd[n]{y} = m$$
 	
 	Thus for all $z\in W$
-	$$u(z) = \frac{1}{\abs{B_R(z)}} \iint\limits_{B_r(z)} u(y) \dd[n]{y}$$
+	$$u(z) = \frac{1}{\abs{B_R(z)}} \iint\limits_{B_R(z)} u(y) \dd[n]{y}$$
 	That means
 	$$\int\limits_{B_r(z)} \qty(u(x) - m) \dd[n]{x}= 0$$
 	Thus $u(x) = m$ for all $x\in B_R(z)$, which turns $W$ into open set. Thus $W$ is both open and closed, i.e. $W=\Omega$.

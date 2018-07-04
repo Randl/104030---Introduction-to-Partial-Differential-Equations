@@ -102,7 +102,9 @@ Now define Green function $G(x,y) = \Gamma(\abs{x-y}) + h^y(x)$. Properties of $
 
 Using second Green identity
 $$\int\limits_{\Omega} h\laplacian{u} \dd{x} = \int\limits_{\partial \Omega} h \pdv{u}{n} - u \pdv{h}{n} \dd{s} $$
-and summing it with $u(y)$ we get:
+and summing it with the expression for $u(y)$ we acquired earlier, we get:
+$$u(y) + \int\limits_{\partial \Omega} h \pdv{u}{n} - u \pdv{h}{n} \dd{s} = \int\limits_{\Omega} \Gamma(x-y) \laplacian{u} \dd{x} + \int\limits_{\Omega} h\laplacian{u} \dd{x}  + \int\limits_{\partial \Omega} \qty[u(x) \pdv{n_x}\Gamma(x-y) - \Gamma(x-y) \pdv{u}{n_x}] \dd{s_x} $$
+$$u(y)  = \int\limits_{\Omega} G(x,y) \laplacian{u} \dd{x}   + \int\limits_{\partial \Omega} \qty[u(x) \pdv{n_x}\Gamma(x-y)  + u \pdv{h}{n} - \Gamma(x-y) \pdv{u}{n_x}- h \pdv{u}{n} ] \dd{s_x} $$
 $$u(y) = \int\limits_{\Omega} G(x,y) \laplacian{u} \dd{x} + \int\limits_{\partial \Omega} u(x) \pdv{n_x}G(x,y) \dd{s_x}$$
 \paragraph{Conclusion}
 If $\laplacian{u} = f$ on $\Omega$ and $u=g$ on $\partial \Omega$
